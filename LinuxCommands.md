@@ -7,7 +7,7 @@
 
 **2. useful Commands GIT:**
 * _git inint_ - create folder git in the local directory (working Directory)
-* _git status_ - check the current status of a git folder
+* _git status_ - check the current status of a git folder if it the same as the directory on github
 * _git remote add origin_ https://github.com/MarkLouren/CodeCourse.git  a local folder to a the chosen Github Directory
 * _git push --set-upstream origin master_   - create a folder Master if doesn't exist in Github directory
 * _git push_  - push updates from the local directory (working Directory) to the Github Directory
