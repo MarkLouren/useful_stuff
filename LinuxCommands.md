@@ -15,4 +15,5 @@
 **3. Popular Pipelines:**
 
 **4. Other:**
-*_ssh-keygen_ - generate SSH pair keys
+* _ssh-keygen_ - generate SSH pair keys
+* _vi_ visial editor for files
