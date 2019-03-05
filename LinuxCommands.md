@@ -19,3 +19,9 @@
 **4. Other:**
 * _ssh-keygen_ - generate SSH pair keys
 * _vi_ - visual editor for files
+
+
+**5. Heroku CLI:**
+* Link: https://devcenter.heroku.com/articles/heroku-cli-commands
+* heroku login - login to CLI
+* heroku logs --app=stores-rest-new check apps logs
