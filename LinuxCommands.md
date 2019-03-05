@@ -1,7 +1,7 @@
 **1. The Most popular linux commands:**
 * _mkdir_ - create a new directory
 * _touch_ - create a new file
-* _ls_ - list of directories in the current folder
+* _ls_ - list of directories in the current folder _ls -a_ see hiden files
 * _cd_ - change the directory
 * _rm_ - remove a file or a directory
 
