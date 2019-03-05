@@ -7,7 +7,7 @@
 
 **2. useful Commands GIT:**
 * _git inint_ - create files
-git status - check the current status of a git folder
+* _git status_ - check the current status of a git folder
 
 **3. Popular Pipelines:**
 
