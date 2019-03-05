@@ -18,4 +18,4 @@
 
 **4. Other:**
 * _ssh-keygen_ - generate SSH pair keys
-* _vi_ visial editor for files
+* _vi_ - visual editor for files
