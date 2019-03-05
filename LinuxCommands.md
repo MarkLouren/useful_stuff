@@ -2,7 +2,7 @@
 * _mkdir_ - create a new directory
 * _touch_ - create a new file
 * _ls_ - list of directories in the current folder
-* _cd_ - change directory
+* _cd_ - change the directory
 * _rm_ - remove a file or a directory
 
 **2. useful Commands GIT:**
