@@ -56,3 +56,35 @@ AllowUsers jose
 21. exit - exit from the server
 22. ssh jose@server_address - login to the server via a new user jose
 23. sudo su - log in as a root user root@server_address - exit back to jose
+
+-------------------
+Setting up our New user with PostgreSQL Permissions
+-------------------
+24.  Start from login as jose@rest-api-course-trial user
+25. sudo su - change to the root user: root@rest-api-course-trial:/home/jose#
+26. sudo -i -u postgres - Change to the potsgres user: postgres@rest-api-course-trial
+27. createuser jose -P  - Create user of the postgres table. The same namwe as a Unix user. (-P - set up a password)
+28. Create passwords
+29.  createdb jose - Move back to the jose@ and Create a new DB jose 
+30.  psql - connect to the database jose=> 
+31. \conninfo - Check the status of db
+32. \q - Leave the DB  (drobdb - if we want to delete a database, use a postgres@ acc)
+33. sudo vi /etc/postgresql/9.5/main/pg_hba.conf - User login security configuration file, Change peer=>md5 (all access to ssk of password access (bottom of the page) Q+I, ESC:
+```
+# "local" is for Unix domain socket connections only
+local   all             all                                     peer
+```
+
+33. :wq  - Write and Quite
+
+
+
+
+
+
+
+
+
+
+
+
