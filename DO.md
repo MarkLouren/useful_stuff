@@ -77,10 +77,26 @@ local   all             all                                     peer
 
 33. :wq  - Write and Quite
 
+-------------------
+Setting up Nginx and REST API
+-------------------
 
+ Ngix - receive external requests and decides what to do with them. Stays beetwen a user and an application. Aallows to launch several Flax applications simultaneously, redirect requests to different apps, reverse proxy etc.
 
+34. sudo apt-get update  - Update pacakges
+35. sudo apt-get install nginx - Install nginx
 
+# Allow nginx to work via Ununtu firewall (ufw) or it'll be blocked
 
+36. sudo ufw status - Check the status of a firewall
+37. sudo ufw enable - Enable a firewall
+38. sudo ufw  allow 'Nginx HTTP'  - Add rule, where Nginx works via Firewall
+39. sudo ufw allow ssh - in order we'll not belog out of the server
+40. sudo ufw status - check if everything works
+41. systemctl status nginx - check if nginx installed properly 
+
+# Change configuration of Nginx
+42. sudo vi /etc/nginx/sites-available/items-rest.conf - Change configuration of Nginx in order to work with our Rest Api
 
 
 
