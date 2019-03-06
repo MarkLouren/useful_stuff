@@ -143,9 +143,13 @@ root /usr/share/nginx/html
 46. sudo mkdir /var/www/html/items-rest - create a folder where our application will live
 47. sudo chown jose:jose /var/www/html/items-rest ChangeOwner (chown) for items-rest, make jose an owner
 
-#### Clone App from github to the server
+#### Clone App from github to the server and istall python env
 
-48. cd /var/www/html/items-rest/  -move to the folder
-49. git clone https://github.com/MarkLouren/stores-rest-api.git . - clone application from github
-
-
+48. cd /var/www/html/items-rest/  -Move to the folder
+49. git clone https://github.com/MarkLouren/stores-rest-api.git . - Clone application from github (. in the end- clone at the same directory)
+50. mkdir log - Create a log folder 
+51. sudo apt-get install python-pip python3-dev libpq-dev - Install Python and related liabraries
+52. pip install virtualenv - Set up python env
+53. virtualenv venv --python=python3.5 - create folder in env
+54. source venv/bin/activate - active env => should go to (env mode)
+55. pip install -r requirements.txt  - install all requirements from the requirements.txt to the virtual environment
