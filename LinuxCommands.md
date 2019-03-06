@@ -13,7 +13,8 @@
 * _git *_ - add everything from the folder to git
 * _git push --set-upstream origin master_   - create a folder Master if doesn't exist in Github directory
 * _git push_  - push updates from the local directory (working Directory) to the Github Directory
-* _git pull_ - update your local repository with the last updates from the GitHub repository
+* _git pull_ - update your local repository with the last updates from the GitHub repository 
+* _git clone_ https://github.com/MarkLouren/stores-rest-api.git . - Clone from github at the same directory "."
 
 **3. Popular Pipelines:**
 
