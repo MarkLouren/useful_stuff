@@ -86,7 +86,7 @@ Setting up Nginx and REST API
 34. sudo apt-get update  - Update pacakges
 35. sudo apt-get install nginx - Install nginx
 
-# Allow nginx to work via Ununtu firewall (ufw) or it'll be blocked
+#### Allow nginx to work via Ununtu firewall (ufw) or it'll be blocked
 
 36. sudo ufw status - Check the status of a firewall
 37. sudo ufw enable - Enable a firewall
@@ -95,12 +95,55 @@ Setting up Nginx and REST API
 40. sudo ufw status - check if everything works
 41. systemctl status nginx - check if nginx installed properly 
 
-# Change configuration of Nginx
-42. sudo vi /etc/nginx/sites-available/items-rest.conf - Change configuration of Nginx in order to work with our Rest Api
+#### Change configuration of Nginx
 
+42. sudo vi /etc/nginx/sites-available/items-rest.conf - Change configuration of Nginx in order to work with our Rest Api. Creates a new file. "I" - Insert mode -edit file
+43.
+```
+ server {
+listen 80;
+real_ip_header X-Forwarded-For;
+set_real_ip_from 127.0.0.1;
+server_name localhost;
 
+location / {
+include uwsgi_params;
+uwsgi_pass unix:/var/www/html/items-rest/socket.sock;
+uwsgi_modifier1 30;
+ }
 
+error_page 404 /404.html;
+location = /404.html {
+root /usr/share/nginx/html;
+}
+error_page 500 502 503 504 /50x.html
+location = /50x.html {
+root /usr/share/nginx/html;}
+}
+``` 
+##### Where:
+* listen 80; - listen the port, for sites can be other
+* real_ip_header X-Forwarded-For; -forward ip address of requester to our flask app
+* set_real_ip_from 127.0.0.1; - Check that requests come from the local host
+* location / - whoever visit our root / should be redirected to
+* include uwsgi_params - _uwsgi_ progrmam that helps to work servers more efficiently 
+* uwsgi_pass unix:/var/www/html/items-rest/socket.sock; Connection point beetween flask and nginx
+* uwsgi_modifier1 30 - tels when to die if it becomes blocked
+```
+error_page 404 /404.html;
+location = /404.html {
+root /usr/share/nginx/html
 
+```
+* Serve 404.html page from the directory: /usr/share/nginx/html
+* Summary when we enter any page, we go to our Flax app exclusion pages 404, 50x. More you can learn by reading about _uwsgi_ protocol and it's documentation
+44. esc, :wq - quit the file
 
+45. sudo ln -s /etc/nginx/sites-available/items-rest.conf /etc/nginx/sites-enabled/ - create a soft(-s) link (ln) between our created file and enabled directory. Makes items-rest.conf enable.
+46. sudo mkdir /var/www/html/items-rest - create a folder where our application will live
+47. sudo chown jose:jose /var/www/html/items-rest ChangeOwner (chown) for items-rest, make jose an owner
 
+#### Clone App from github to the server
+
+48. cd /var/www/html/items-rest/  -move to the folder
 
