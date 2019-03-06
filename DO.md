@@ -146,4 +146,6 @@ root /usr/share/nginx/html
 #### Clone App from github to the server
 
 48. cd /var/www/html/items-rest/  -move to the folder
+49. git clone https://github.com/MarkLouren/stores-rest-api.git . - clone application from github
+
 
