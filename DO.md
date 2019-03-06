@@ -25,5 +25,34 @@ Creating new cluster 9.5/main ...
 10. exit - logout from the postgres@ user to the root user
 
 -------------------
- Creating UNIX user in Ubuntu
+ Creating a UNIX user in Ubuntu
 -------------------
+
+11. adduser jose - create a new user
+12  Set up a password for the new user
+13. visudo - check if a new user has the rights and add them in the line:
+
+```
+# User privilege specification
+root    ALL=(ALL:ALL) ALL
+jose    ALL=(ALL:ALL) ALL
+``` 
+14.  Click CNTR+O in order to save changes CNTR+X - exit
+15.  Check if a new user can log in to the server and his rights:
+16.  vi /etc/ssh/sshd_config   - open config file:
+17. Change the rights of the user here (PermitRootLogin should be no), click: I+Q (edit mode), ESC after we've made changed
+```
+# Authentication:
+LoginGraceTime 120
+PermitRootLogin yes
+StrictModes yes
+```
+18. + Add at the end of the file (Allow user to commect to the server)
+```
+AllowUsers jose
+```
+19. wq  - write and quit from the file
+20. service sshd reload - Reload the server and use the new configuration
+21. exit - exit from the server
+22. ssh jose@server_address - login to the server via a new user jose
+23. sudo su - log in as a root user root@server_address - exit back to jose
