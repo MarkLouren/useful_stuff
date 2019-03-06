@@ -3,6 +3,7 @@
 * _touch_ - create a new file
 * _ls_ - list of directories in the current folder _ls -a_ see hiden files
 * _cd_ - change the directory
+* _cd .._ - move on one level up
 * _rm_ - remove a file or a directory
 
 **2. useful Commands GIT:**
