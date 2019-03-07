@@ -221,4 +221,8 @@ logto = /var/www/html/items-rest/log/%n.log
 62. sudo systemctl start uwsgi_items_rest  =go into the service _uwsgi_items_rest.service_ and run it
 63. vi log/uwsgi.log - just to check that everything works
 
-
+-------------------
+ Testing our API 
+-------------------
+64.  sudo rm /etc/nginx/sites-enabled/default - Remove Default configuration file for Nginex !! Because it loads the first
+65. sudo systemctl reload nginx  - Relad the nginex
