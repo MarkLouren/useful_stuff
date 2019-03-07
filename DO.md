@@ -153,3 +153,72 @@ root /usr/share/nginx/html
 53. virtualenv venv --python=python3.5 - create folder in env
 54. source venv/bin/activate - active env => should go to (env mode)
 55. pip install -r requirements.txt  - install all requirements from the requirements.txt to the virtual environment
+
+-------------------
+ Setting up uWSGI to run our REST API
+-------------------
+56. start session or continue: ssh jose@api
+57. Start Ubuntu service (contor start/restart etc apps) for this aim:
+sudo vi /etc/systemd/system/uwsgi_items_rest.service  - Change the system file for uwsgi
+```
+[Unit]
+Description=uWSGI items rest
+
+[Service]
+Environment=DATABASE_URL=postgres://jose:?[2%O-K0ernV@localhost:5432/jose
+ExecStart=/var/www/html/items-rest/venv/bin/uwsgi --master --emperor /var/www/html/items-rest/uwsgi.ini --die-on-term --uid jose --gid jose --logto /var/www/html/items-rest/log/emperor.log
+Restart=always
+KillSignal=SIGQUIT
+Type=notify
+NotifyAccess=all
+
+[Install]
+WantedBy=multi-user.target
+```
+#### Where:
+* Description - just a description of the project
+* Environment - describe variables before the service starts, so Server will know about them
+* DATABASE_URL=postgres://jose:password@localhost:5432/jose - set up a link to database (database user and password)@NameOfServer:Port/NameOfDataBase
+* ExecStart=/var/www/html/items-rest/venv/bin/uwsgi --master --emperor /var/www/html/items-rest/uwsgi.ini --die-on-term --uid jose --gid jose --logto /var/www/html/items-rest/log/emperor.log - Which program should launch when we start the server, use -- master Process, --emperor - Controler, uwsgi.ini- configuration file for launching the program, --die-on-term  - Terminate python program in uwsgi when we close uwsgi, --uid jose - run uid proccess as user jose, gid -group id user, emperor.log - where to log files.
+* Restart=always - when restart
+* KillSignal=SIGQUIT  - Command to force quit the server without loosing data
+* Type=notify   - Notifcation settings
+* NotifyAccess=all
+59. ESC, :wq
+60. cd /var/www/html/items-rest - move to directory
+61. vi uwsgi.ini - change uwsgi.ini. (Delete everything in vi editor Click: dG)
+```
+[uwsgi]
+base = /var/www/html/items-rest
+app = run
+module = %(app)
+
+home = %(base)/venv
+pythonpath = %(base)
+
+socket = %(base)/socket.sock
+chmod-socket = 777
+processes = 8
+
+threads = 8
+harakiri = 15
+callable = app
+logto = /var/www/html/items-rest/log/%n.log
+```
+#### Where:
+* base = /var/www/html/items-rest - where the file exist
+* app = run  - run .py file
+* module = %(app) - Loads veriable app
+* home = %(base)/venv   - base -home directory
+* pythonpath = %(base) - where the python located
+* socket = %(base)/socket.sock -location of a socket file
+* chmod-socket = 777 - permission to access, 777 - all
+* processes = 8
+* threads = 8
+* harakiri = 15 - if one of the threads blocked than it willbe killed in 15 sec and created another one
+* callable = app - call the variable
+* logto = /var/www/html/items-rest/log/%n.log  - % it's uwsgi
+62. sudo systemctl start uwsgi_items_rest  =go into the service _uwsgi_items_rest.service_ and run it
+63. vi log/uwsgi.log - just to check that everything works
+
+
