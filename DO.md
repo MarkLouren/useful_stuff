@@ -222,7 +222,12 @@ logto = /var/www/html/items-rest/log/%n.log
 63. vi log/uwsgi.log - just to check that everything works
 
 -------------------
- Testing our API 
+ Testing our API: 
 -------------------
+##### Launch Nginx
 64.  sudo rm /etc/nginx/sites-enabled/default - Remove Default configuration file for Nginex !! Because it loads the first
-65. sudo systemctl reload nginx  - Relad the nginex
+65. sudo systemctl reload nginx  - Relad the nginx - or other !!!!!Command: sudo service nginx restart ( it worked for me)
+66. systemctl status nginx  - Check the status nginx! Check the ERRORS -command: systemctl status nginx.service
+67. sudo systemctl start uwsgi_items_rest - run uwsgi in our app (it'll connect to Nginx)
+68.
+
