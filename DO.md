@@ -229,5 +229,5 @@ logto = /var/www/html/items-rest/log/%n.log
 65. sudo systemctl reload nginx  - Relad the nginx - or other !!!!!Command: sudo service nginx restart ( it worked for me)
 66. systemctl status nginx  - Check the status nginx! Check the ERRORS -command: systemctl status nginx.service
 67. sudo systemctl start uwsgi_items_rest - run uwsgi in our app (it'll connect to Nginx)
-68.
+68. we can start to test our application via PostMall
 
