@@ -165,7 +165,7 @@ sudo vi /etc/systemd/system/uwsgi_items_rest.service  - Change the system file f
 Description=uWSGI items rest
 
 [Service]
-Environment=DATABASE_URL=postgres://jose:?[2%O-K0ernV@localhost:5432/jose
+Environment=DATABASE_URL=postgres://jose:pass@localhost:5432/jose
 ExecStart=/var/www/html/items-rest/venv/bin/uwsgi --master --emperor /var/www/html/items-rest/uwsgi.ini --die-on-term --uid jose --gid jose --logto /var/www/html/items-rest/log/emperor.log
 Restart=always
 KillSignal=SIGQUIT
