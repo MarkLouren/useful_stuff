@@ -1,4 +1,7 @@
-* Telegram Message
+* Get Group/Channel/User id: Add bot @my_id_bot (What's my telegram id)
+
+
+* Telegram Message structure
 ```
 {'content_type': 'text', 
  'message_id': 1, 
