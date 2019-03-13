@@ -7,4 +7,8 @@
 switched to db fullstack
 * show collections - show the data in fullstack db
 * db.students.insert({"name":"Jose", "mark":99}) - Add data to DB
-* WriteResult({ "nInserted" : 1 })  - Results
+=> WriteResult({ "nInserted" : 1 })  - Results
+* db.students.find({}) -  find data in db
+=>{ "_id" : ObjectId("5c892aec6efdb226993cbea0"), "name" : "Jose", "mark" : 99 }
+*  db.students.remove({"name":"Jose"}) - Remove data from db
+=>WriteResult({ "nRemoved" : 1 })
