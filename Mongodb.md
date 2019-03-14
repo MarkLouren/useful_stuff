@@ -15,3 +15,4 @@ switched to db fullstack
 =>{ "_id" : ObjectId("5c892aec6efdb226993cbea0"), "name" : "Jose", "mark" : 99 }
 *  _db.students.remove({"name":"Jose"})_ - Remove data from db
 =>WriteResult({ "nRemoved" : 1 })
+* _db.posts.find({}).pretty()_ - Find posts..
