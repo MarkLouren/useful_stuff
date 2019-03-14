@@ -5,6 +5,8 @@
 * _cd_ - change the directory
 * _cd .._ - move on one level up
 * _rm_ - remove a file or a directory
+* _sudo lsof -iTCP -sTCP:LISTEN -n -P_ - Find a list of tasks running on your machine with their pid
+* sudo kill <mongo_command_pid>_  - kill the task by pid
 
 **2. useful Commands GIT:**
 * _git inint_ - create folder git in the local directory (working Directory)
