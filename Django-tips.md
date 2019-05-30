@@ -2,6 +2,7 @@
 **Commands:**
 - django-admin startproject first project  - launch django (create new folder with basic structure of Django) 
 - (create new folder) cd first_project => python manage.py startapp first app
+- python manage.py runserver
 
 
 
