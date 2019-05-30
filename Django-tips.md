@@ -1,6 +1,6 @@
 
 **Commands:**
-- django-admin startproject first project  - launch django 
+- django-admin startproject first project  - launch django (create new folder with basic structure of Django) 
 
 
 
