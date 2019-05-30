@@ -17,7 +17,7 @@ Ex:
 <QuerySet [<Topic: Social Network>]>
 >>> 
 ```
-
+- python manage.py createsuperuser - create a super user for admin page
 
 **urls.py**
 ```
