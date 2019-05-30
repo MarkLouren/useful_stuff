@@ -1,4 +1,9 @@
 
+**Commands:**
+- django-admin startproject first project  - launch django 
+
+
+
 **urls.py**
 ```
 from django.urls import path
