@@ -1,5 +1,6 @@
-* Custom form validation, ex:
-'''
+*Custom form validation, ex:*
+
+```
 from django import forms
 from django.core import validators
 
@@ -16,5 +17,4 @@ class FormName(forms.Form):
                                  widget=forms.HiddenInput,
                                  validators=[validators.MaxLengthValidator(0)])
 
-
-'''
+```
