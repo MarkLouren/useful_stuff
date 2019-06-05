@@ -27,3 +27,6 @@ urlpatterns = [
     path('', views.index, name='index'),
 ]
 ```
+
+- Crypto
+pip install bcrypt
