@@ -28,5 +28,9 @@ urlpatterns = [
 ]
 ```
 
-- Crypto
+- Passwords
 pip install bcrypt
+
+- Images:
+pip install pillow
+
