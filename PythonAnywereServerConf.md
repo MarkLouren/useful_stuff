@@ -44,4 +44,9 @@ application = get_wsgi_application()
 ```
 5) Back to Dashboard in Files add to seetings.py ALLOWED_HOSTS ['.marklouren.pythonanywhere.com'] 
 Click on marklouren.pythonanywhere.com'
-
+8) Create a Directory fot static files: home/MarkLouren/django-deployment-example/learning_templates +Create /static/
+7) Fix the URL for static files=> Web tab=> Staticl Files:
+URL: /static/admin DIRECTORY: /home/MarkLouren/.virtualenvs/myproj/lib/python3.5/site-packages/django/contrib/admin/static/admin 
+URL: /static/      DIRECOTY: /home/MarkLouren/django-deployment-example/learning_templates/static
+8) Turn OFF debug mode => Files => learning_templates => learning template settings.py=> DEBUG = False
+8) 
