@@ -34,3 +34,4 @@ pip install bcrypt
 - Images:
 pip install pillow
 
+pip freeze - Output installed packages in requirements format.
