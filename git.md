@@ -8,3 +8,9 @@ How to add existing directory from comp to Github, one of the examples:
 6. git remote add origin https://github.com/MarkLouren/django-deployment-example.git
 7. git push -u origin master
 generally, see the tips for new directory
+
+Update the Github directory with changes on your Local machine:
+
+1. git add -A
+2. git commit -m "Added Gitignore file or Other Files"
+3. git push origin master
