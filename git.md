@@ -14,3 +14,7 @@ Update the Github directory with changes on your Local machine:
 1. git add -A
 2. git commit -m "Added Gitignore file or Other Files"
 3. git push origin master
+
+Add files on server (in VirtualEnv):
+1. git clone https://github.com/MarkLouren/tribes-landing.git
+2. Update: 
