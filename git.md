@@ -17,4 +17,4 @@ Update the Github directory with changes on your Local machine:
 
 Add files on server (in VirtualEnv):
 1. git clone https://github.com/MarkLouren/tribes-landing.git
-2. Update: 
+2. Update: git pull origin master
