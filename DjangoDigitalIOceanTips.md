@@ -35,4 +35,7 @@ sudo nginx -t && sudo systemctl restart nginx  -other option
 
  /var/log/nginx/nginx_error.log  Error log
 ```
+## Server##
+sudo apt-get update - сheck updates for server
+sudo apt-get upgrade - apply updates
 
