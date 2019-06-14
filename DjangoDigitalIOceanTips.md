@@ -24,3 +24,12 @@ urlpatterns += staticfiles_urlpatterns()
 ```
 ## Venv ##
 activate/deactivate
+
+## Nginx ##
+```
+sudo nano /etc/nginx/sites-available/myproject  -Edit DOC
+sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled - Enable NGinx
+sudo nginx -t - Check Errors
+sudo systemctl restart nginx - Restart
+sudo nginx -t && sudo systemctl restart nginx  -other option
+```
