@@ -32,4 +32,7 @@ sudo ln -s /etc/nginx/sites-available/myproject /etc/nginx/sites-enabled - Enabl
 sudo nginx -t - Check Errors
 sudo systemctl restart nginx - Restart
 sudo nginx -t && sudo systemctl restart nginx  -other option
+
+ /var/log/nginx/nginx_error.log  Error log
 ```
+
