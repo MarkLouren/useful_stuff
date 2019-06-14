@@ -9,6 +9,8 @@ https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postg
 Launch: gunicorn --bind 0.0.0.0:8000 tribes.wsgi
 Test: Command: gunicorn --log-file=- subby.wsgi:application
 
+sudo systemctl restart gunicorn -resart gunicorn after update of the site
+
 Problem: don't display static files in Gunicorn, how to fix: 
 ```pip install dj-static
 Configure your static assets in settings.py:
