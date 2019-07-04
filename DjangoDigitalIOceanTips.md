@@ -10,6 +10,11 @@ Launch: gunicorn --bind 0.0.0.0:8000 tribes.wsgi
 Test: Command: gunicorn --log-file=- subby.wsgi:application
 
 sudo systemctl restart gunicorn -resart gunicorn after update of the site
+```
+    sudo systemctl daemon-reload
+    sudo systemctl restart gunicorn
+
+```
 
 Problem: don't display static files in Gunicorn, how to fix: 
 ```pip install dj-static
