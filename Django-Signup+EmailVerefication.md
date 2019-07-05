@@ -149,7 +149,7 @@ def usersignup(request):                      <==Create sign up method
             message = render_to_string('activate_account.html', {       <==html template for Email
                 'user': user,                                                 <== we pass the content to our template
                 'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)).decode(),
+                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
                 'token': account_activation_token.make_token(user),
             })
             to_email = form.cleaned_data.get('email')                    <== we get the user email from our form
@@ -159,30 +159,44 @@ def usersignup(request):                      <==Create sign up method
     else:
         form = UserSignUpForm()
     return render(request, 'signup.html', {'form': form})    <==  if the request was not a post, we return the form user to fill
+    
+def activate_account(request, uidb64, token):
+    try:
+        uid = force_bytes(urlsafe_base64_decode(uidb64))
+        user = User.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, User.DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        login(request, user)
+        return HttpResponse('Your account has been activate successfully')
+    else:
+        return HttpResponse('Activation link is invalid!')
 
 ```
 
+7) Change urls.py in the accounts app
 
-
-
-**urls.py**
 ```
-from django.urls import path
-from first_app import views
+from django.urls import path, include
+from . import views
 urlpatterns = [
-    path('', views.index, name='index'),
+    path('', views.usersignup, name='register_user'),
+    path('activate/<slug:uidb64>/<slug:token>/',
+        views.activate_account, name='activate'),
+
+]
+
+```
+8) Change urls.py in the main app
+
+```
+from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path('', include('accounts.urls')),
+    path('admin/', admin.site.urls),
 ]
 ```
-
-- Passwords
-pip install bcrypt
-
-- Images:
-pip install pillow
-
-pip freeze - Output installed packages in requirements format. ==> pip freeze >requirements.txt so on tne SERVER, we can TYPE:
-pip install -r requirements.txt - and dowload all packages on the server that we have on our local machine
-
-
-pip install django-debug-tool
-
