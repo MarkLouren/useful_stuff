@@ -78,8 +78,53 @@ except ImportError:
     pass
 
 
+EMAIL_USE_TLS = True             <== for sending a confirmation email
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'example@gmail.com'
+EMAIL_HOST_PASSWORD = 'password'
+EMAIL_PORT = 587
 
 ```
+
+4) We are going to use UserCreationForm that comes with django, this form is tied to User model that django comes with by default. in **APP account** => create file **forms.py**
+
+```
+from django import forms
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+class UserSignUpForm(UserCreationForm):     <==We create a UserSignUpForm class where we pass an instance of UserCreationForm
+    email = forms.EmailField(max_length=100, help_text='Required')  <== We create form field called email 
+    class Meta:    <== We create a Meta class for our form.
+        model = User    <== We define which model that our form is going to use
+        fields = ('username', 'email', 'password1', 'password2') <== We define the fields that the user is going to see.
+
+```
+5) When a user is created during sign up process, we need to create a unique token so that we can verify the new user when confirming that they control the email used during signup process. Inside our **account folder**, we are going to create a new file called token_generator.py file, make sure that **token_generator.py** file has the following code:
+
+```
+# we import django password token generator. This class generate a token without persisting it to the database, yet it’s still able to determine whether the token is valid or not. 
+## we import six from django utils. Six provides simple utilities for wrapping over differences between Python 2 and Python 3.
+###  we create TokenGenerator class an pass an Instance of PasswordTokenGenerator.
+####  we create a method _make_hash_value which overrides PasswordTokenGenerator method
+####  we return user id, timestamp and user is active using the six imported from django utils.
+
+from django.contrib.auth.tokens import PasswordResetTokenGenerator
+from django.utils import six
+
+class TokenGenerator(PasswordResetTokenGenerator):  
+    def _make_hash_value(self, user, timestamp):
+        return (
+            six.text_type(user.pk) + six.text_type(timestamp) + six.text_type(user.is_active)
+        )
+        
+###### we create variable and we equate it to our token generator class
+        
+account_activation_token = TokenGenerator()
+
+```
+
+
+
 
 **urls.py**
 ```
