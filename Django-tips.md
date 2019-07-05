@@ -160,7 +160,7 @@ def usersignup(request):                      <==Create sign up method
         form = UserSignUpForm()
     return render(request, 'signup.html', {'form': form})    <==  if the request was not a post, we return the form user to fill
 
-``
+```
 
 
 
