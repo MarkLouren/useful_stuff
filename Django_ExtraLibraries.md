@@ -9,5 +9,5 @@ pip install bcrypt
 pip install pillow
 
 
--Debug tool:
+- Debug tool:
 pip install django-debug-tool
