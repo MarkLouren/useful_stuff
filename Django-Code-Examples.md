@@ -19,19 +19,23 @@ class FormName(forms.Form):
                                  validators=[validators.MaxLengthValidator(0)])
 ```
 
-*List of objects*
+*List of objects + Is user.is_authenticated*
 ```
 def post_model_list_view(request)
-   qa=PostModel.objects.all()
-   print(qs)
-   template_path ="list-view.html"
+
+   qa=PostModel.objects.all()         
    context_dictionary ={
    "object_list":qs,
    "some_dict": {"abc": 123},
    "num":123,
-   
    }
+   if request.user.is_authenticated():          ===> Check if user is authenticated
+     template= "blog/list-view.html"
+   else: 
+     template = "blog/list-view-public.html"
    return render (request, template_path, context_dictionary)
+   
+   
    
    IN LIST-VIEW.html
    <h1>hello World </h1>
