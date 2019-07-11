@@ -79,4 +79,12 @@ print (dir(request)) ==> all available properties
 
 {%  endblock %}
 
+
+FOR FORMSET:
+
+   {{ formset.management_form }}
+        {% for aform in form %}
+        {% endfor%}
+
+
 ```
