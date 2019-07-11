@@ -78,13 +78,31 @@ print (dir(request)) ==> all available properties
 </div>
 
 {%  endblock %}
+```
+*FORMSET*
+```
+in VIEWS:
+from django.forms import formset_factory
+def add_video(request, pk):  #Pk of the hall
+    VideoFormSet=formset_factory(VideoForm, extra=5) #connect form from forms,dublicate 5 times
+    form = VideoFormSet()
+    search_form = SearchForm()
+    if request.method == "POST":
+        #Create
+        filled_form=VideoFormSet(request.POST) #get all post date in video form and vaidate it
 
-
-FOR FORMSET:
-
-   {{ formset.management_form }}
+        if filled_form.is_valid():
+            video=Video()
+            video.url=filled_form.cleaned_data['url']
+            video.title = filled_form.cleaned_data['title']
+            video.youtube_id = filled_form.cleaned_data['youtube_id']
+            video.hall= Hall.objects.get(pk=pk) #was passed in function
+            video.save() #save to database
+in TEMPALTE:
+ {{ formset.management_form }}
         {% for aform in form %}
         {% endfor%}
+
 
 
 ```
