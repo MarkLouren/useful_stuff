@@ -48,6 +48,35 @@ def post_model_list_view(request)
   
 ```
 *Get All Class Atributes*
+
 ```
 print (dir(request)) ==> all available properties
-``
+```
+*Customization Forms*
+
+```
+{% extends "halls/base.html" %}
+
+{% block content %}
+<div class="container">
+   <h2>Add Video</h2>
+    <form method="POST">
+        {% csrf_token %}
+        {% for field in form %}
+        <p>
+        {{ field.errors }}
+        {{field }}
+            {{field.label_tag }}
+
+            </p>
+
+        {% endfor %}
+
+
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+</div>
+
+{%  endblock %}
+
+```
