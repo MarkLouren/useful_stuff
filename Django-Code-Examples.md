@@ -52,7 +52,7 @@ def post_model_list_view(request)
 ```
 print (dir(request)) ==> all available properties
 ```
-*Customization Forms*
+*Customization Forms in HTML Template*
 
 ```
 {% extends "halls/base.html" %}
