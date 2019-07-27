@@ -23,6 +23,23 @@ def post_save_user_model_receiver(sender, instance, created, *args, **kwargs):
 
 post_save.connect(post_save_user_model_receiver, sender=settings.AUTH_USER_MODEL)
 
+```
+Login Function View:
+```
+views.py
 
+from django.contrib.auth import authenticate, login
+
+def my_view(request):
+    username = request.POST['username']
+    password = request.POST['password']
+    user = authenticate(request, username=username, password=password)
+    if user is not None:
+        login(request, user)
+        # Redirect to a success page.
+        ...
+    else:
+        # Return an 'invalid login' error message.
+        ...
 
 ```
