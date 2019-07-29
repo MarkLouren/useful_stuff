@@ -86,7 +86,7 @@ class MyUserManager(BaseUserManager):
          interests=interests,
          name=name,
       )
-      REQUIRED_FIELDS = ['name', 'interests']
+      
       user.is_admin=True
       user.save(using=self._db)
       return user
@@ -105,7 +105,7 @@ class MyUser (AbstractBaseUser):
    objects=MyUserManager()
 
    USERNAME_FIELD = 'email'
-   REQUIRED_FIELDS = ['name']
+   REQUIRED_FIELDS = ['name', 'interests',]
 
 
 
