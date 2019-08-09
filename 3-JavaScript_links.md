@@ -12,7 +12,8 @@
 * http://javascript-roadtrip.codeschool.com/levels/1/challenges/1 
 * http://www.w3resource.com/javascript-exercises/javascript-basic-exercises.php
 * http://www.asmarterwaytolearn.com/js/index-of-exercises.html
-
+* https://checkio.org/
+* https://dash.generalassemb.ly/
 
 
 **Courses**
