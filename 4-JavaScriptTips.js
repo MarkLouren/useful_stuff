@@ -36,3 +36,22 @@ let accessAllowed = age > 18 ? true : false;
 
 // то же самое
 let accessAllowed = age > 18;
+
+////////////////////////////////////////////////////////////////////////////
+/* || (ИЛИ), && (И) и ! (НЕ) */
+////
+let hour = 12;
+let isWeekend = true;
+if (hour < 10 || hour > 18 || isWeekend) {
+  alert( 'Офис закрыт.' ); // это выходной
+}
+////
+let hour = 12;
+let minute = 30;
+if (hour == 12 && minute == 30) {
+  alert( 'The time is 12:30' );
+}
+//
+let x = 1;
+(x > 0) && alert( 'Greater than zero!' );
+
