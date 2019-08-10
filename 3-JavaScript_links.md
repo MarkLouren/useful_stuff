@@ -2,6 +2,7 @@
 
 
 **Documentation**
+* https://tc39.es/ecma262/#sec-object-constructor Official documentation
 * https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/RegExp 
 * http://learn.javascript.ru/intro (RU, from Courses)
 * https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/ 
@@ -31,3 +32,5 @@
 **Useful**
 
 http://keycodes.atjayjo.com/  KeyCode References for the keyboard
+https://caniuse.com/ - Can I use, JS features in Dif Browsers versions
+https://kangax.github.io/compat-table/es6/ ECMA Script 6 Browsers compatibility
