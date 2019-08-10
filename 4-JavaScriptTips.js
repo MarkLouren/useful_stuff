@@ -8,3 +8,6 @@ let counter = 1;
 let a = counter++; // (*) меняем ++counter на counter++
 alert(a); // 1
 
+// 
+a == b // сравненение
+a = b //присваивание
