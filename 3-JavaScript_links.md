@@ -48,3 +48,9 @@ ________________
 * https://sinonjs.org/ - Standalone test spies, stubs and mocks for JavaScript.
 Works with any unit testing framework. 
 ________________
+
++ Polyfills:
+________________
+* https://polyfill.io/v3/ It's a service which accepts a request for a set of browser features and returns only the polyfills that are needed by the requesting browse
+* https://github.com/zloirock/core-js  - Modular standard library for JavaScript. Includes polyfills for ECMAScript up to 2019: promises, symbols, collections, iterators, typed arrays, many other features, ECMAScript proposals, some cross-platform WHATWG / W3C features and proposals like URL
+________________
