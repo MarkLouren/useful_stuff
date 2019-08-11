@@ -40,5 +40,11 @@
 * http://www.jslint.com/
 * https://jshint.com/
 
-**Frameworks**
+**Frameworks and Liabraries**
+***Testing**
+________________
 * https://mochajs.org/  - is a feature-rich JavaScript test framework running on Node.js and in the browser, making asynchronous testing simple and fun
+* https://www.chaijs.com/ - Chai is a BDD / TDD assertion library for node and the browser that can be delightfully paired with any javascript testing framework.
+* https://sinonjs.org/ - Standalone test spies, stubs and mocks for JavaScript.
+Works with any unit testing framework. 
+________________
