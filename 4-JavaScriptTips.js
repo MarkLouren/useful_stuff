@@ -1,3 +1,21 @@
+////////////////////////////////////////////////////////////////////////////
+/*        BASIC */
+////////////////////////////////////////////////////////////////////////////
+
+/*  
+
+Всего существует 7 типов данных:
+
+    number для целых и вещественных чисел,
+    string для строк,
+    boolean для логических значений истинности или ложности: true/false,
+    null – тип с единственным значением null, т.е. «пустое значение» или «значение не существует»,
+    undefined – тип с единственным значением undefined, т.е. «значение не задано»,
+    object и symbol – сложные структуры данных и уникальные идентификаторы; их мы ещё не изучили.
+
+*/
+
+
 //++Variable++//
 
 let counter = 1;
@@ -174,4 +192,72 @@ function isPrime(n) {
   }
   return true;
 }
-///
+
+////////////////////////////////////////////////////////////////////////////
+/* FUNCTION  EXPRESSION | CALL BACK FUNCTIONS*/
+////////////////////////////////////////////////////////////////////////////
+
+//Function Declaration - Function Declaration могут быть вызваны раньше своих определений, видна только в блоке {...}
+function sayHi() {
+  alert( "Привет" );
+}
+// Function Expression - могут быть вызваны толкьо после своих определений, видна везде
+let sayHi = function() {
+  alert( "Привет" );
+};
+
+// CALLBACK
+
+function ask(question, yes, no) {
+  if (confirm(question)) yes()
+  else no();
+}
+function showOk() {
+  alert( "Вы согласны." );
+}
+function showCancel() {
+  alert( "Вы отменили выполнение." );
+}
+// использование: функции showOk, showCancel передаются в качестве аргументов ask
+ask("Вы согласны?", showOk, showCancel);
+
+/// THE SAME VIA FUNCTION EXPRESSION:
+function ask(question, yes, no) {
+  if (confirm(question)) yes()
+  else no();
+}
+
+ask(
+  "Вы согласны?",
+  function() { alert("Вы согласились."); },
+  function() { alert("Вы отменили выполнение."); }
+);
+
+// FUNCTIONS - ARROWS ///
+
+let sum = (a, b) => a + b;
+
+/* Функция-стрелка более краткая форма для:
+
+let sum = function(a, b) {
+  return a + b;
+};
+*/
+
+alert( sum(1, 2) ); // 3
+
+// IF ONE ARGUMENT
+
+// тоже что и
+// let double = function(n) { return n * 2 }
+
+// OTHER Example
+
+let age = prompt("Сколько Вам лет?", 18);
+let welcome = (age < 18) ?
+  () => alert('Привет') :
+  () => alert("Здравствуйте!");
+welcome(); // теперь всё в порядке
+let double = n => n * 2;
+alert( double(3) ); // 6
+
