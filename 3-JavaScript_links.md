@@ -39,3 +39,6 @@
 * https://eslint.org/
 * http://www.jslint.com/
 * https://jshint.com/
+
+**Frameworks**
+* https://mochajs.org/  - is a feature-rich JavaScript test framework running on Node.js and in the browser, making asynchronous testing simple and fun
