@@ -35,7 +35,7 @@ http://keycodes.atjayjo.com/  KeyCode References for the keyboard
 https://caniuse.com/ - Can I use, JS features in Dif Browsers versions
 https://kangax.github.io/compat-table/es6/ ECMA Script 6 Browsers compatibility
 
-** Quality Code Checkers **
+**Quality Code Checkers**
 * https://eslint.org/
 * http://www.jslint.com/
 * https://jshint.com/
