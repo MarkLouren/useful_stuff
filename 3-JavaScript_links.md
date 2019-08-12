@@ -12,6 +12,7 @@ ______
 * http://overapi.com/javascript Directory with references
 
 **Documentation**
+* https://www.w3schools.com/jsref/jsref_trim_string.asp Methods with examples
 * https://tc39.es/ecma262/#sec-object-constructor Official documentation
 * https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/RegExp 
 * http://learn.javascript.ru/intro (RU, from Courses)
