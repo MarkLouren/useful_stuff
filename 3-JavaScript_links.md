@@ -1,5 +1,5 @@
-**Code Examples**
-
+**CheatSheets**
+* https://www.cheatography.com/pyro19d/cheat-sheets/javascript/ Code References
 
 **Documentation**
 * https://tc39.es/ecma262/#sec-object-constructor Official documentation
