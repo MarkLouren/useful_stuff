@@ -1,5 +1,9 @@
 **CheatSheets**
 * https://www.cheatography.com/tag/javascript/ Code References JS CheatSheets list
+* https://www.cheatography.com/savagedesign/cheat-sheets/javascript-regexp/ Regular Expressions
+* https://www.cheatography.com/pyro19d/cheat-sheets/javascript/ Cheat Sheet for Beginners
+* https://www.cheatography.com/davechild/cheat-sheets/javascript/ JS Properities
+* https://www.cheatography.com/acwinter/cheat-sheets/javascript-basic-advanced-and-more/ JS Properties Advanced
 
 **Documentation**
 * https://tc39.es/ecma262/#sec-object-constructor Official documentation
