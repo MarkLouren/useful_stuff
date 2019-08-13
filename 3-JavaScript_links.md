@@ -47,6 +47,9 @@ ______
 * https://kangax.github.io/compat-table/es6/ ECMA Script 6 Browsers compatibility
 * https://codepen.io/pen/ good online editor JS/HTML/CSS
 
+**CodeExamples**
+* https://www.quackit.com/javascript/examples/ -Arrays, DOM, DATE, Windows, Actions and other examples
+
 **Quality Code Checkers**
 * https://eslint.org/
 * http://www.jslint.com/
