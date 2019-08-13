@@ -40,11 +40,12 @@ ______
 * https://www.freecodecamp.com/map#Basic-Algorithm-Scripting 
 * http://www.teaching-materials.org/exercises/ 
 
-**Useful**
+**Useful links**
 
 * http://keycodes.atjayjo.com/  KeyCode References for the keyboard
 * https://caniuse.com/ - Can I use, JS features in Dif Browsers versions
 * https://kangax.github.io/compat-table/es6/ ECMA Script 6 Browsers compatibility
+* https://codepen.io/pen/ good online editor JS/HTML/CSS
 
 **Quality Code Checkers**
 * https://eslint.org/
