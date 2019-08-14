@@ -56,6 +56,14 @@ ______
 * https://jshint.com/
 
 **Frameworks and Liabraries**
+
++ Main:
+________________
+* https://vuejs.org/
+* https://angular.io/
+* https://reactjs.org/
+________________
+
 + Testing:
 ________________
 * https://mochajs.org/  - is a feature-rich JavaScript test framework running on Node.js and in the browser, making asynchronous testing simple and fun
