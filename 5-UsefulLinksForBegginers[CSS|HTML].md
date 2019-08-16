@@ -1,5 +1,5 @@
 **IMPORTANT**
-https://codingheroes.io/resources/ Directory of usefull tools for a Front-end developer [Colors, Fonts, Testing etc]
+* https://codingheroes.io/resources/ Directory of usefull tools for a Front-end developer [Colors, Fonts, Testing etc]
 
 
 **SERVICES**
