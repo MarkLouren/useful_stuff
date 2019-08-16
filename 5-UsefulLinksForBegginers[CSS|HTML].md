@@ -26,7 +26,7 @@
 * https://materializecss.com/getting-started.html -  Material Design by Google
 * https://getbootstrap.com/ Bootstrap + https://www.bootstrapcdn.com/ CDN Bootstrap
 * https://semantic-ui.com/ Semantic UI framework
-* http://designmodo.github.io/Flat-UI/ Flat UI frameworks
+* http://designmodo.github.io/Flat-UI/ Flat UI framework
 
 **LIABRARIES**
 * https://daneden.github.io/animate.css/ Animate CSS Liabrary [Animate elements on the page with CSS]
