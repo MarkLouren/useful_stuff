@@ -1,4 +1,5 @@
 Git Commands CheatSheet: https://github.com/joshnh/Git-Commands
+and https://education.github.com/git-cheat-sheet-education.pdf
 How to add existing directory from comp to Github, one of the examples:
 1. create repository on Github, for example: https://github.com/MarkLouren/django-deployment-example
 2. Check if you have installed git: in terminal: git --version (otherwise download from https://git-scm.com/download/gui/mac)
@@ -20,3 +21,4 @@ Update the Github directory with changes on your Local machine:
 Add files on server (in VirtualEnv):
 1. git clone https://github.com/MarkLouren/tribes-landing.git
 2. Update: git pull origin master
+
