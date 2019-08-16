@@ -46,6 +46,7 @@ ______
 * https://caniuse.com/ - Can I use, JS features in Dif Browsers versions
 * https://kangax.github.io/compat-table/es6/ ECMA Script 6 Browsers compatibility
 * https://codepen.io/pen/ good online editor JS/HTML/CSS
+* https://jsbin.com/?html,css,js,console,output online JS|CSS|HTML editor
 
 **CodeExamples**
 * https://www.quackit.com/javascript/examples/ -Arrays, DOM, DATE, Windows, Actions and other examples
