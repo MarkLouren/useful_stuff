@@ -1,5 +1,6 @@
 **IMPORTANT**
 * https://codingheroes.io/resources/ Directory of usefull tools for a Front-end developer [Colors, Fonts, Testing etc]
+* https://bootstrapcreative.com/resources/ Boostrap Resources Directory
 
 
 **SERVICES**
@@ -32,7 +33,8 @@
 
 **TUTORIALS**
 * https://bootstrapcreative.com/resources/bootstrap-4-css-classes-index/ Bootstrap Cheet Sheet
+
+
+**GIT**
 * http://gitimmersion.com/ and https://githowto.com/ru Git Tutorial
-
-
-**OTHER**
+* https://github.com/joshnh/Git-Commands Git Commands CheatSheet
