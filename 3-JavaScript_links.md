@@ -19,7 +19,7 @@ ______
 * https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/ 
 
 **Exercises**
-* https://www.codewars.com/kata/kooka-counter/train/javascript 
+* https://www.codewars.com/
 * https://learn.javascript.ru/array-iteration 
 * http://javascript-roadtrip.codeschool.com/levels/1/challenges/1 
 * http://www.w3resource.com/javascript-exercises/javascript-basic-exercises.php
