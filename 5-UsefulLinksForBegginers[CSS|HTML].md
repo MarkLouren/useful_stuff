@@ -26,6 +26,9 @@
 * https://meyerweb.com/eric/tools/css/ CSS Reset 
 * https://necolas.github.io/normalize.css/ Normalize CSS (https://htmlacademy.ru/blog/useful/css/about-normalize-css)
 
+**HTML**
+* https://html5book.ru/specsimvoly-html/ Special symbols in HTML (RU)
+
 **FRAMEWORKS**
 * https://materializecss.com/getting-started.html -  Material Design by Google
 * https://getbootstrap.com/ Bootstrap + https://www.bootstrapcdn.com/ CDN Bootstrap
