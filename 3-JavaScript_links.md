@@ -48,6 +48,10 @@ ______
 * https://codepen.io/pen/ good online editor JS/HTML/CSS
 * https://jsbin.com/?html,css,js,console,output online JS|CSS|HTML editor
 
+**WebDevelopment**
+* https://kenwheeler.github.io/slick/ Sliders
+* https://owlcarousel2.github.io/OwlCarousel2/ Sliders 2
+
 **CodeExamples**
 * https://www.quackit.com/javascript/examples/ -Arrays, DOM, DATE, Windows, Actions and other examples
 
