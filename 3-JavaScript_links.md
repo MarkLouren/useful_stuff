@@ -67,8 +67,12 @@ ________________
 * https://vuejs.org/
 * https://angular.io/
 * https://reactjs.org/
+
++ Full Stack:
 ________________
 * https://www.meteor.com/ - full stack framework
+* http://meanjs.org/ - Open-Source Full-Stack Solution For MEAN Applications
+* https://sailsjs.com/ 
 ________________
 
 + Testing:
