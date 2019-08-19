@@ -45,3 +45,6 @@
 **GIT**
 * http://gitimmersion.com/ and https://githowto.com/ru Git Tutorial
 * https://github.com/joshnh/Git-Commands Git Commands CheatSheet
+
+**WORKFLOW**
+* https://ru.bem.info/methodology/ BEM Yandex Recommendations
