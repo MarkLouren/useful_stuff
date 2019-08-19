@@ -24,6 +24,7 @@
 
 **CSS**
 * https://meyerweb.com/eric/tools/css/ CSS Reset 
+* https://necolas.github.io/normalize.css/ Normalize CSS (https://htmlacademy.ru/blog/useful/css/about-normalize-css)
 
 **FRAMEWORKS**
 * https://materializecss.com/getting-started.html -  Material Design by Google
