@@ -25,12 +25,14 @@
 **CSS**
 * https://meyerweb.com/eric/tools/css/ CSS Reset 
 * https://necolas.github.io/normalize.css/ Normalize CSS (https://htmlacademy.ru/blog/useful/css/about-normalize-css)
-* http://webfonts.ru/ Fonts
-* https://fonts.google.com/ Fonts
-
 
 **HTML**
 * https://html5book.ru/specsimvoly-html/ Special symbols in HTML (RU)
+
+**FONTS**
+* http://webfonts.ru/ Fonts
+* https://fonts.google.com/ Fonts
+* https://www.fontsquirrel.com/tools/webfont-generator Generator for custom fonts
 
 **FRAMEWORKS**
 * https://materializecss.com/getting-started.html -  Material Design by Google
