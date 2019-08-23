@@ -20,7 +20,9 @@
 * https://codemyui.com/tag/image-effects/   HTML, CSS Code Snippets for image effects
 * https://freefrontend.com/css-code-examples/ CSS Templates
 * https://codepen.io/ Ready-to-use templates
-* http://jsfiddle.net/ 
+
+**Online Editors**
+* http://jsfiddle.net/  good editor
 
 
 **CSS**
