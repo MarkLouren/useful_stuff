@@ -7,6 +7,7 @@
 * https://caniuse.com/  What CSS properties can you use in Browsers
 * https://imagecompressor.com/ online image compressor 
 * https://github.com/neutraltone/awesome-stock-resources/blob/master/README.md FREE stock Photos Liabrary
+* https://csscolor.ru/en CSS|HTML Color picker
 
 **TEMPLATES**
 
