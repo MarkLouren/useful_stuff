@@ -38,7 +38,7 @@
 * https://fonts.google.com/ Fonts
 * https://www.fontsquirrel.com/tools/webfont-generator Generator for custom fonts
 * https://fontawesome.com/v4.7.0/icons/ - иконки
-=>CDN: <link rel=“stylesheet” href=“https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css”>
+=>CDN: ```<link rel=“stylesheet” href=“https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css”>```
 
 **FRAMEWORKS**
 * https://materializecss.com/getting-started.html -  Material Design by Google
