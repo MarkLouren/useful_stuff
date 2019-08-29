@@ -39,6 +39,7 @@
 
 **HTML**
 * https://html5book.ru/specsimvoly-html/ Special symbols in HTML (RU)
+* https://html5book.ru/html5-forms/ list form atributes HTML-5 (RU)
 
 **FONTS**
 * http://webfonts.ru/ Fonts
