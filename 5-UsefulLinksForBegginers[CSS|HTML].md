@@ -8,7 +8,10 @@
 * https://imagecompressor.com/ online image compressor 
 * https://github.com/neutraltone/awesome-stock-resources/blob/master/README.md FREE stock Photos Liabrary
 * https://csscolor.ru/en CSS|HTML Color picker
-* https://spritegen.website-performance.org/ || https://css.spritegen.com/ - Image Sprite Generators
+
+***Sprites***
+* https://spritegen.website-performance.org/  - Sprite Generator. Others: http://spriteme.org/
+* https://css.spritegen.com/ - Image Sprite Generator
 * https://www.toptal.com/developers/css/sprite-generator/ Image Sprite Generator
 
 
@@ -49,6 +52,7 @@
 * https://getbootstrap.com/ Bootstrap + https://www.bootstrapcdn.com/ CDN Bootstrap
 * https://semantic-ui.com/ Semantic UI framework
 * http://designmodo.github.io/Flat-UI/ Flat UI framework
+* http://compass-style.org/ CSS Framework, good for creating Sprites
 
 **LIABRARIES**
 * https://daneden.github.io/animate.css/ Animate CSS Liabrary [Animate elements on the page with CSS]
