@@ -8,6 +8,12 @@
 * https://imagecompressor.com/ online image compressor 
 * https://github.com/neutraltone/awesome-stock-resources/blob/master/README.md FREE stock Photos Liabrary
 * https://csscolor.ru/en CSS|HTML Color picker
+* Sprite Generators:
+```
+    https://spritegen.website-performance.org/
+    https://css.spritegen.com/
+    https://www.toptal.com/developers/css/sprite-generator/
+````
 
 **TEMPLATES**
 
