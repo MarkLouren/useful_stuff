@@ -68,3 +68,4 @@
 
 **WORKFLOW**
 * https://ru.bem.info/methodology/ BEM Yandex Recommendations
+* https://github.com/yoksel/common-words популярные названия для СSS
