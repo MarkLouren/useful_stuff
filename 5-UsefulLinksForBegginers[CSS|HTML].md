@@ -10,7 +10,7 @@
 * https://csscolor.ru/en CSS|HTML Color picker
 
 ***Sprites***
-* https://spritegen.website-performance.org/  - Sprite Generator. Others: http://spriteme.org/
+* http://spriteme.org/ - Sprite Generator. 
 * https://css.spritegen.com/ - Image Sprite Generator
 * https://www.toptal.com/developers/css/sprite-generator/ Image Sprite Generator
 
