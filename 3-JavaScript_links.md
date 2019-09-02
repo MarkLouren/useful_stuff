@@ -17,6 +17,8 @@ ______
 * https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/RegExp 
 * http://learn.javascript.ru/intro (RU, from Courses)
 * https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/loading-third-party-javascript/ 
+-------
+* https://dorey.github.io/JavaScript-Equality-Table/ Equality Table ==
 
 **Exercises**
 * https://www.codewars.com/
