@@ -31,6 +31,7 @@
 **Online Editors**
 * http://jsfiddle.net/  good editor
 * https://jsbin.com  other editor
+* https://playcode.io/ JS Editor
 
 
 **CSS**
