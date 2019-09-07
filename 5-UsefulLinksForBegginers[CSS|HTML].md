@@ -36,6 +36,7 @@
 
 
 **CSS**
+* https://yoksel.github.io/flex-cheatsheet/ Flex Chratsheet Good!
 * https://meyerweb.com/eric/tools/css/ CSS Reset 
 * https://necolas.github.io/normalize.css/ Normalize CSS (https://htmlacademy.ru/blog/useful/css/about-normalize-css)
 * https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes List of Pseudo Classes
