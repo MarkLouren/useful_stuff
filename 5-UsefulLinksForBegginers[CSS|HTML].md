@@ -36,7 +36,7 @@
 
 
 **CSS**
-* https://yoksel.github.io/flex-cheatsheet/ Flex Chratsheet Good!
+* https://yoksel.github.io/flex-cheatsheet/ and https://tpverstak.ru/flex-cheatsheet/ Flex Chreet sheet Good!
 *https://the-echoplex.net/flexyboxes Flex Playground
 * https://meyerweb.com/eric/tools/css/ CSS Reset 
 * https://necolas.github.io/normalize.css/ Normalize CSS (https://htmlacademy.ru/blog/useful/css/about-normalize-css)
