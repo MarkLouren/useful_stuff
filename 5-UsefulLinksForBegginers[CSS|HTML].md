@@ -8,7 +8,7 @@
 * https://imagecompressor.com/ online image compressor 
 * https://github.com/neutraltone/awesome-stock-resources/blob/master/README.md FREE stock Photos Liabrary
 * https://csscolor.ru/en CSS|HTML Color picker
-* https://leaverou.github.io/prefixfree/ CSS Prefixes
+* https://leaverou.github.io/prefixfree/ CSS Prefixes => https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js
 
 **GRIDS**
 * https://gist.github.com/vcastroi/e0d296171842e74ad7d4eef7daf15df6 Grid 
