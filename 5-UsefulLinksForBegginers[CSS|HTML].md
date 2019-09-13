@@ -1,6 +1,7 @@
 **IMPORTANT**
 * https://codingheroes.io/resources/ Directory of usefull tools for a Front-end developer [Colors, Fonts, Testing etc]
 * https://bootstrapcreative.com/resources/ Boostrap Resources Directory
+* https://github.com/fliptheweb/motion-ui-design Useful Links Motion UI Design CSS
 
 
 **SERVICES**
@@ -10,6 +11,7 @@
 * https://csscolor.ru/en CSS|HTML Color picker
 * https://leaverou.github.io/prefixfree/ CSS Prefixes => https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js
 * https://matthewlein.com/tools/ceaser Animation Tool
+* https://www.rapidtables.com/code/text/unicode-characters.html Unicode Character table
 
 **GRIDS**
 * https://gist.github.com/vcastroi/e0d296171842e74ad7d4eef7daf15df6 Grid 
@@ -47,6 +49,9 @@
 * https://meyerweb.com/eric/tools/css/ CSS Reset 
 * https://necolas.github.io/normalize.css/ Normalize CSS (https://htmlacademy.ru/blog/useful/css/about-normalize-css)
 * https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes List of Pseudo Classes
+* https://h5bp.org/Effeckt.css/ Animation Liabrary
+* http://justinaguilar.com/animations/ Animations Examples
+* http://bouncejs.com/ Animation Liabrary on JS
 
 **HTML**
 * https://html5book.ru/specsimvoly-html/ Special symbols in HTML (RU)
