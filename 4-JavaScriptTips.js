@@ -278,7 +278,7 @@ set.add(mary);
 set.add(john);
 set.add(mary);
 
-for (let user of set) {
+for (let user in set) {
   console.log(user.name); // John (потом Pete и Mary)
 }
 
