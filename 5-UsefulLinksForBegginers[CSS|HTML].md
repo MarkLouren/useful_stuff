@@ -52,6 +52,7 @@
 * https://h5bp.org/Effeckt.css/ Animation Liabrary
 * http://justinaguilar.com/animations/ Animations Examples
 * http://bouncejs.com/ Animation Liabrary on JS
+* https://cssgradient.io/ Gradients
 
 **HTML**
 * https://html5book.ru/specsimvoly-html/ Special symbols in HTML (RU)
