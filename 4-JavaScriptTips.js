@@ -386,3 +386,46 @@ for (let user in set) {
 /////////
  console.log("This is %cMy stylish message", "color: yellow; font-style: italic; background-color: blue; padding: 2px;");
 // используй директиву "%c" для применения стилей CSS при выводе в консоль
+
+
+////////////////////////////////////////////////////////////////////////////
+/*      OBJECTS */
+////////////////////////////////////////////////////////////////////////////
+
+// NEW Object:
+let user =new Object()
+let user ={}  //object literal
+
+user = {name:'John'}
+user.name // Get Object Values
+user.isAdmin = true // add a new property
+
+delete user.name //delete property
+
+let user {
+	name, // the same as name:name;
+	age,  // the same as age:age;
+}
+// Property existance check:
+	
+alert(user.noSuchProperty === undefined); // True, no such property
+
+alert ('blabla' in user); // false , blaba doesn't exist
+
+// for in Loop
+let user = {}
+for (key in object) {
+	console.log(key);
+	consolie.log(user[key]);
+}
+
+// Object.assign() - Dublicate an existing object
+Object.assign(dest[, src1, src2, src3...]) 
+//example:
+let user = {name:'John',
+	    age:30};
+let clone =Object.assign({}, user); // now clone is fully independent clone
+clone.nme = 'David';
+
+
+
