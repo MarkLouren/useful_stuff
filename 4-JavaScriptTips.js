@@ -182,6 +182,33 @@ switch (a) {
     alert( "Нет таких значений" );
 }
 ////////////////////////////////////////////////////////////////////////////
+/* SETS - FOR | OF*/
+////////////////////////////////////////////////////////////////////////////
+
+let set = new Set();
+
+let john = { name: "John" };
+let pete = { name: "Pete" };
+let mary = { name: "Mary" };
+
+// считаем гостей, некоторые приходят несколько раз
+set.add(john);
+set.add(pete);
+set.add(mary);
+set.add(john);
+set.add(mary);
+
+for (let user in set) {
+  console.log(user.name); // John (потом Pete и Mary)
+}
+
+///////////
+/* CONSOLE */
+/////////
+ console.log("This is %cMy stylish message", "color: yellow; font-style: italic; background-color: blue; padding: 2px;");
+// используй директиву "%c" для применения стилей CSS при выводе в консоль
+
+////////////////////////////////////////////////////////////////////////////
 /* FUNCTION */
 ////////////////////////////////////////////////////////////////////////////
   function checkAge(age = 18) {
@@ -246,7 +273,9 @@ ask(
   function() { alert("Вы отменили выполнение."); }
 );
 
-// FUNCTIONS - ARROWS ///
+////////////////////////////////////////////////////////////////////////////
+/*      ARROW FUNCTIONS*/
+////////////////////////////////////////////////////////////////////////////
 
 let sum = (a, b) => a + b;
 
@@ -361,36 +390,58 @@ numbers.forEach (num=>sum +=sum);
 // squared
 let squared = numbers.map(n=>n*n);
 ////////////////////////////////////////////////////////////////////////////
-/* SETS - FOR | OF*/
+/*     CONSTRUCTOR FUNCTIONS*/
 ////////////////////////////////////////////////////////////////////////////
+// Used in order to create many similar objects
+// They are named with capital letter first, they should be executed only with 'new' operator
 
-let set = new Set();
-
-let john = { name: "John" };
-let pete = { name: "Pete" };
-let mary = { name: "Mary" };
-
-// считаем гостей, некоторые приходят несколько раз
-set.add(john);
-set.add(pete);
-set.add(mary);
-set.add(john);
-set.add(mary);
-
-for (let user in set) {
-  console.log(user.name); // John (потом Pete и Mary)
+function User(name){
+	this.name = name;
+	this.isAdmin = false;
 }
+let user = new User('Adam');
+let user2= new User ('An');
 
-///////////
-/* CONSOLE */
-/////////
- console.log("This is %cMy stylish message", "color: yellow; font-style: italic; background-color: blue; padding: 2px;");
-// используй директиву "%c" для применения стилей CSS при выводе в консоль
+// Explanation:
+function User(name) {           // => new User = an emptly object is created and assigned to this
+	// this = {}; (implicitly)
+	// add properties to this:
+	this.name=name;
+	this.isAdmin =false;
+	//return this; (implicitly)
+}
+// Methods in Constructor
+// in the constructor, we can add to this not only properties but methods as well
+	
+function User(name) {
+	this.name = name;
+	this.sayHi = function() {
+		alert('my name is: ' + this.name);
+	};
+}
+let john = new User('John');
+john.sayHi(); // My name is: John
+
+////////////////////////
+/* This Keyword */
+////////////////////////
+/* To access the object, a method can use the THIS keyword
+the value of THIS id the object "before the dot", i.e. the object that was used to call the method
+*/
+let user = {
+	name: 'John', age:30,
+	sayHi() {
+		alert(this.name); // this == user
+	}
+};
+user.sayHi(); // John
 
 
 ////////////////////////////////////////////////////////////////////////////
 /*      OBJECTS */
 ////////////////////////////////////////////////////////////////////////////
+// user.name - property (state)
+// user.sayHi() - method (action)
 
 // NEW Object:
 let user =new Object()
@@ -419,6 +470,7 @@ for (key in object) {
 	consolie.log(user[key]);
 }
 
+
 // Object.assign() - Dublicate an existing object
 Object.assign(dest[, src1, src2, src3...]) 
 //example:
@@ -428,4 +480,37 @@ let clone =Object.assign({}, user); // now clone is fully independent clone
 clone.nme = 'David';
 
 
+// Create a Method object (action that performs on the object)
+let user = {
+	sayHi:function(){
+		alert('Hello');
+	}
+};
+// A shorter version
+let user = {
+	sayHi() {alert ('Hello')};
+};
 
+
+////////////////////////////////////////////////////////////////////////////
+/*      Symbol Type*/
+////////////////////////////////////////////////////////////////////////////
+
+	let id = Symbol();  //symbols are guranteed to be unique, even if they have the same description
+// or give s symbol description 'id'
+	let id = Symbol ('id);
+			 
+// add a symbol as a key to the object:
+	let user = {
+		name:'John'};
+	let id =Symbol('id);
+	user[id] = 'ID Value';
+	alert (user[id]); // we can get acess the data using the symbol as the key
+	
+	// or
+        let id = Symbol ('id);
+	
+	let user = {
+		name: 'John",
+		[id]:123     // Not just 'id:123'
+	};
