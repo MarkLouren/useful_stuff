@@ -259,6 +259,29 @@ let sum = function(a, b) {
 
 alert( sum(1, 2) ); // 3
 
+// OTHER EXAMPLE:
+
+let inc = x => x+1; // == то же самое что:
+
+let inc = function(x) { return x + 1; };
+
+// ЕСЛИ Arrow Function is too big:
+let getTime = () => {
+  let date = new Date();
+  let hours = date.getHours();
+  let minutes = date.getMinutes();
+  return hours + ':' + minutes;
+};
+alert( getTime() ); // текущее время
+
+// SORTED WITH Arrow
+
+let arr = [5, 8, 3];
+let sorted = arr.sort( (a,b) => a - b );
+alert(sorted); // 3, 5, 8
+
+// Arrow Function with an object:
+let getPerson =()=>({name:"John"}) // objects must be wrapped in ()
 // IF ONE ARGUMENT
 
 // тоже что и
@@ -274,6 +297,69 @@ welcome(); // теперь всё в порядке
 let double = n => n * 2;
 alert( double(3) ); // 6
 
+// DEFAULT STATEMENTS IN FUNCTION:
+function showMenu(title = "Без заголовка", width = 100, height = 200) {
+  alert(title + ' ' + width + ' ' + height);
+}
+
+showMenu("Меню"); // Меню 100 200
+
+// SPREAD STATEMENT  // ..rest became a massive
+
+function showName(firstName, lastName, ...rest) {
+  alert(firstName + ' ' + lastName + ' - ' + rest);
+}
+// выведет: Юлий Цезарь - Император,Рима
+showName("Юлий", "Цезарь", "Император", "Рима");
+
+// SPRED IN THE BEGGINING:
+
+'use strict';
+let numbers = [2, 3, 15];
+// Оператор ... в вызове передаст массив как список аргументов
+// Этот вызов аналогичен Math.max(2, 3, 15)
+let max = Math.max(...numbers);
+
+alert( max ); // 15
+
+//ДЕСТРУКТУРИЗАЦИЯ
+
+'use strict';
+let options = {
+  title: "Меню",
+  width: 100,
+  height: 200
+};
+
+function showMenu({title, width, height}) {
+  alert(title + ' ' + width + ' ' + height); // Меню 100 200
+}
+showMenu(options);
+
+// ДЕСТРУКТУРИЗАЦИЯ с параметрами по умолчанию
+
+'use strict';
+function showMenu({title="Заголовок", width:w=100, height:h=200} = {}) {
+  alert(title + ' ' + w + ' ' + h);
+}
+showMenu(); // Заголовок 100 200
+
+
+// IIFI (imidiate involve function) + Arrow
+
+(function(){
+	console.log('IIFI');
+})();
+// THE SAME =>
+(()=>console.log('IIFI'))();
+
+// Arrow Function with Arrays:
+//sum
+let numbers =[1, 2, 3, 4, 5, 6, 7]
+let sum =0;
+numbers.forEach (num=>sum +=sum);
+// squared
+let squared = numbers.map(n=>n*n);
 ////////////////////////////////////////////////////////////////////////////
 /* SETS - FOR | OF*/
 ////////////////////////////////////////////////////////////////////////////
@@ -295,3 +381,8 @@ for (let user in set) {
   console.log(user.name); // John (потом Pete и Mary)
 }
 
+///////////
+/* CONSOLE */
+/////////
+ console.log("This is %cMy stylish message", "color: yellow; font-style: italic; background-color: blue; padding: 2px;");
+// используй директиву "%c" для применения стилей CSS при выводе в консоль
