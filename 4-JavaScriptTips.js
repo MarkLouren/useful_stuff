@@ -449,6 +449,7 @@ user.sayHi(); // John
 // NEW Object:
 let user =new Object()
 let user ={}  //object literal
+let x = Object.create(null)
 
 user = {name:'John'}
 user.name // Get Object Values
