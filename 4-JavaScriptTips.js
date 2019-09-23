@@ -352,6 +352,7 @@ let max = Math.max(...numbers);
 alert( max ); // 15
 
 //ДЕСТРУКТУРИЗАЦИЯ
+сonst [p1, p2, p3, ...others] =array;
 
 'use strict';
 let options = {
