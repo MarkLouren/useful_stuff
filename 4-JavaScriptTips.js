@@ -449,7 +449,7 @@ user.sayHi(); // John
 // NEW Object:
 let user =new Object()
 let user ={}  //object literal
-let x = Object.create(null)
+let x = Object.create(null)  // для создание обьекта без наследования prototype то есть чистый без свойств global
 
 user = {name:'John'}
 user.name // Get Object Values
