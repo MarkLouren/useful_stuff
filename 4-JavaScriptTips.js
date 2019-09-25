@@ -474,6 +474,10 @@ for (key in object) {
 	consolie.log(user[key]);
 }
 
+// вывод  ключей и значений
+	object.keys(x)
+	object.values(x)
+
 
 // Object.assign() - Dublicate an existing object
 Object.assign(dest[, src1, src2, src3...]) 
@@ -494,8 +498,35 @@ let user = {
 let user = {
 	sayHi() {alert ('Hello')};
 };
+	// Добавление свойств к объекту:
+	object.x;
+	object[x]; // в квадратные ссылки можно отправлять динамичкские параметры let x ='name', object[name]='Ivan'
+       
+	object.defineProperty(x, 'name', sName)
+	
+// запрет на редактирование обьекта
+	
+	object.freeze(x);
+	object.seal(x);
 
+//getter-setter
+	
+let 0 = {	salary:120;
+	get countSalary(){
+		return this.salary;
+	}
+	set countSalary(newValue){
+		this.salary=newValue;
+	}
+	console.log(x.countSalary);
 
+// add all properties in one object
+	const parametr1 = {
+name:'Ivan'}
+	const parametr2 ={
+		age:14;}
+	const allparametr = {...parametr1, ...parametr2} // add all properties in one object
+	
 ////////////////////////////////////////////////////////////////////////////
 /*      Symbol Type*/
 ////////////////////////////////////////////////////////////////////////////
