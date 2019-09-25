@@ -527,6 +527,16 @@ name:'Ivan'}
 		age:14;}
 	const allparametr = {...parametr1, ...parametr2} // add all properties in one object
 	
+	// TRICK 
+const cars {
+	"0":"Ford",
+	 "1":"Lada",
+	 "2":"Mersedes"
+}
+	for (let i=0; i<cars.length; i++){
+		console.log(cars[i])}
+	
+	
 ////////////////////////////////////////////////////////////////////////////
 /*      Symbol Type*/
 ////////////////////////////////////////////////////////////////////////////
