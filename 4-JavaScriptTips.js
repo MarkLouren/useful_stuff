@@ -568,10 +568,9 @@ const cars {
 let a ='something';
 
 // cпецсимволы
-\n  // перевод строк
-//  \uXXXX   // cимвол юникода для спецсимволов
- \  //cимвол экранирования
+\n  // перевод строк \  //cимвол экранирования
 
+ 
 // методы
 alert( `My\n`.length ); // 3  -длина строки
 	
@@ -720,3 +719,26 @@ alert( date.toLocaleString("ru", options) ); // среда, 31 декабря 20
 alert( date.toLocaleString("en-US", options) ); // Wednesday, December 31, 2014 Anno Domini 12:30:00 PM
 // Методы вывода без локализации: 
 toString(), toDateString(), toTimeString() 
+	
+	
+////////////////////////////////////////////////////////////////////////////
+/*       ARRAYS */
+////////////////////////////////////////////////////////////////////////////
+	
+// create
+let arr=[];
+let arr = new Array();
+arr.length  //length
+/// 1 option
+for (let i=0; i<=arr.lenght; i++){
+	alert (arr[i]};
+// 2 option:
+for (let x of arr){
+		alert(arr[x]};
+
+		      
+		      
+		      
+		      
+		      
+		      
