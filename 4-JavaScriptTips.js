@@ -659,3 +659,64 @@ alert( 'Österreich'.localeCompare('Zealand') ); // -1 Отрицательно�
 
 str.trim()  //убирает пробелы в начале и конце строки.
 str.repeat(n) // повторяет строку n раз.
+	
+////////////////////////////////////////////////////////////////////////////
+/*       DATE and TIME */
+////////////////////////////////////////////////////////////////////////////
+	
+var now = new Date();
+new Date(milliseconds) // Создаёт объект Date, значение которого равно количеству миллисекунд (1/1000 секунды), прошедших с 1 января 1970 года GMT+0
+getTime() //the same
+Date.now() // возвращает дату сразу в виде миллисекунд.
+new Date(year, month, date, hours, minutes, seconds, ms)
+.getFullYear() //Получить год (из 4 цифр)
+.getMonth() //Получить месяц, от 0 до 11.
+.getDate() //Получить число месяца, от 1 до 31.
+getHours(), getMinutes(), getSeconds(), getMilliseconds()
+
+// текущая дата
+var date = new Date();
+// час в текущей временной зоне
+alert( date.getHours() );
+// сколько сейчас времени в Лондоне?
+// час в зоне GMT+0
+alert( date.getUTCHours() );
+
+//Следующие методы позволяют устанавливать компоненты даты и времени:
+setFullYear(year [, month, date])
+setMonth(month [, date])
+setDate(date)
+setHours(hour [, min, sec, ms])
+setMinutes(min [, sec, ms])
+setSeconds(sec [, ms])
+setMilliseconds(ms)
+setTime(milliseconds)
+
+// Example:	
+var today = new Date;
+
+today.setHours(0);
+alert( today ); // сегодня, но час изменён на 0
+
+today.setHours(0, 0, 0, 0);
+alert( today ); // сегодня, ровно 00:00:00.	
+	
+// EXAMPLE 2  Методы вывода Даты с локализацией
+var date = new Date(2014, 11, 31, 12, 30, 0);
+
+var options = {
+  era: 'long',
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+  weekday: 'long',
+  timezone: 'UTC',
+  hour: 'numeric',
+  minute: 'numeric',
+  second: 'numeric'
+};
+
+alert( date.toLocaleString("ru", options) ); // среда, 31 декабря 2014 г. н.э. 12:30:00
+alert( date.toLocaleString("en-US", options) ); // Wednesday, December 31, 2014 Anno Domini 12:30:00 PM
+// Методы вывода без локализации: 
+toString(), toDateString(), toTimeString() 
