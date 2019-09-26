@@ -559,3 +559,103 @@ const cars {
 		name: 'John",
 		[id]:123     // Not just 'id:123'
 	};
+			 
+
+////////////////////////////////////////////////////////////////////////////
+/*       STRINGS */
+////////////////////////////////////////////////////////////////////////////
+// create
+let a ='something';
+
+// cпецсимволы
+\n  // перевод строк
+\uXXXX   // cимвол юникода для спецсимволов
+ \  //cимвол экранирования
+
+// методы
+alert( `My\n`.length ); // 3  -длина строки
+	
+let str = `Hello`;
+
+// получаем первый символ
+alert( str[0] ); // H
+alert( str.charAt(0) ); // H
+
+// получаем последний символ
+alert( str[str.length - 1] ); // o
+
+for (let char of "Hello") {
+  alert(char); // H,e,l,l,o (char — сначала "H", потом "e", потом "l" и т. д.)
+}
+
+alert( 'Interface'.toUpperCase() ); // INTERFACE
+alert( 'Interface'.toLowerCase() ); // interface
+
+// поиск подстроки
+let str = 'Widget with id';
+
+alert( str.indexOf('Widget') ); // 0, потому что подстрока 'Widget' найдена в начале
+alert( str.indexOf('widget') ); // -1, совпадений нет, поиск чувствителен к регистру
+
+str.lastIndexOf(substr, position) // альтернатива
+
+//ВСЕ вхождения подстроки
+	
+let str = 'Ослик Иа-Иа посмотрел на виадук';
+
+let target = 'Иа'; // цель поиска
+
+let pos = 0;
+while (true) {
+  let foundPos = str.indexOf(target, pos);
+  if (foundPos == -1) break;
+
+  alert( `Найдено тут: ${foundPos}` );
+  pos = foundPos + 1; // продолжаем со следующей позиции
+}
+			 
+// тоже самое но короче
+let pos = -1;
+while ((pos = str.indexOf(target, pos + 1)) != -1) {
+  alert( pos );
+}
+
+//~побитоывый оператор НЕ для того чтобы правильно считало подструку в 0 индексе, так как возращает 0 и if считает ее как ошибку
+	
+let str = "Widget";
+
+if (~str.indexOf("Widget")) {
+  alert( 'Совпадение есть' ); // работает
+}
+// includes, startsWith, endsWith
+	
+alert( "Widget with id".includes("Widget") ); // true
+alert( "Hello".includes("Bye") ); // false
+alert( "Midget".includes("id", 3) ); // false, поиск начат с позиции 3
+
+// substring, substr и slice  ||str.substring(start [, end]) || str.substr(start [, length]) получение подстроки 
+ 
+let str = "stringify";
+// 'strin', символы от 0 до 5 (не включая 5)
+alert( str.slice(0, 5) );
+
+let str = "stringify";
+// для substring эти два примера — одинаковы
+alert( str.substring(2, 6) ); // "ring"
+
+// cравнение str.codePointAt(pos)
+
+// одна и та же буква в нижнем и верхнем регистре
+// будет иметь разные коды
+alert( "z".codePointAt(0) ); // 122
+alert( "Z".codePointAt(0) ); // 90
+
+// Создаёт символ по его коду code
+String.fromCodePoint(code)
+alert( "S\u0307\u0323".normalize() == "S\u0323\u0307".normalize() ); // true  // проверка двух похожих символов
+
+//str.localeCompare(str2) возвращает число, которое показывает, какая строка больше в соответствии с правилами языка:
+alert( 'Österreich'.localeCompare('Zealand') ); // -1 Отрицательное число, если str меньше str2
+
+str.trim()  //убирает пробелы в начале и конце строки.
+str.repeat(n) // повторяет строку n раз.
