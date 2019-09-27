@@ -738,7 +738,81 @@ for (let x of arr){
 
 		      
 		      
-		      
-		      
-		      
-		      
+////////////////////////////////////////////////////////////////////////////
+/*        SET */ //Set – это коллекция, которая имеет уникальные значения, то есть не может иметь дубликатов
+////////////////////////////////////////////////////////////////////////////   
+	
+    let set = new Set([3, 5, true, 'This is a string, obviously.']);
+    for (let item of set.values()) {
+      console.log(item);
+    }	
+/*
+Наиболее важные методы, присутствующие в экземпляре Set:
+
+    add(element) – Добавляет новый элемент в Set
+    clear() – Удаляет все элементы из Set
+    delete(element) – Удаляет указанный элемент из Set
+    forEach – Это как классический цикл forEach для массива
+    has(value) – Возвращает true, если коллекция содержит данный элемент.
+    toString() – Распечатывает “[object Set]”
+    values() – Возвращает все значения коллекции Set
+    keys() – То же, что и values(). Это псевдоним для метода values(). Единственная причина, по которой он существует,
+    – иметь единый интерфейс для новых типов коллекций в JavaScript.
+    */
+
+//For Each
+
+mySetInstance.forEach(function callback(value1, value2, Set) { 
+     // some code that will be run for every value inside ofSet
+    }[, thisArg])
+	
+// Convert Set to Array
+    let set = new Set([9, 15]);
+    set.add(44);
+    let arr = [...set];
+    console.log(arr); // [9, 15, 44]
+// Create Unique Array
+    let arr = [ 13, 11, 15, 21, 13, 11, 17, 17, 19, 19, 21 ];
+    let uniqueArray = [...new Set(arr)];
+    console.log(uniqueArray); // [13, 11, 15, 21, 17, 19]
+////////////////////////////////////////////////////////////////////////////
+/*       MAP */ //
+////////////////////////////////////////////////////////////////////////////
+	let map = new Map([['name', 'CodingBlast'], ['points', 33], [true, 55], ['true', 44]])
+for (let [key, value] of map.entries()) {
+  console.log('key is ' + key + ', value is ' + value);
+}	
+console.log(Array.from(map.keys()))  //get array of keys
+console.log(Array.from(map.values()))
+console.log(Array.from(map.entries()))	
+		
+/* Следующие методы присутствуют в экземпляре Map:
+
+    clear() – Удаляет все элементы с Map
+    delete(key) – Удаляет указанный элемент из Map
+    forEach – как классический цикл forEach для массива
+    get(key) – Получает элемент для указанного ключа
+    has(key) – Возвращает true, если коллекция содержит элемент с этим ключом
+    keys() – Возвращает все ключи коллекции Map
+    set(key, value) – Добавляет новый элемент на карту
+    values() – Возвращает все значения коллекции Map
+    toString() – Распечатывает “[object Set]”
+    
+    В Map доступ/изменение значения элемента осуществляется с помощью Map.prototype.get(key) / Map.prototype.set(key, value)
+    
+    */
+////////////////////////////////////////////////////////////////////////////
+/*       WeakMap and WeakSet */ // допускают удаление объектов из памяти, которые больше не нужны.
+////////////////////////////////////////////////////////////////////////////
+	// EXAMPLES:	
+    const aboutAuthor = new WeakMap(); // Create New WeakMap
+    const currentAge = {}; // key must be an object
+    const currentCity = {}; // keys must be an object
+    aboutAuthor.set(currentAge, 30); // Set Key Values
+    aboutAuthor.set(currentCity, 'Denver'); // Key Values can be of different data types
+    console.log(aboutAuthor.has(currentCity)); // Test if WeakMap has a key
+    aboutAuthor.delete(currentAge); // Delete a key
+/* WeakSets – это наборы коллекций, элементы которых можно собирать, когда объекты, 
+на которые они ссылаются, больше не нужны */
+		
+	let isMarked     = new WeakSet()
