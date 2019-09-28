@@ -686,6 +686,7 @@ new Date(year, month, date, hours, minutes, seconds, ms)
 .getFullYear() //Получить год (из 4 цифр)
 .getMonth() //Получить месяц, от 0 до 11.
 .getDate() //Получить число месяца, от 1 до 31.
+..getDay()
 getHours(), getMinutes(), getSeconds(), getMilliseconds()
 
 // текущая дата
