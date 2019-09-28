@@ -883,3 +883,43 @@ console.log(Array.from(map.entries()))
 на которые они ссылаются, больше не нужны */
 		
 	let isMarked     = new WeakSet()
+	
+	
+////////////////////////////////////////////////////////////////////////////
+/*      Regular Expressions */
+////////////////////////////////////////////////////////////////////////////	
+	
+	  
+        // 21-12-1999
+        var pattern = /\d{1,2}-\d{1,2}-\d{4}/;
+        var text = "31-12-1999";
+        document.write(text + " -> " + pattern.test(text) + "<br />");
+
+        // +38 (063) 223-23-23
+        pattern = /\+38 \(\d{3}\) \d{3}-\d{2}-\d{2}/;
+        text = "+38 (063) 223-23-23";
+        document.write(text + " -> " + pattern.test(text) + "<br />");
+
+        // Иванов Иван Иванович
+        pattern = /[а-яА-Я]+ [а-яА-Я]+ [а-яА-Я]+/;
+        text = "Иванов Иван Иванович";
+        document.write(text + " -> " + pattern.test(text) + "<br />");
+
+        // ivanov.ivan@example.com
+        pattern = /\b[a-z0-9._]+@[a-z0-9.-]+\.[a-z]{2,4}\b/i;
+        text = "ivanov.ivan@example.com";
+        document.write(text + " -> " + pattern.test(text) + "<br />");
+
+        // hello.html
+        pattern = /\w+\.html/;
+        text = "hello.html";
+        document.write(text + " -> " + pattern.test(text) + "<br />");
+
+        // http://www.cbsarea.com или https://www.cbsarea.com
+        pattern = /https?:\/\/[\w\d:\.:\?\&]+/g;
+        text = "http://www.cbsarea.com или https://www.cbsarea.com blah-blah-blah http://www.google.com:80";
+        var res;
+        while ((res = pattern.exec(text)) != null) {
+            document.write("Найдено " + res + " по индексу " + res.index + "<br />");
+        }
+   
