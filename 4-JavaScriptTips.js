@@ -744,6 +744,8 @@ toString(), toDateString(), toTimeString()
 // create
 let arr=[];
 let arr = new Array();
+let arr =Array();  // if let Array(5) => arr.length(5);
+	
 arr.length  //length
 /// 1 option
 for (let i=0; i<=arr.lenght; i++){
