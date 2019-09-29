@@ -7,7 +7,8 @@ http://software.hixie.ch/utilities/js/live-dom-viewer/
 ==== Объектная модель браузера (Browser Object Model, BOM) – это дополнительные объекты, 
 предоставляемые браузером (окружением), чтобы работать со всем, кроме документа.
 
-<!-- NAVIGATION -->
+              <!-- NAVIGATION -->
+
 getElementsBy* - возвращает живую коллекцию
  querySelectorAll - возыращает статическую коллекцию
 
@@ -47,7 +48,8 @@ EXAMPLE:
 => document.getElementsByName(name) // возвращает элементы с заданным атрибутом name.
  
 => elemA.contains(elemB) вернёт true, если elemB находится внутри elemA (elemB потомок elemA) или когда elemA==elemB.
-  <!-- TABLES -->
+ 
+ <!-- TABLES -->
  
 TABLE
 
@@ -68,7 +70,7 @@ TD/TH
 
 
     
-  <!-- For -->
+        <!-- For -->
     
     
 <body>
@@ -87,8 +89,11 @@ TD/TH
   </script>
   ...
 </body>
+ 
   
-<!-- Как примениить Метод Массива к DOM -->
+                   <!-- Как примениить Метод Массива к DOM -->
+ 
+ 
  <!-- V1 -- Применить метод массива через call/apply -->
   
 var elems = document.documentElement.childNodes;
@@ -98,6 +103,7 @@ var elems = document.documentElement.childNodes;
 });
   
 <!-- При помощи Array.prototype.slice сделать из коллекции массив. -->
+ 
  var elems = document.documentElement.childNodes;
 elems = Array.prototype.slice.call(elems); // теперь elems - массив
 
@@ -105,3 +111,142 @@ elems.forEach(function(elem) {
   alert( elem.tagName ); // HEAD, текст, BODY
 });
    
+ 
+                 <!--  Доступ к АТРИБУТАМ DOM элемента -->
+ 
+ Свойства 	                        Атрибуты
+ 
+=> Любое значение                  => 	Строка
+=> Названия регистрозависимы 	     =>  Не чувствительны к регистру
+=> Не видны в innerHTML 	          =>  Видны в innerHTML
+ 
+ 
+    elem.hasAttribute(name) – проверяет наличие атрибута
+    elem.getAttribute(name) – получает значение атрибута
+    elem.setAttribute(name, value) – устанавливает атрибут
+    elem.removeAttribute(name) – удаляет атрибут
+    elem.attributes - получить все атрибуты элемента
+ 
+ EXAMPLE:
+ 
+ <body>
+  <div id="elem" about="Elephant"></div>
+
+  <script>
+    alert( elem.getAttribute('About') ); // (1) 'Elephant', атрибут получен
+
+    elem.setAttribute('Test', 123); // (2) атрибут Test установлен
+    alert( document.body.innerHTML ); // (3) в HTML видны все атрибуты!
+
+    var attrs = elem.attributes; // (4) можно получить коллекцию атрибутов
+    for (var i = 0; i < attrs.length; i++) {
+      alert( attrs[i].name + " = " + attrs[i].value );
+    }
+  </script>
+</body>
+ 
+                          <!-- ClassName -->
+ 
+ <body class="main page">
+  <script>
+    // прочитать класс элемента
+    alert( document.body.className ); // main page
+
+    // поменять класс элемента
+    document.body.className = "class1 class2";
+  </script>
+</body>
+ /////////  кроме className, в современных браузерах есть свойство classList.
+ 
+ Методы classList:
+
+    elem.classList.contains("class") – возвращает true/false, в зависимости от того, есть ли у элемента класс class.
+    elem.classList.add/remove("class") – добавляет/удаляет класс class
+    elem.classList.toggle("class") – если класса class нет, добавляет его, если есть – удаляет.
+
+Кроме того, можно перебрать классы через for, так как classList – это псевдо-массив.
+ 
+ 
+                   <!-- DATA -->
+С помощью нестандартных атрибутов можно привязать к элементу данные, которые будут доступны в JavaScript.
+Как правило, это делается при помощи атрибутов с названиями, начинающимися на data-
+ 
+ EXAMPLE DATA, DATASET
+ 
+ <div id="elem" data-about="Elephant" data-user-location="street">
+  По улице прошёлся слон. Весьма красив и толст был он.
+</div>
+<script>
+  alert( elem.getAttribute('data-about') ); // Elephant
+  alert( elem.getAttribute('data-user-location') ); // street
+ 
+   alert( elem.dataset.about ); // Elephant
+  alert( elem.dataset.userLocation ); // street
+</script>
+ 
+====================================================
+ Свойства узлов: тип, тег и содержимое
+ ===================================================
+ 
+ Существуют следующие классы:
+ 
+ => EventTarget – это корневой «абстрактный» класс. Объекты этого класса никогда не создаются.
+ Он служит основой, благодаря которой все DOM-узлы поддерживают так называемые «события», о которых мы поговорим позже.
+
+ => Node – также является «абстрактным» классом, и служит основой для DOM-узлов. Он обеспечивает базовую функциональность: 
+ parentNode, nextSibling, childNodes и т.д. (это геттеры). Объекты класса Node никогда не создаются. 
+ Но есть определённые классы узлов, которые наследуют от него: 
+ Text – для текстовых узлов, Element – для узлов-элементов и более экзотический Comment – для узлов-комментариев.
+ 
+ =>Element – это базовый класс для DOM-элементов. Он обеспечивает навигацию на уровне элементов:
+ nextElementSibling, children и методы поиска: getElementsByTagName, querySelector. 
+ Браузер поддерживает не только HTML, но также XML и SVG. 
+ 
+ =>HTMLElement – является базовым классом для всех остальных HTML-элементов. От него наследуют конкретные элементы:
+
+  -   HTMLInputElement – класс для тега <input>,
+  -   HTMLBodyElement – класс для тега <body>,
+  -   HTMLAnchorElement – класс для тега <a>,
+    …и т.д, каждому тегу соответствует свой класс, который предоставляет определённые свойства и методы.
+
+
+ Класс Element служит базой для следующих классов: SVGElement, XMLElement и HTMLElement
+ 
+
+ 
+ Рассмотрим DOM-объект для тега <input>. Он принадлежит классу HTMLInputElement.
+
+Он получает свойства и методы из (в порядке наследования):
+
+    HTMLInputElement – этот класс предоставляет специфичные для элементов формы свойства,
+    HTMLElement – предоставляет общие для HTML-элементов методы (и геттеры/сеттеры),
+    Element – предоставляет типовые методы элемента,
+    Node – предоставляет общие свойства DOM-узлов,
+    EventTarget – обеспечивает поддержку событий (поговорим о них дальше),
+    …и, наконец, он наследует от Object, поэтому доступны также методы «обычного объекта», такие как hasOwnProperty.
+ 
+ 
+ 
+ <!--  узнать имя класса DOM-узла  -->
+ 1) alert( document.body.constructor.name ); // HTMLBodyElement
+ 2)alert( document.body ); // [object HTMLBodyElement]
+ 3) alert( document.body instanceof HTMLBodyElement ); // true
+ 4) nodeType - Свойство nodeType позволяет узнать тип DOM-узла. Его значение – числовое: 
+ 1 для элементов,3 для текстовых узлов, и т.д. Только для чтения.
+ 
+ Получив DOM-узел, мы можем узнать имя его тега из свойств nodeName и tagName:
+ 
+ alert( document.body.nodeName ); // BODY
+ alert( document.body.tagName ); // BODY
+============= 
+Главные свойства DOM-узла:
+=============
+ -> nodeType
+ -> nodeName/tagName //возвращает название тега
+ -> innerHTML //Внутреннее HTML-содержимое узла-элемента. Можно изменять.
+ -> outerHTML //Полный HTML узла-элемента. Запись в elem.outerHTML не меняет elem
+ -> nodeValue/data // Содержимое узла-неэлемента (текст, комментарий). 
+ -> textContent //Текст внутри элемента: HTML за вычетом всех <тегов>. 
+ -> hidden // огда значение установлено в true, делает то же самое, что и CSS display:none
+ В зависимости от своего класса DOM-узлы имеют и другие свойства
+ 
