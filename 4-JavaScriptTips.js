@@ -523,17 +523,139 @@ let user = {
 	object.freeze(x);
 	object.seal(x);
 
-//getter-setter
-	
-let 0 = {	salary:120;
-	get countSalary(){
-		return this.salary;
-	}
-	set countSalary(newValue){
-		this.salary=newValue;
-	}
-	console.log(x.countSalary);
+///////////// дискрипторы обьектов://////////////////////////////
+/*
+- writable – если true, свойство можно изменить, иначе оно только для чтения.
+- enumerable – если true, свойство перечисляется в циклах, в противном случае циклы его игнорируют.
+- configurable – если true, свойство можно удалить, а эти атрибуты можно изменять, иначе этого делать нельзя.
 
+*/
+let descriptor = Object.getOwnPropertyDescriptor(obj, propertyName); // позволяет получить полную информацию о свойстве.
+Object.defineProperty(obj, propertyName, descriptor) // create new Property name
+
+	
+// Create several properties at once:
+	
+Object.defineProperties(obj, {
+  prop1: descriptor1,
+  prop2: descriptor2
+  // ...
+});
+// example:
+Object.defineProperties(user, {
+  name: { value: "John", writable: false },
+  surname: { value: "Smith", writable: false },
+  // ...
+});
+	
+////////////////
+	
+let user = {};
+
+Object.defineProperty(user, "name", {
+  value: "John"
+});
+
+let descriptor = Object.getOwnPropertyDescriptor(user, 'name');
+
+alert( JSON.stringify(descriptor, null, 2 ) );
+/*
+{
+  "value": "John",
+  "writable": false, -нельзя пепеписать
+  "enumerable": false, -исчезает с циклов
+  "configurable": false  - нельзя удалить или изменить
+}
+ */
+	
+//Exmplem make a property not writable:
+let user = {
+  name: "John"
+};
+
+Object.defineProperty(user, "name", {
+  writable: false
+});
+	
+// not enumerable
+let user = {
+  name: "John",
+  toString() {
+    return this.name;
+  }
+};
+
+Object.defineProperty(user, "toString", {
+  enumerable: false
+});
+
+// Теперь наше свойство toString пропало из цикла:
+for (let key in user) alert(key); // name
+
+// глобальное запечатывание обьекта;
+	
+Object.preventExtensions(obj) //Запрещает добавлять новые свойства в объект.
+Object.seal(obj) //Запрещает добавлять/удалять свойства. Устанавливает configurable: false для всех существующих свойств.
+Object.freeze(obj) //Запрещает добавлять/удалять/изменять свойства. Устанавливает configurable: false, writable: false для всех существующих свойств.
+Object.isExtensible(obj) //Возвращает false, если добавление свойств запрещено, иначе true.
+Object.isSealed(obj) //Возвращает true, если добавление/удаление свойств запрещено и для всех существующих свойств установлено configurable: false.
+Object.isFrozen(obj) //Возвращает true, если добавление/удаление/изменение свойств запрещено, и для всех текущих свойств установлено configurable: false, writable: false.
+
+////////////////////////////////////////////////////////////////////////////
+/* Getter Setter */ //x - свойства-аксессоры 
+ //представлены методами: «геттер» – для чтения и «сеттер» – для записи.
+
+let obj = {
+  get propName() {
+    // геттер, срабатывает при чтении obj.propName
+  },
+set propName(value) {
+    // сеттер, срабатывает при записи obj.propName = value
+  }
+};
+	
+/// Example: 
+let user = {
+  name: "John",
+  surname: "Smith",
+
+  get fullName() {
+    return `${this.name} ${this.surname}`;
+  },
+
+  set fullName(value) {
+    [this.name, this.surname] = value.split(" ");
+  }
+};
+
+// set fullName запустится с данным значением
+user.fullName = "Alice Cooper";
+
+alert(user.name); // Alice
+alert(user.surname); // Cooper
+
+// Example 2
+
+function User(name, birthday) {
+  this.name = name;
+  this.birthday = birthday;
+
+  // возраст рассчитывается из текущей даты и дня рождения
+  Object.defineProperty(this, "age", {
+    get() {
+      let todayYear = new Date().getFullYear();
+      return todayYear - this.birthday.getFullYear();
+    }
+  });
+}
+
+let john = new User("John", new Date(1992, 6, 1));
+
+alert( john.birthday ); // доступен как день рождения
+alert( john.age );      // ...так и возраст
+			
+	
+	
 // add all properties in one object
 	const parametr1 = {
 name:'Ivan'}
