@@ -1,2 +1,107 @@
-<strong>Document Object Model</strong>, сокращённо DOM – объектная модель документа, которая представляет все содержимое 
+==== Document Object Model, сокращённо DOM – объектная модель документа, которая представляет все содержимое 
 страницы в виде объектов, которые можно менять.
+
+SPEC: https://dom.spec.whatwg.org.
+http://software.hixie.ch/utilities/js/live-dom-viewer/ 
+
+==== Объектная модель браузера (Browser Object Model, BOM) – это дополнительные объекты, 
+предоставляемые браузером (окружением), чтобы работать со всем, кроме документа.
+
+<!-- NAVIGATION -->
+getElementsBy* - возвращает живую коллекцию
+ querySelectorAll - возыращает статическую коллекцию
+
+
+=> <HTML> = document.documentElement 
+=> <BODY> = document.body
+
+=> elem.childNodes[0] === elem.firstChild
+=> elem.childNodes[elem.childNodes.length - 1] === elem.lastChild
+  
+  -  children – только дочерние узлы-элементы, то есть соответствующие тегам.
+  -  firstElementChild, lastElementChild – соответственно, первый и последний дети-элементы.
+  -  previousElementSibling, nextElementSibling – соседи-элементы.
+  -  parentElement – родитель-элемент.
+  
+=> document.getElementbyId(id)
+// получить элемент  => let elem = document.getElementById('elem');
+=> elem.querySelectorAll(css),// он возвращает все элементы внутри elem, удовлетворяющие данному CSS-селектору.
+            EX:  let elements = document.querySelectorAll('ul > li:last-child');
+=> elem.querySelector(css) //возвращает первый элемент, соответствующий данному CSS-селектору. 
+=> elem.matches(css) // ничего не ищет, а проверяет, удовлетворяет ли elem CSS-селектору, и возвращает true или false.
+
+EXAMPLE:
+  <a href="http://example.com/file.zip">...</a>
+<a href="http://ya.ru">...</a>
+<script>
+  // может быть любая коллекция вместо document.body.children
+  for (let elem of document.body.children) {
+    if (elem.matches('a[href$="zip"]')) {
+      alert("Ссылка на архив: " + elem.href );
+    }
+  }
+</script>
+=>  elem.closest(css) // ищет ближайшего предка, который соответствует CSS-селектору. Сам элемент также включается в поиск.
+=> elem.getElementsByTagName(tag) //ищет элементы с данным тегом и возвращает их коллекцию. Передав "*" вместо тега, можно получить всех потомков.
+=> elem.getElementsByClassName(className)  //возвращает элементы, которые имеют данный CSS-класс.
+=> document.getElementsByName(name) // возвращает элементы с заданным атрибутом name.
+ 
+=> elemA.contains(elemB) вернёт true, если elemB находится внутри elemA (elemB потомок elemA) или когда elemA==elemB.
+  <!-- TABLES -->
+ 
+TABLE
+
+    table.rows – коллекция строк TR таблицы.
+    table.caption/tHead/tFoot – ссылки на элементы таблицы CAPTION, THEAD, TFOOT.
+    table.tBodies – коллекция элементов таблицы TBODY, по спецификации их может быть несколько.
+
+THEAD/TFOOT/TBODY
+
+   tbody.rows – коллекция строк TR секции.
+TR
+   tr.cells – коллекция ячеек TD/TH
+    tr.sectionRowIndex – номер строки в текущей секции THEAD/TBODY
+    tr.rowIndex – номер строки в таблице
+
+TD/TH
+    td.cellIndex – номер ячейки в строке
+
+
+    
+  <!-- For -->
+    
+    
+<body>
+  <div>Начало</div>
+
+  <ul>
+    <li>Информация</li>
+  </ul>
+
+  <div>Конец</div>
+
+  <script>
+    for (var i = 0; i < document.body.childNodes.length; i++) {
+      alert( document.body.childNodes[i] ); // Text, DIV, Text, UL, ..., SCRIPT
+    }
+  </script>
+  ...
+</body>
+  
+<!-- Как примениить Метод Массива к DOM -->
+ <!-- V1 -- Применить метод массива через call/apply -->
+  
+var elems = document.documentElement.childNodes;
+
+[].forEach.call(elems, function(elem) {
+  alert( elem ); // HEAD, текст, BODY
+});
+  
+<!-- При помощи Array.prototype.slice сделать из коллекции массив. -->
+ var elems = document.documentElement.childNodes;
+elems = Array.prototype.slice.call(elems); // теперь elems - массив
+
+elems.forEach(function(elem) {
+  alert( elem.tagName ); // HEAD, текст, BODY
+});
+   
