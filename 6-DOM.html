@@ -254,4 +254,332 @@ elems.forEach(function(elem) {
   
   <-- STYLES -->
     ul.style.color='green'
+  
+    ====================================================================================================================
+    Изменение документа
+    =====================================================================================================================
+    
+    ===> Cоздание DOM узла:
+    
+    1) let div = document.createElement('div'); // создает новый элемент с заданым тегом
+    2) let textNode = document.createTextNode('А вот и я');    //Cоздает новый текстовый узел с заданным текстом
+    
+    =====> Методы вставки: -  методы могут использоваться только для вставки DOM-узлов или текстовых фрагментов.
+   
+    - node.append(...nodes or strings) – добавляет узлы или строки в конец node,
+    - node.prepend(...nodes or strings) – вставляет узлы или строки в начало node,
+    - node.before(...nodes or strings) –- вставляет узлы или строки до node,
+    -  node.after(...nodes or strings) –- вставляет узлы или строки после node,
+    -  node.replaceWith(...nodes or strings) –- заменяет node заданными узлами или строками.
+   
+    =====> Пример:
+<ol id="ol">
+  <li>0</li>
+  <li>1</li>
+  <li>2</li>
+</ol>
+
+<script>
+  
+  ol.before('before'); // вставить строку "before" перед <ol>
+  ol.after('after'); // вставить строку "after" после <ol>
+
+  let liFirst = document.createElement('li');
+  liFirst.innerHTML = 'prepend';
+  ol.prepend(liFirst); // вставить liFirst в начало <ol>
+
+  let liLast = document.createElement('li');
+  liLast.innerHTML = 'append';
+  ol.append(liLast); // вставить liLast в конец <ol>
+  
+</script>
+    
+    =========> insertAdjacentHTML/Text/ - для вставки HTML кода
+    
+    elem.insertAdjacentHTML(where, html) - вставляет HTML
+    elem.insertAdjacentText(where, text) – такой же синтаксис, но строка text вставляется «как текст», вместо HTML
+    elem.insertAdjacentElement(where, elem) – такой же синтаксис, но вставляет элемент elem
+    
+    
+   -  "beforebegin" – вставить html непосредственно перед elem,
+   -  "afterbegin" – вставить html в начало elem,
+   -  "beforeend" – вставить html в конец elem,
+   -   "afterend" – вставить html непосредственно после elem.
+    
+  Пример:
+    
+<div id="div"></div>
+<script>
+  div.insertAdjacentHTML('beforebegin', '<p>Привет</p>');
+  div.insertAdjacentHTML('afterend', '<p>Пока</p>');
+</script>
+
+    =======> Удаление узла:
+    
+   node.remove()
+    setTimeout(() => div.remove(), 1000);
+   
+    =======> Перестановка:
+    
+<div id="first">Первый</div>
+<div id="second">Второй</div>
+<script>
+  // нет необходимости вызывать метод remove
+  second.after(first); // берёт #second и после него вставляет #first
+</script>
+    
+    =========>  Клонирование узлов: cloneNode
+    
+   elem.cloneNode(true) создаёт «глубокий» клон элемента – со всеми атрибутами и дочерними элементами. 
+   Если мы вызовем elem.cloneNode(false), тогда клон будет без дочерних элементов.
+    
+   ПРИМЕР:
+    
+ <div class="alert" id="div">
+  <strong>Всем привет!</strong> Вы прочитали важное сообщение.
+</div>
+
+<script>
+  let div2 = div.cloneNode(true); // клонировать сообщение
+  div2.querySelector('strong').innerHTML = 'Всем пока!'; // изменить клонированный элемент
+
+  div.after(div2); // показать клонированный элемент после существующего div
+</script>
+    
+    =======> DocumentFragment + Устаревшие методы вставки/удаления
+    DocumentFragment является специальным DOM-узлом, который служит обёрткой для передачи списков узлов.
+- parent.appendChild(node)
+- parent.insertBefore(node, nextSibling)
+- parent.removeChild(node)
+- parent.replaceChild(newElem, node)
+    
+    ===>  document.write('<b>Привет из JS</b>');
+    document.write(html) записывает html на страницу «прямо здесь и сейчас». 
+    Чтобы добавить HTML на страницу до завершения её загрузки:
+    
+    ====================================================================================================================
+    Стили и Классы
+    ====================================================================================================================
+
+let top = /* сложные расчёты */;
+let left = /* сложные расчёты */;
+
+elem.style.left = left; // например, '123px', значение вычисляется во время работы скрипта
+elem.style.top = top; // например, '456px'
+    
+    
+    ====> className и classList
+    ==> elem.className,  заменяет всю строку с классами
+    
+<body class="main page">
+  <script>
+    alert(document.body.className); // main page
+  </script>
+</body>
+    
+    ==> elem.classList – это специальный объект с методами для добавления/удаления одного класса.
+  
+  <body class="main page">
+  <script>
+    // добавление класса
+    document.body.classList.add('article');
+
+    alert(document.body.className); // main page article
+  </script>
+</body>
+    
+   ====== Методы classList:======
+
+  -  elem.classList.add/remove("class") – добавить/удалить класс.
+  -  elem.classList.toggle("class") – добавить класс, если его нет, иначе удалить.
+  -  elem.classList.contains("class") – проверка наличия класса, возвращает true/false.
+
+Кроме того, classList является перебираемым, поэтому можно перечислить все классы при помощи for..of:
+    
+   <body class="main page">
+  <script>
+    for (let name of document.body.classList) {
+      alert(name); // main, затем page
+    }
+  </script>
+</body>
+    
+    =======> elem.style  - это объект, который соответствует тому, что написано в атрибуте "style". 
+   
+    Для свойства из нескольких слов используется camelCase:
+
+background-color  => elem.style.backgroundColor
+z-index           => elem.style.zIndex
+border-left-width => elem.style.borderLeftWidth
+-moz-border-radius => button.style.MozBorderRadius = '5px';
+ 
+ ===> Сброс стилей
+
+    EX: 
+document.body.style.backgroundColor = prompt('background color?', 'green');
+document.body.style.display = "none"; // скрыть
+    
+    Если мы установим в style.display пустую строку, то браузер применит CSS-классы и встроенные стили, 
+    как если бы такого свойства style.display вообще не было.
+    
+ ===> style.cssText  - Для задания нескольких стилей в одной строке
+    
+    div.style.cssText=`color: red !important;
+    background-color: yellow;
+    width: 100px;
+    text-align: center;
+    `;
+    То же самое можно сделать установкой атрибута: div.setAttribute('style', 'color: red...')
+
+ ====>  getComputedStyle
+   
+    getComputedStyle(element, [pseudo])
+  -   element - Элемент, значения для которого нужно получить
+  -   pseudo - Указывается, если нужен стиль псевдоэлемента, 
+    например ::before. Пустая строка или отсутствие аргумента означают сам элемент.
+    
+    EXAMPLE: 
+    
+<head>
+  <style> body { color: red; margin: 5px } </style>
+</head>
+<body>
+ <script>
+    let computedStyle = getComputedStyle(document.body);
+    // сейчас мы можем прочитать отступ и цвет
+    alert( computedStyle.marginTop ); // 5px
+    alert( computedStyle.color ); // rgb(255, 0, 0)
+  </script>
+
+</body>
+    
+    
+ =====================================================================
+
+Есть две концепции в CSS:
+
+=> Вычисленное (computed) значение – это то, которое получено после применения всех CSS-правил и CSS-наследования.
+Например, height:1em или font-size:125%.
+=> Окончательное (resolved) значение – непосредственно применяемое к элементу. 
+    Значения 1em или 125% являются относительными. Браузер берёт вычисленное значение и делает 
+    все единицы измерения фиксированными и абсолютными, например, height:20px or font-size:16px.
+    Для геометрических свойств разрешённые значения могут иметь плавающую точку, например, width:50.5px.
+    
+        
+    ====================================================================================================================
+    Размеры и прокрутка элементов
+    ====================================================================================================================
+    
+    ==> offsetParent, offsetLeft/Top
+    В свойстве offsetParent находится предок элемента, 
+    который используется внутри браузера для вычисления координат при рендеринге.
+    
+    Свойства offsetLeft/offsetTop содержат координаты x/y относительно верхнего левого угла offsetParent.
+    
+    EXAMPLE:
+ <main style="position: relative" id="main">
+  <article>
+    <div id="example" style="position: absolute; left: 180px; top: 180px">...</div>
+  </article>
+</main>
+<script>
+  alert(example.offsetParent.id); // main
+  alert(example.offsetLeft); // 180 (обратите внимание: число, а не строка "180px")
+  alert(example.offsetTop); // 180
+</script>
+    
+    
+    === Существует несколько ситуаций, когда offsetParent равно null:
+
+    Для скрытых элементов (с CSS-свойством display:none или когда его нет в документе).
+    Для элементов <body> и <html>.
+    Для элементов с position:fixed.
+    
+    ====> offsetWidth/Height
+    
+    Они содержат «внешнюю» ширину/высоту элемента, то есть его полный размер, включая рамки.
+offsetWidth = 390 – внешняя ширина блока, её можно получить сложением CSS-ширины (300px), внутренних отступов (2 * 20px) и рамок (2 * 25px).
+offsetHeight = 290 – внешняя высота блока
+  
+    ===> clientTop/Left
+    
+Внутри элемента у нас рамки (border).
+Для них есть свойства-метрики clientTop и clientLeft.
+В нашем примере:
+-  clientLeft = 25 – ширина левой рамки
+-  clientTop = 25 – ширина верхней рамки
+
+   ===> clientWidth/Height
+Эти свойства – размер области внутри рамок элемента.
+Они включают в себя ширину области содержимого вместе с внутренними отступами padding, но без прокрутки
+- Если нет внутренних отступов padding, то clientWidth/Height в точности равны размеру области 
+    содержимого внутри рамок и полосы прокрутки (если она есть).
+   
+  ===> scrollWidth/Height
+Эти свойства – как clientWidth/clientHeight, но также включают в себя прокрученную (которую не видно) часть элемента.  
+Эти свойства можно использовать, чтобы «распахнуть» элемент на всю ширину/высоту.
+  EXAMPLE:
+  // распахнуть элемент на всю высоту
+element.style.height = `${element.scrollHeight}px`
+  
+  ===>scrollLeft/scrollTop
+  Свойства scrollLeft/scrollTop – ширина/высота невидимой, прокрученной в данный момент, части элемента слева и сверху.
+  Другими словами, свойство scrollTop – это «сколько уже прокручено вверх».
+  => В отличие от большинства свойств, которые доступны только для чтения, 
+ значения scrollLeft/scrollTop можно изменять, и браузер выполнит прокрутку элемента…
+ При клике на следующий элемент будет выполняться код elem.scrollTop += 10. 
+ Поэтому он будет прокручиваться на 10px вниз.
+    
+  ====================================================================================================================
+  Координаты
+  ==================================================================================================================== 
+Большинство соответствующих методов JavaScript работают в одной из двух указанных ниже систем координат:
+    1) Относительно окна браузера – как position:fixed, отсчёт идёт от верхнего левого угла окна.
+    мы будем обозначать эти координаты как clientX/clientY
+    2) Относительно документа – как position:absolute на уровне документа, отсчёт идёт от верхнего левого угла документа.
+    мы будем обозначать эти координаты как pageX/pageY.
+    
+==>  Метод elem.getBoundingClientRect() возвращает координаты в контексте окна для минимального по размеру прямоугольника, 
+который заключает в себе элемент elem, в виде объекта встроенного класса DOMRect.
+      
+  let coords = elem.getBoundingClientRect() 
+  message.style.left = coords.left + "px";
+  message.style.top = coords.bottom + "px";
+    
+    Основные свойства объекта типа DOMRect:
+
+    x/y – X/Y-координаты начала прямоугольника относительно окна,
+    width/height – ширина/высота прямоугольника (могут быть отрицательными).
+
+Дополнительные, «зависимые», свойства:
+
+    top/bottom – Y-координата верхней/нижней границы прямоугольника,
+    left/right – X-координата левой/правой границы прямоугольника.
+==>
+    left = x
+    top = y
+    right = x + width
+    bottom = y + height
+Координаты могут быть отрицательными. Например, если страница прокручена так, что элемент elem ушёл вверх за пределы окна,
+то вызов elem.getBoundingClientRect().top вернёт отрицательное значение.
+  
+  ======> elementFromPoint(x, y)
+    
+   Вызов document.elementFromPoint(x, y) возвращает самый глубоко вложенный элемент в окне,
+   находящийся по координатам (x, y).
+ 
+   let elem = document.elementFromPoint(x, y);
+    
+    EXAMPLE: код ниже выделяет с помощью стилей и выводит имя тега элемента, который сейчас в центре окна браузера:
+
+let centerX = document.documentElement.clientWidth / 2;
+let centerY = document.documentElement.clientHeight / 2;
+
+let elem = document.elementFromPoint(centerX, centerY);
+
+elem.style.background = "red";
+alert(elem.tagName);
+    
+    
+    
     
