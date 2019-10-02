@@ -530,6 +530,39 @@ element.style.height = `${element.scrollHeight}px`
  При клике на следующий элемент будет выполняться код elem.scrollTop += 10. 
  Поэтому он будет прокручиваться на 10px вниз.
     
+    
+ ====================================================
+ Размеры и прокрутка окна
+ ===================================================
+    Чтобы получить ширину/высоту окна, можно взять свойства clientWidth/clientHeight из document.documentElement
+
+alert( window.innerWidth ); // полная ширина окна
+alert( document.documentElement.clientWidth ); // ширина окна за вычетом полосы прокрутки
+  
+ ==== Чтобы надежно получить высоту документа:
+    
+  let scrollHeight = Math.max(
+  document.body.scrollHeight, document.documentElement.scrollHeight,
+  document.body.offsetHeight, document.documentElement.offsetHeight,
+  document.body.clientHeight, document.documentElement.clientHeight
+);
+
+alert('Полная высота документа с прокручиваемой частью: ' + scrollHeight);
+
+===== текущая прокрутка
+alert('Текущая прокрутка сверху: ' + window.pageYOffset);
+alert('Текущая прокрутка слева: ' + window.pageXOffset);
+
+====Изменить текущую прокрутку:
+
+window.scrollTo(pageX,pageY) – абсолютные координаты,
+window.scrollBy(x,y) – прокрутка относительно текущего места,
+elem.scrollIntoView(top) – прокрутить страницу так, чтобы сделать elem видимым (выровнять относительно верхней/нижней части окна
+
+ ==== Запретить прокрутку
+    
+  Чтобы запретить прокрутку страницы, достаточно установить document.body.style.overflow = "hidden".
+    
   ====================================================================================================================
   Координаты
   ==================================================================================================================== 
