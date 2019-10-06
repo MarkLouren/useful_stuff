@@ -1160,3 +1160,27 @@ document.addEventListener('readystatechange', () => console.log(document.readySt
     [4] readyState:complete
     [4] window onload
 
+    ====================================================================================================================
+    Клавиатура: keydown и keyup
+    ====================================================================================================================
+    Событие keydown происходит при нажатии клавиши, а keyup – при отпускании.
+````````
+keydown key=d code=KeyD
+keyup key=d code=KeyD    
+ ```````
+ Свойство key объекта (Shift) события позволяет получить символ, а свойство code (ShiftRight) – «физический код клавиши».
+ 
+     document.addEventListener('keydown', function(event) {
+  if (event.code == 'KeyZ' && (event.ctrlKey || event.metaKey)) {
+    alert('Отменить!')
+  }
+      
+  Пример: Ввод телефонного номера:
+
+<script>
+function checkPhoneKey(key) {
+  return (key >= '0' && key <= '9') || key == '+' || key == '(' || key == ')' || key == '-';
+}
+</script>
+<input onkeydown="return checkPhoneKey(event.key)" placeholder="Введите телефон" type="tel">
+ 
