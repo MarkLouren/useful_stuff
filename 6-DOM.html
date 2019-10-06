@@ -1046,5 +1046,45 @@ selection.addRange(range);
                                          
     ====================================================================================================================
 Движение мыши: mouseover/out, mouseenter/leave
-  ====================================================================================================================                                          
+  ====================================================================================================================  
+mouseover - собтытие курсор оказывается над элементом
+mouseout - событие когда курсор уходит с элемента
+Когда мышь переходит с одного элемента на другой, то одного из них будет свойство target, а в другом свойство relatedTarget.
+
+Для события mouseover:
+
+    event.target – это элемент, на который курсор перешёл.
+    event.relatedTarget – это элемент, с которого курсор ушёл (relatedTarget → target).
+
+Для события mouseout наоборот:
+
+    event.target – это элемент, с которого курсор ушёл.
+    event.relatedTarget – это элемент, на который курсор перешёл (target → relatedTarget).
+EXAMPLES:
+parent.onmouseout = function(event) {
+  /* event.target: внешний элемент */
+};
+parent.onmouseover = function(event) {
+  /* event.target: внутренний элемент (всплыло) */
+};
                                          
+=========
+// выделим элемент под мышью
+table.onmouseover = function(event) {
+  let target = event.target;
+  target.style.background = 'pink';
+};
+
+table.onmouseout = function(event) {
+  let target = event.target;
+  target.style.background = '';
+};
+   more: https://learn.javascript.ru/mousemove-mouseover-mouseout-mouseenter-mouseleave                                       
+==============                                        
+Mouseenter и Mouseleave    
+==============       
+  Отличие от mouseover/mouseout
+                                         
+    1) Переходы внутри элемента, на его потомки и с них, не считаются.
+    2) События mouseenter/mouseleave не всплывают.
+                                       
