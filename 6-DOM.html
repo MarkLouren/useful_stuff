@@ -848,6 +848,25 @@ EXAMPLE: кнопка внизу работает только при комби
     }
   };
 </script>
+    
+    OTHER EXAMPLE:
+    
+<div id="blueRect"></div>
+ 
+<script>
+function setColor(e){
+     
+    if(e.type==="mouseover")
+        e.target.style.backgroundColor = "red";
+    else if(e.type==="mouseout")
+        e.target.style.backgroundColor = "blue";
+}
+let blueRect = document.getElementById("blueRect");
+blueRect.addEventListener("mouseover", setColor);
+blueRect.addEventListener("mouseout", setColor);
+</script>
+    
+    
  =======================
    Координаты: clientX/Y, pageX/Y
 =======================
@@ -893,7 +912,7 @@ EXAMPLE: кнопка внизу работает только при комби
   // применим этот диапазон к выделению документа (объясняется далее)
   document.getSelection().addRange(range);
 </script>
-   
+  
     ==============
     Объект диапазона Range имеет следующие свойства:
     ==============   
