@@ -1097,3 +1097,66 @@ Mouseenter и Mouseleave
     1) Переходы внутри элемента, на его потомки и с них, не считаются.
     2) События mouseenter/mouseleave не всплывают.
                                        
+ 
+====================================================
+ Страница: DOMContentLoaded, load, beforeunload, unload
+ ===================================================
+
+У жизненного цикла HTML-страницы есть три важных события:
+
+  1)  - DOMContentLoaded – браузер полностью загрузил HTML, было построено DOM-дерево, но внешние ресурсы, такие как картинки <img> и стили, могут быть ещё не загружены.
+    =>document.addEventListener("DOMContentLoaded", ready);
+  
+  2)   load – браузер загрузил HTML и внешние ресурсы (картинки, стили и т.д.).
+ => window.onload = function() {
+    alert('Страница загружена');
+      
+   3)  beforeunload/unload – пользователь покидает страницу.
+ => let analyticsData = { /* объект с собранными данными */ };
+window.addEventListener("unload", function() {
+  navigator.sendBeacon("/analytics", JSON.stringify(analyticsData));
+};
+      
+Если посетитель собирается уйти со страницы или закрыть окно, 
+обработчик beforeunload попросит дополнительное подтверждение.
+=> window.onbeforeunload = function() {
+  return false;
+};
+============
+readyState
+============
+Свойство document.readyState показывает нам текущее состояние загрузки.
+
+Есть три возможных значения:
+
+    "loading" – документ загружается.
+    "interactive" – документ был полностью прочитан.
+    "complete" – документ был полностью прочитан и все ресурсы (такие как изображения) были тоже загружены.
+ => 
+function work() { /*...*/ }
+if (document.readyState == 'loading') {
+  // ещё загружается, ждём события
+  document.addEventListener('DOMContentLoaded', work);
+} else {
+  // DOM готов!
+  work();
+}
+============
+readystatechange //генерируется при изменении состояния
+============
+// текущее состояние
+console.log(document.readyState);
+// вывести изменения состояния
+document.addEventListener('readystatechange', () => console.log(document.readyState));
+      
+============      
+ Типичный вывод:
+
+    [1] начальный readyState:loading
+    [2] readyState:interactive
+    [2] DOMContentLoaded
+    [3] iframe onload
+    [4] img onload
+    [4] readyState:complete
+    [4] window onload
+
