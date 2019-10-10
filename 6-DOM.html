@@ -1548,15 +1548,25 @@ localStorage.clear()
 ====================================================================================================================
 JavaScript-анимации
 ====================================================================================================================                                                                                                                             
-                                                                                                                              
-                                                                                                                              
+  ==> изменение style.left от 0px до 100px – двигает элемент.                                                                                                                         
+ let timer = setInterval(function() {
+  if (animation complete) clearInterval(timer);
+  else increase style.left by 2px
+}, 20); // изменять на 2px каждые 20ms, это около 50 кадров в секунду                                                                                                                             
      
+ ==>Несколько анимаций 
+	    
+ setInterval(function() {
+  animate1();
+  animate2();
+  animate3();
+}, 20)                                                                                                                             
                                                                                                                               
-                                                                                                                              
-                                                                                                                              
-                                                                                                                              
-                                                                                                                              
-                                                                                                                              
+===> requestAnimationFrame
+let requestId = requestAnimationFrame(callback)	    
+планирует запуск функции callback на ближайшее время, когда браузер сочтёт возможным осуществить анимацию.                                                                                                                             
+ // отмена запланированного запуска callback
+cancelAnimationFrame(requestId);                                                                                                                             
                                                                                                                               
                                                                                                                               
                                                                                                                               
