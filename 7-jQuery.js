@@ -146,3 +146,11 @@ $('p').after('<hr/>');   // вставка линии после каждого 
 будет получен текст, где тэги будут приведены к HTML entities
 */
 
+
+// FILTERING ///////
+
+$('div.foo').has ('p'); // div.foo ele,ents that contain <p> tags
+$('h1').not('bar'); // h1 elements that don't have a class of bar
+$('ul li').filter('.current'); // unordered list items with class of current
+$('ul li').first(); // just the first unordered list item
+$('ul li').eq(5); //the sixth list item
