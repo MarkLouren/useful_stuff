@@ -86,6 +86,12 @@ $("#radio-two").attr("disabled", true) //Выключаем
 $("p").on("click", function() {
     // что-то делаем
     alert("Click!");
+ 
+  ////
+ $("p").one("click", function() {    //функция обработается один раз
+    // что-то делаем
+    alert("Click!");
+
 
 ////   
  $("p").trigger("click"); //обработчик запустить программно
