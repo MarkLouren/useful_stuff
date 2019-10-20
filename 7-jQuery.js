@@ -2,10 +2,11 @@
 
  https://learn.jquery.com/using-jquery-core/dollar-object-vs-function/
  https://oscarotero.com/jquery/ methods
- https://htmlcheatsheet.com/jquery/  !!! */
+ https://htmlcheatsheet.com/jquery/  !!! 
+
+https://jqueryui.com/tabs/ - JQuery UI
 
 
- /*
 Как получить элемент с помощью jQuery?
 
 Для того чтобы понимать как работает селектор Вам все-же необходимы базовые знания CSS, т.к. именно от принципов CSS отталкивает селектор jQuery:
