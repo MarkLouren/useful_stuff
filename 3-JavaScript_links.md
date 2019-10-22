@@ -20,6 +20,7 @@ ______
 * https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Operator_Precedence Приоритет операторов
 -------
 * https://dorey.github.io/JavaScript-Equality-Table/ Equality Table ==
+https://www.robinwieruch.de/javascript-naming-conventions  JS Naming Conventions
 
 **Exercises**
 * https://www.codewars.com/
