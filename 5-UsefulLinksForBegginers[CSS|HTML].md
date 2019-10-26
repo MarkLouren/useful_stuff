@@ -12,6 +12,7 @@
 * https://leaverou.github.io/prefixfree/ CSS Prefixes => https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js
 * https://matthewlein.com/tools/ceaser Animation Tool
 * https://www.rapidtables.com/code/text/unicode-characters.html Unicode Character table
+* https://bennettfeely.com/clippy/ - Clip path Maker
 
 **GRIDS**
 * https://gist.github.com/vcastroi/e0d296171842e74ad7d4eef7daf15df6 Grid 
