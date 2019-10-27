@@ -65,6 +65,9 @@ https://www.robinwieruch.de/javascript-naming-conventions  JS Naming Conventions
 * http://www.jslint.com/
 * https://jshint.com/
 
+**JQUERY**
+* https://isotope.metafizzy.co/layout-modes/masonry.html Galery
+
 **Frameworks and Liabraries**
 
 + Main:
