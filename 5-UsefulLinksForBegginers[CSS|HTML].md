@@ -27,8 +27,10 @@
 **SAAS,SCSS**
 * https://sass-lang.com/ Saas 
 * https://tokar.ua/read/6672 tutorial SAAS, SCSS
+* https://webdesign-master.ru/blog/tools/2016-06-04-sass.html tutorial
 * https://proglib.io/p/advanced-scss/ Saas tips
 * http://koala-app.com/ Free  Less, Sass, Compass and CoffeeScript compilation app
+
 
 **TEMPLATES**
 
