@@ -24,3 +24,11 @@ gulp.task('default', gulp.parallel('watch'));
 
 ```
  
+import
+```
+@import "media.sass";
+@import "media.scss";
+@import "meida"; // import css
+@import "foo" screen;
+@import "https//foo.com/bar";
+```
