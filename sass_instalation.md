@@ -1,3 +1,6 @@
+**cheatsheet**
+https://devhints.io/sass
+
 **instalation**
 in your local directory:
  npm init
