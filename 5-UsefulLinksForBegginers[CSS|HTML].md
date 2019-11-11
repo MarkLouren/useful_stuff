@@ -30,6 +30,7 @@
 * https://webdesign-master.ru/blog/tools/2016-06-04-sass.html tutorial
 * https://proglib.io/p/advanced-scss/ Saas tips
 * http://koala-app.com/ Free  Less, Sass, Compass and CoffeeScript compilation app
+* https://github.com/cakebaker/scss-syntax.vim/blob/master/example.scss examples
 
 
 **TEMPLATES**
