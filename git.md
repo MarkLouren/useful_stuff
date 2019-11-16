@@ -16,6 +16,10 @@ Update the Github directory with changes on your Local machine:
 1. git add -A
 2. git commit -m "Added Gitignore file or Other Files"
 3. git push origin master
+
+CHANGE SPECIFIC DIRECTORY/File =>push:
+ git commit -m "my message" -- HomeWorks2
+
 ```
 
 Add files on server (in VirtualEnv):
