@@ -52,7 +52,12 @@ https://www.robinwieruch.de/javascript-naming-conventions  JS Naming Conventions
 * https://kangax.github.io/compat-table/es6/ ECMA Script 6 Browsers compatibility
 * https://codepen.io/pen/ good online editor JS/HTML/CSS
 * https://jsbin.com/?html,css,js,console,output online JS|CSS|HTML editor
+
+**Gulp**
 * https://pugofka.com/blog/technology/the-prepared-starting-package-front-end-development-on-gulp/ Front End Development
+* https://habr.com/ru/post/252745/ list of plugins
+* https://gulpjs.com/plugins/ Plugins
+
 
 **WebDevelopment**
 * https://kenwheeler.github.io/slick/ Sliders
@@ -70,8 +75,6 @@ https://www.robinwieruch.de/javascript-naming-conventions  JS Naming Conventions
 * https://isotope.metafizzy.co/layout-modes/masonry.html Galery
 
 **Frameworks and Liabraries**
-+ Gulp
-* https://gulpjs.com/plugins/ Plugins
 
 + Main:
 ________________
