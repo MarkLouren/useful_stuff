@@ -1,3 +1,5 @@
+npm install --save-dev
+
 Git Commands CheatSheet: https://github.com/joshnh/Git-Commands
 and https://education.github.com/git-cheat-sheet-education.pdf
 How to add existing directory from comp to Github, one of the examples:
