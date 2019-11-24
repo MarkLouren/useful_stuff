@@ -1,5 +1,8 @@
-npm install --save-dev  popper.js@^1.14.7
+**npm**
+npm install --save-dev  popper.js@^1.14.7 => npm i gulp -D  - cокращенная версия
+npm i --развернуть все packages в json
 
+**GIT**
 Git Commands CheatSheet: https://github.com/joshnh/Git-Commands
 and https://education.github.com/git-cheat-sheet-education.pdf
 How to add existing directory from comp to Github, one of the examples:
