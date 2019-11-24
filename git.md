@@ -1,4 +1,4 @@
-npm install --save-dev
+npm install --save-dev  popper.js@^1.14.7
 
 Git Commands CheatSheet: https://github.com/joshnh/Git-Commands
 and https://education.github.com/git-cheat-sheet-education.pdf
