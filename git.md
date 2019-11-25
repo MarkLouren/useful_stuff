@@ -116,3 +116,6 @@ git pull/push origin your-branch
 
 
 git pull = git fetch + git merge ( по факту состоит из двух команд)
+
+
+Solve Merge Conflicts https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/resolving-a-merge-conflict-using-the-command-line
