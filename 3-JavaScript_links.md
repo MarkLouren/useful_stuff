@@ -62,6 +62,7 @@ https://www.robinwieruch.de/javascript-naming-conventions  JS Naming Conventions
 **WebDevelopment**
 * https://kenwheeler.github.io/slick/ Sliders
 * https://owlcarousel2.github.io/OwlCarousel2/ Sliders 2
+* https://swiperjs.com/ slider 3
 
 **CodeExamples**
 * https://www.quackit.com/javascript/examples/ -Arrays, DOM, DATE, Windows, Actions and other examples
