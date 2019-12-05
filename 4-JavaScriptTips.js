@@ -251,11 +251,11 @@ function isPrime(n) {
 /* FUNCTION  EXPRESSION | CALL BACK FUNCTIONS*/
 ////////////////////////////////////////////////////////////////////////////
 
-//Function Declaration - Function Declaration могут быть вызваны раньше своих определений, видна только в блоке {...}
+//Function Declaration - Function Declaration могут быть вызваны раньше своих определений, переменные видна только в блоке {...}
 function sayHi() {
   alert( "Привет" );
 }
-// Function Expression - могут быть вызваны толкьо после своих определений, видна везде
+// Function Expression - могут быть вызваны толкьо после своих определений, переменные видны везде
 let sayHi = function() {
   alert( "Привет" );
 };
