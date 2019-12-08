@@ -1044,4 +1044,27 @@ console.log(Array.from(map.entries()))
         while ((res = pattern.exec(text)) != null) {
             document.write("Найдено " + res + " по индексу " + res.index + "<br />");
         }
+		
+		
+		
+			
+////////////////////////////////////////////////////////////////////////////
+/*      Function Closure/ Замыкание */
+////////////////////////////////////////////////////////////////////////////	
+		
+//Замыкание – это функция, которая запоминает свои внешние переменные и может получить к ним доступ. 
+		
+function makeCounter() {
+  let count = 0;
+
+  return function() {
+    return count++; // есть доступ к внешней переменной "count"
+  };
+}
+
+let counter = makeCounter();
+
+alert( counter() ); // 0
+alert( counter() ); // 1
+alert( counter() ); // 2
    
