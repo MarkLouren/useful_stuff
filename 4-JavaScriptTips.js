@@ -1109,3 +1109,43 @@ alert( counter.down() ); // 1
 +function() {
   alert("Выражение начинается с унарного плюса");
 }();
+		
+////////////////////////////////////////////////////////////////////////////
+/*    Функции Конструкторы NEW и This*/
+////////////////////////////////////////////////////////////////////////////	
+	
+// External Function and object
+var dog = {
+  breed: 'Beagles',
+  lovesToChase: 'rabbits'
+};
+
+function chase() {
+  console.log(this.breed + ' loves chasing ' + this.lovesToChase + '.'); 
+}
+
+dog.foo = chase;
+dog.foo(); // в консоль попадёт Beagles loves chasing rabbits.
+
+chase(); //так эту функцию лучше не вызывать		
+		
+// This and Default + New		
+		
+let City = function(city, state) {
+  this.city = city || "Phoenix";
+  this.state = state || "AZ";
+  this.sentence = function() {
+    console.log(`I live in ${this.city}, ${this.state}.`);
+  };
+};
+
+let phoenix = new City(); // используем параметры по умолчанию
+console.log(phoenix); // выводит в консоль строковое представление объекта
+phoenix.sentence(); // выводит I live in Phoenix, AZ.
+
+let spokane = new City('Spokane', 'WA');
+console.log(spokane); // выводит сам объект
+spokane.sentence(); // выводит I live in Spokane, WA		
+		
+		
+
