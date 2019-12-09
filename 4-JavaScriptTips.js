@@ -1198,4 +1198,33 @@ function hash() {
   alert( [].join.call(arguments) ); // 1,2
 }
 
-hash(1, 2);		
+hash(1, 2);	
+////////////////////////////////////////////////////////////////////////////
+/*      this */	
+// чтобы не потерять  this способы
+// 1 способ: Функция обертка
+		
+let user = {
+  firstName: "Вася",
+  sayHi() {
+    alert(`Привет, ${this.firstName}!`);
+  }
+};
+setTimeout(function() {
+  user.sayHi(); // Привет, Вася!
+}, 1000);
+		
+		
+// 2 способ: привязать контекст с помощью bind
+let bound = func.bind(context, [arg1], [arg2], ...);		
+//=>
+let user = {
+  firstName: "Вася"
+};
+
+function func() {
+  alert(this.firstName);
+}
+
+let funcUser = func.bind(user);
+funcUser(); // Вася		
