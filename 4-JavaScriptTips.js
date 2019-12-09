@@ -1148,4 +1148,54 @@ console.log(spokane); // выводит сам объект
 spokane.sentence(); // выводит I live in Spokane, WA		
 		
 		
+////////////////////////////////////////////////////////////////////////////
+/*       CALL  apply */
+//Декоратор – это обёртка вокруг функции, которая изменяет поведение последней. 
+//Основная работа по-прежнему выполняется функцией.
 
+    func.call(context, arg1, arg2…)// вызывает func с данным контекстом и аргументами.
+    func.apply(context, args)// вызывает func, передавая context как this и псевдомассив args как список аргументов.
+		
+		
+////////////////////////////////////////////////////////////////////////////
+func.call(context, arg1, arg2, ...)
+func.call(obj, 1, 2, 3)  // obj - к которому привязываем контекст this, 1,2,3 аргументы
+		
+// пример:
+function sayHi() {
+  alert(this.name);
+}
+
+let user = { name: "John" };
+let admin = { name: "Admin" };
+
+// используем 'call' для передачи различных объектов в качестве 'this'
+sayHi.call( user ); // John
+sayHi.call( admin ); // Admin
+		
+// Other example:
+		
+function say(phrase) {
+  alert(this.name + ': ' + phrase);
+}
+let user = { name: "John" };
+// 'user' становится 'this', и "Hello" становится первым аргументом
+say.call( user, "Hello" ); // John: Hello		
+
+// func.apply(context, args) принимает только Псевдомасив
+		
+//Единственная разница в синтаксисе между call и apply состоит в том, что call ожидает список аргументов,
+//в то время как apply принимает псевдомассив		
+				
+func.call(context, ...args); // передаёт массив как список с оператором расширения
+func.apply(context, args);   // тот же эффект
+// ex
+let wrapper = function() {
+  return func.apply(this, arguments);
+};	
+// заимствование метода		
+function hash() {
+  alert( [].join.call(arguments) ); // 1,2
+}
+
+hash(1, 2);		
