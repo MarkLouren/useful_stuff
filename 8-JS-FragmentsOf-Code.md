@@ -7,4 +7,5 @@ js/**/*.js — все файлы с расширением .js в директо
 !js/app.js — исключает определенный файл
 *.+(js|css) — все файлы в корневой директории с расширениями .js или .css`
 
-```
+``
+array.sort(a,b)=>{Math.random()-0.3} // random sort elements in massive
