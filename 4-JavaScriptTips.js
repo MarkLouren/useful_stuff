@@ -290,6 +290,9 @@ ask(
 ////////////////////////////////////////////////////////////////////////////
 /*      ARROW FUNCTIONS*/
 ////////////////////////////////////////////////////////////////////////////
+//  1. doesent' have arguments
+// 2. doesent' have  this
+//
 
 let sum = (a, b) => a + b;
 
@@ -339,6 +342,7 @@ let welcome = (age < 18) ?
 welcome(); // теперь всё в порядке
 let double = n => n * 2;
 alert( double(3) ); // 6
+
 
 // DEFAULT STATEMENTS IN FUNCTION:
 function showMenu(title = "Без заголовка", width = 100, height = 200) {
