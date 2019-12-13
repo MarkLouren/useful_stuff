@@ -1255,16 +1255,40 @@ try {
 } catch (e) {
   alert( "Внешний catch поймал: " + e ); // поймал!
 }
-		// Finaly  -выполняется всегда:
+		
+// Finaly  -выполняется всегда:		
 try {
    //... пробуем выполнить код...
 } catch(e) {
   // ... обрабатываем ошибки ...
 } finally {
- //  ... выполняем всегда ...
-}
+ //  ... выполняем всегда ...}
 		
-		// For Browser:
+// Set up an Error:
+		
+let calculate = function(n) {
+    if (n>10) throw new Error('n should be less than 10');
+    return n+10;
+}
+
+/// let error = new Error(message);
+/// или
+/// let error = new SyntaxError(message);
+/// let error = new ReferenceError(message);
+
+//====	
+let json = '{ "age": 30 }'; // данные неполны
+try {
+  let user = JSON.parse(json); // <-- выполнится без ошибок
+  if (!user.name) {
+    throw new SyntaxError("Данные неполны: нет имени"); // (*)
+  }
+  alert( user.name );
+} catch(e) {
+  alert( "JSON Error: " + e.message ); // JSON Error: Данные неполны: нет имени
+}
+
+// For Browser:
  window.onerror = function(message, url, line, col, error) {
     alert(`${message}\n В ${line}:${col} на ${url}`);
   };
