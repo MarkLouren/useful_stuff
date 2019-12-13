@@ -1233,3 +1233,38 @@ function func() {
 let funcUser = func.bind(user);
 funcUser(); // Вася		
 
+////////////////////////////////////////////////////////////////////////////
+/*   Try  Throw Catch */	
+
+function readData() {
+  let json = '{ "age": 30 }';
+
+  try {
+    // ...
+    blabla(); // ошибка!
+  } catch (e) {
+    // ...
+    if (e.name != 'SyntaxError') {
+      throw e; // проброс исключения (не знаю как это обработать)
+    }
+  }
+}
+
+try {
+  readData();
+} catch (e) {
+  alert( "Внешний catch поймал: " + e ); // поймал!
+}
+		// Finaly  -выполняется всегда:
+try {
+   //... пробуем выполнить код...
+} catch(e) {
+  // ... обрабатываем ошибки ...
+} finally {
+ //  ... выполняем всегда ...
+}
+		
+		// For Browser:
+ window.onerror = function(message, url, line, col, error) {
+    alert(`${message}\n В ${line}:${col} на ${url}`);
+  };
