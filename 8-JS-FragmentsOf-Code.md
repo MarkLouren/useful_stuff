@@ -9,3 +9,4 @@ js/**/*.js — все файлы с расширением .js в директо
 
 ``
 array.sort(a,b)=>{Math.random()-0.3} // random sort elements in massive
+\
