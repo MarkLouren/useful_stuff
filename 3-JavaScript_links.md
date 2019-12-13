@@ -96,6 +96,7 @@ ________________
 * https://www.chaijs.com/ - Chai is a BDD / TDD assertion library for node and the browser that can be delightfully paired with any javascript testing framework.
 * https://sinonjs.org/ - Standalone test spies, stubs and mocks for JavaScript.
 Works with any unit testing framework. 
+*  https://errorception.com или http://www.muscula.com. - Error Handling
 ________________
 
 + Polyfills:
