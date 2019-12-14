@@ -76,3 +76,6 @@ const game = {
 game.appendTo(document.body);
 game.start();
 
+////// 
+y = {...z}  // копирование обьекта y с z c новой ссылкой вместо object.Assign
+y = {...z, 4} // скопировали и добавили 4 в обьект
