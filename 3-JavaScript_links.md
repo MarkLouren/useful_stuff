@@ -1,7 +1,7 @@
 **CheatSheets**
 * https://www.cheatography.com/tag/javascript/ Code References JS CheatSheets lists (Section)
 * https://devhints.io/ - Site with the list of CheatSheets with references
-* http://overapi.com/ - Api Lists (site collecting all the cheatsheets_
+* http://overapi.com/ - Api Lists (site collecting all the cheatsheets)
 ______
 * https://htmlcheatsheet.com/js/ Good Online Reference CheatSheet with examples!
 * https://www.cheatography.com/savagedesign/cheat-sheets/javascript-regexp/ Regular Expressions
