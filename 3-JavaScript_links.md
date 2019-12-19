@@ -3,6 +3,7 @@
 * https://devhints.io/ - Site with the list of CheatSheets with references
 * http://overapi.com/ - Api Lists (site collecting all the cheatsheets)
 * https://html5css.ru/jsref/jsref_obj_regexp.php regular expressions
+* https://2019.stateofjs.com/mobile-desktop/ list of Frameworks and their popularity
 ______
 * https://htmlcheatsheet.com/js/ Good Online Reference CheatSheet with examples!
 * https://www.cheatography.com/savagedesign/cheat-sheets/javascript-regexp/ Regular Expressions
