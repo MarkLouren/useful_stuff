@@ -123,5 +123,6 @@ ________________
 * https://p5js.org/
 * https://mdbootstrap.com/products/ Paid UI kit
 * https://github.com/nodeca/pica Resize image in browser with high quality and high speed
+* https://modernizr.com/ - Modernizr tells you what HTML, CSS and JavaScript features the user’s browser has to offer.
 ________________
 
