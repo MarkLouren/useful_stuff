@@ -9,6 +9,20 @@
 
 //array.sort(a,b)=>{Math.random()-0.3} // random sort elements in massive
 
+// Convert NodeList into Array and get InnerHtml Value!
+
+  let elementHtml = [].map.call(this.cardBody.querySelectorAll('.card-body-item'), function(el) {
+                    return el.innerHTML;
+                });
+
+// Short Version of Removing Elements inside Div!
+
+const removeElements = (elms) => elms.forEach(el => el.remove());
+removeElements(this.cardBody.querySelectorAll(".card-body-item"));
+
+
+
+
 // start Game - This to the Set timeout/ Events
 //
 // 2 3 1 3 5 4
