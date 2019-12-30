@@ -27,6 +27,8 @@ https://www.robinwieruch.de/javascript-naming-conventions  JS Naming Conventions
 
 **Exercises**
 * https://www.codewars.com/
+* https://leetcode.com/
+* https://www.freecodecamp.org/
 * https://learn.javascript.ru/array-iteration 
 * http://javascript-roadtrip.codeschool.com/levels/1/challenges/1 
 * http://www.w3resource.com/javascript-exercises/javascript-basic-exercises.php
