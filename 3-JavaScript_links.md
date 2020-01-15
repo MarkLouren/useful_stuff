@@ -13,6 +13,7 @@ ______
 * https://www.cheatography.com/davechild/cheat-sheets/javascript/pdf_bw/ Dates,ect..
 * https://devhints.io/js-array Array Properties with Examples
 * http://overapi.com/javascript Directory with references
+* https://gist.github.com/joelrojo/c54765a748cd87a395a2b865359d6add Ajax Jquery cheatSheet
 
 **Documentation**
 * https://www.w3schools.com/jsref/jsref_trim_string.asp Methods with examples
