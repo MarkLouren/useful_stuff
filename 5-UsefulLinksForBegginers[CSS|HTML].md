@@ -102,3 +102,7 @@
 *crossbrowsertesting.com 
 *browsershots.org 
 *browserstack.com
+
+**REACT**
+* https://pshrmn.github.io/route-tester/#/ TEST React Router
+* https://cssinjs.org/react-jss/?v=v10.0.4 JSS React
