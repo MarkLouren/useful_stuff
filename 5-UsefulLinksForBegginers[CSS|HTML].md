@@ -106,3 +106,4 @@
 **REACT**
 * https://pshrmn.github.io/route-tester/#/ TEST React Router
 * https://cssinjs.org/react-jss/?v=v10.0.4 JSS React
+* http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/ React LifeCycle Method Diagram
