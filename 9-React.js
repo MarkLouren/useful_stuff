@@ -7,3 +7,9 @@
 
 // new date
    <h3>creation date: { (new Date()).toDateString()}</h3>
+
+// 3-method pass a state to component
+openModal = (boolean) => {
+        this.setState({showModal:boolean});
+        return this.state;
+    };
