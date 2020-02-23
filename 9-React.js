@@ -13,3 +13,27 @@ openModal = (boolean) => {
         this.setState({showModal:boolean});
         return this.state;
     };
+
+// Axios//
+import React from 'react';
+import ReactDOM from 'react-dom';
+import axios from 'axios';
+
+class FetchDemo extends React.Component {
+   state = {
+      posts:[]
+   }
+componentDidMount(){
+   axios.get ('http://wwww.reddit.com/r/${this.props.subreddit}.json')
+      .then(res=>{ 
+      const posts =res.data.data.children.map(obj=>obj.data);
+      this.setState({posts});
+   });
+}
+
+render(){
+   return (
+      <div>
+      {'/r/${this.props.subreddit}'}
+      </div>
+      )}
