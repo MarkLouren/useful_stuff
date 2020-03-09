@@ -9,3 +9,5 @@ Dependencies
 **Redux**
 - redux
 - react-redux
+- redux-thunk -for requests: import ReduxThunk from 'redux-thunk' // no changes here 😀
+-redux-form
