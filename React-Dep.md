@@ -9,5 +9,10 @@ Dependencies
 **Redux**
 - redux
 - react-redux
-- redux-thunk -for requests: import ReduxThunk from 'redux-thunk'
+- redux-thunk -for requests
 - redux-form
+
+**Imports**
+- import { createStore, applyMiddleware } from 'redux';
+- import thunk from 'redux-thunk';
+- import rootReducer from './reducers/index';
