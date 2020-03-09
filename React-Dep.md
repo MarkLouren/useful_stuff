@@ -7,4 +7,5 @@ Dependencies
 - react-router-dom
 
 **Redux**
+- redux
 - react-redux
