@@ -21,3 +21,7 @@ SSR
 - underscore (lodash, lazy) – Самая популярная вспомогательная библиотека JavaScript, упакованная для использования с Node.js, а также две аналогичные ей библиотеки, обеспечивающие повышенную производительность, поскольку реализованы немного иначе.
 - forever – Вероятно, самая распространенная утилита, обеспечивающая бесперебойное выполнение сценария на заданном узле. Поддерживает работоспособность вашего процесса Node.js при любых неожиданных сбоях.
 
+**TESTING**
+https://sinonjs.org/ -Standalone test spies, stubs and mocks for JavaScript. Works with any unit testing framework. 
+https://enzymejs.github.io/enzyme/ - Enzyme is a JavaScript Testing utility for React that makes it easier to test your React Components' output. You can also manipulate, traverse, and in some ways simulate runtime given the output.
+
