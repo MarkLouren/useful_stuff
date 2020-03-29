@@ -9,6 +9,7 @@ SSR
     Gatsby — https://github.com/gatsbyjs/gatsby
     
 **NODE**
+- http://www.passportjs.org/ - Simple, unobtrusive authentication for Node.js
 
 - express: Express.js, фреймворк для веб-разработки для Node.js, написанный в духе Sinatra, де-факто – стандартный для большинства существующих сегодня приложений Node.js.
 - connect: Connect – это расширяемый фреймворк, работающий с Node.js в качестве HTTP-сервера, предоставляющий коллекцию высокопроизводительных «плагинов», известных под общим названием «связующее ПО» (middleware); служит основой для Express.
