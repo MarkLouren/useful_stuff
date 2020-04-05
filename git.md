@@ -1,3 +1,5 @@
+https://gist.github.com/sabarasaba/3080590 - Delete files in remoute directory after you have added them to gitignore!
+
 **npm**
 npm install --save-dev  popper.js@^1.14.7 => npm i gulp -D  - cокращенная версия
 npm i --развернуть все packages в json
@@ -14,6 +16,7 @@ How to add existing directory from comp to Github, one of the examples:
 6. git remote add origin https://github.com/MarkLouren/django-deployment-example.git
 7. git push -u origin master
 generally, see the tips for new directory
+
 
 Update the Github directory with changes on your Local machine:
 ```
