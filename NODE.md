@@ -11,6 +11,7 @@ npm run dev  !!!
 ```
 __dirname  - show the path to the current directory
 __filename - show the path to the current file
+npm i uuid - instal userid generator
 
 ```
 **Mongo**
