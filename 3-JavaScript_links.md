@@ -60,6 +60,7 @@ https://www.robinwieruch.de/javascript-naming-conventions  JS Naming Conventions
 * https://jsbin.com/?html,css,js,console,output online JS|CSS|HTML editor
 * https://medialize.github.io/URI.js/ Liabrary Customize URLs
 * https://is.js.org/ micro Validation Liabrary
+* https://github.com/trekhleb/javascript-algorithms JS Algorithms code examples
 
 **Gulp**
 * https://pugofka.com/blog/technology/the-prepared-starting-package-front-end-development-on-gulp/ Front End Development
