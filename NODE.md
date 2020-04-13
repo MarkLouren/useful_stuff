@@ -10,7 +10,9 @@ npm run dev  !!! /nodemone run
 - npm init
 - npm install express --save
 - npm install body-parser --save
-- 
+- npm install express-sessions
+- npm install connect-mongodb-session   -synchronize express sesions with mongo db
+
 ```
 **Useful**
 ```
