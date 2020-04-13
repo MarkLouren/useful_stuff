@@ -12,6 +12,8 @@ npm run dev  !!! /nodemone run
 - npm install body-parser --save
 - npm install express-sessions
 - npm install connect-mongodb-session   -synchronize express sesions with mongo db
+- npm install bcryptjs - password encryption
+
 
 ```
 **Useful**
