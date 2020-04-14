@@ -19,6 +19,10 @@ npm run dev  !!! /nodemone run
 - npm  install express-handlebars --save -handlebars.js
 
 
+
+https://www.npmjs.com/package/celebrate  - validates data
+
+
 ```
 **Useful**
 ```
