@@ -15,6 +15,7 @@ npm run dev  !!! /nodemone run
 - npm install bcryptjs - password encryption
 - npm install csurf  - CSRF protection token
 - npm install jsonwebtoken -jwt token
+- npm  install express-handlebars --save -handlebars.js
 
 
 ```
