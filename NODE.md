@@ -17,8 +17,7 @@ npm run dev  !!! /nodemone run
 - npm install express-jwt -jwt token
 
 - npm  install express-handlebars --save -handlebars.js
-- npm i dotenv - create env secret file
-
+- npm i dotenv - loads environment variables from a .env file into process.env
 
 
 https://www.npmjs.com/package/celebrate  - validates data
@@ -32,6 +31,13 @@ __filename - show the path to the current file
 npm i uuid - instal userid generator
 
 ```
+**Setup**
+```
+require('.env').config()
+
+```
+
+
 **Mongo**
 ```
 npm install mongoose --save 
