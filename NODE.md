@@ -17,6 +17,7 @@ npm run dev  !!! /nodemone run
 - npm install express-jwt -jwt token
 
 - npm  install express-handlebars --save -handlebars.js
+- npm i dotenv - create env secret file
 
 
 
