@@ -1,3 +1,10 @@
+```
+npm install --save react-router-dom
+npm install --save react-transition-group //animation
+
+```
+
+
 /* CheetSheets
 - https://devhints.io/react
 - https://reactcheatsheet.com/
