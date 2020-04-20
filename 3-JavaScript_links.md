@@ -134,6 +134,7 @@ ________________
 * https://modernizr.com/ - Modernizr tells you what HTML, CSS and JavaScript features the user’s browser has to offer.
 ________________
 
-+ Reack
++ React
 * https://createapp.dev/  -create App boilerplate
+* https://jaredpalmer.com/formik/docs/overview React Forms Liabrary
 
