@@ -2,6 +2,7 @@
 * https://codingheroes.io/resources/ Directory of usefull tools for a Front-end developer [Colors, Fonts, Testing etc]
 * https://bootstrapcreative.com/resources/ Boostrap Resources Directory
 * https://github.com/fliptheweb/motion-ui-design Useful Links Motion UI Design CSS
+* https://htmlcheatsheet.com/ Good Cheatsheet for daily usage
 
 
 **SERVICES**
