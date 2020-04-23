@@ -10,12 +10,15 @@ npm run dev  !!! /nodemone run
 - npm init
 - npm install express --save
 - npm install body-parser --save
-- npm install express-sessions
+- npm install express-sessions --save 
 - npm install --save-dev nodemon
-- npm install connect-mongodb-session   -synchronize express sesions with mongo db
-- npm install bcryptjs - password encryption
-- npm install csurf  - CSRF protection token
-- npm install express-jwt -jwt token
+- npm install connect-mongodb-session --save    -synchronize express sesions with mongo db
+- npm install bcryptjs  --save  - password encryption
+- npm install csurf --save  - CSRF protection token
+- npm install express-jwt --save  -jwt token
+- npm install --save uuid
+
+
 
 - npm  install express-handlebars --save -handlebars.js
 - npm i dotenv - loads environment variables from a .env file into process.env
