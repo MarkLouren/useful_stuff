@@ -17,7 +17,7 @@ npm run dev  !!! /nodemone run
 - npm install csurf --save  - CSRF protection token
 - npm install express-jwt --save  -jwt token
 - npm install --save uuid
-
+- npm install express-validator --save  - https://www.npmjs.com/package/express-validator
 
 
 - npm  install express-handlebars --save -handlebars.js
