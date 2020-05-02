@@ -124,3 +124,19 @@ git pull = git fetch + git merge ( по факту состоит из двух 
 
 
 Solve Merge Conflicts https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/resolving-a-merge-conflict-using-the-command-line
+
+
+Branching
+```
+git branch klykov - create a new branch
+git checkout klykov - switch to branch klykov
+git push origin master - push updates ot master
+git pull origin master - pull updates from master
+git branch - проверка выбранной ветки
+
+```
+
+
+
+
+
