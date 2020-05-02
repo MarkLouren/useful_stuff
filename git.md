@@ -1,3 +1,5 @@
+https://try.github.io/ Resourses to Learn Git: https://learngitbranching.js.org/ game
+
 https://gist.github.com/sabarasaba/3080590 - Delete files in remoute directory after you have added them to gitignore!
 
 **npm**
