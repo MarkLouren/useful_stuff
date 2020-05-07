@@ -111,4 +111,4 @@
 * http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/ React LifeCycle Method Diagram
 * https://github.com/YauhenKavalchuk/react-videocast ux and other React Tools
 * https://www.learnstorybook.com/ for UX UI interfaces, graphics
-
+* https://react-slick.neostack.com/docs/get-started React Slick Slider
