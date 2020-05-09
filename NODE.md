@@ -20,6 +20,7 @@ npm run dev  !!! /nodemone run
 - npm install express-validator --save  - https://www.npmjs.com/package/express-validator
 - npm install --save axios
 - npm install --save mongoose-unique-validator https://www.npmjs.com/package/mongoose-unique-validator 
+- npm install -D concurrently  -launch at the same time Frontend and backend https://www.npmjs.com/package/concurrently
 
 
 - npm  install express-handlebars --save -handlebars.js
