@@ -1,7 +1,7 @@
 ```
 npm install --save react-router-dom
 npm install --save react-transition-group //animation
-
+https://www.npmjs.com/package/react-loadable
 ```
 
 
