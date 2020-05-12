@@ -114,6 +114,7 @@
 * https://www.learnstorybook.com/ for UX UI interfaces, graphics
 * https://react-slick.neostack.com/docs/get-started React Slick Slider
 * https://ant.design/components/breadcrumb/ ANT Design
+* https://www.npmjs.com/package/rc-queue-anim  Aninate Components in queue
 
 **API**
 * https://apilist.fun/category/big-data API List
