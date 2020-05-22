@@ -116,6 +116,7 @@
 * https://react-slick.neostack.com/docs/get-started React Slick Slider
 * https://ant.design/components/breadcrumb/ ANT Design
 * https://www.npmjs.com/package/rc-queue-anim  Aninate Components in queue
+* https://mobx.js.org/README.html state managemenent - alternative of Redux
 
 **API**
 * https://apilist.fun/category/big-data API List
