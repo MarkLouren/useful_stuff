@@ -4,6 +4,7 @@
 * https://github.com/fliptheweb/motion-ui-design Useful Links Motion UI Design CSS
 * https://htmlcheatsheet.com/ Good Cheatsheet for daily usage
 * https://codesandbox.io/s/ CODE SENDBOX for JS, REACT, ANGULAR ETC
+* https://refactoring.guru/ru/design-patterns/catalog read patterns
 
 
 **SERVICES**
