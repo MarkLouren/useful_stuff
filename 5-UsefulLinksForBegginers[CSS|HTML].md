@@ -7,6 +7,7 @@
 * https://refactoring.guru/ru/design-patterns/catalog read patterns
 
 
+
 **SERVICES**
 * https://caniuse.com/  What CSS properties can you use in Browsers
 * https://imagecompressor.com/ online image compressor 
@@ -16,6 +17,7 @@
 * https://matthewlein.com/tools/ceaser Animation Tool
 * https://www.rapidtables.com/code/text/unicode-characters.html Unicode Character table
 * https://bennettfeely.com/clippy/ - Clip path Maker
+* https://www.convertonline.io/convert/js-to-json Convert JS to JSON
 
 **GRIDS**
 * https://gist.github.com/vcastroi/e0d296171842e74ad7d4eef7daf15df6 Grid 
