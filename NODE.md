@@ -31,6 +31,7 @@ npm run dev  !!! /nodemone run
 
 https://www.npmjs.com/package/celebrate  - validates data
 
+https://www.npmjs.com/package/cross-env - set and use environment variables across platforms
 
 ```
 **Useful**
