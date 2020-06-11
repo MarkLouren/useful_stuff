@@ -136,6 +136,8 @@ git branch - проверка выбранной ветки
 
 ```
 
+DETACHED HEAD MASTER:
+https://stackoverflow.com/questions/5772192/how-can-i-reconcile-detached-head-with-master-origin
 
 
 
