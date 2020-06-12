@@ -30,3 +30,5 @@ https://enzymejs.github.io/enzyme/ - Enzyme is a JavaScript Testing utility for 
 - https://pugjs.org/api/getting-started.html 
 - 
 
+**Axios**
+- https://kapeli.com/cheat_sheets/Axios.docset/Contents/Resources/Documents/index CheatSheet
