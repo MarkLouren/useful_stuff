@@ -1,5 +1,6 @@
 **CODE EXAMPLES**
-https://www.codota.com/code/javascript/functions/axios/AxiosPromise/then 
+- https://www.codota.com/code/javascript/functions/axios/AxiosPromise/then - code examples
+- https://awesomeopensource.com/project/harryho/react-crm open sourcr projects
 
 **ORM**
 - https://sequelize.org/  - Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.
