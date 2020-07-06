@@ -120,9 +120,16 @@
 * https://www.npmjs.com/package/rc-queue-anim  Aninate Components in queue
 * https://mobx.js.org/README.html state managemenent - alternative of Redux
 
-**API**
+**Public API**
 * https://apilist.fun/category/big-data API List
 * https://rapidapi.com/collection/best-free-apis
 * https://any-api.com/ 
 * https://github.com/public-apis/public-apis
-* https://www.programmableweb.com/ 
+* https://github.com/n0shake/Public-APIs 
+* https://www.programmableweb.com
+* http://numbersapi.com/#5/math Number API
+* https://dog.ceo/dog-api/ Dog API
+* https://www.animenewsnetwork.com/encyclopedia/api.php Anime API
+* https://developer.marvel.com/ Developer Marvel API
+* https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/
+
