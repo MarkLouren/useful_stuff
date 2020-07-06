@@ -123,4 +123,6 @@
 **API**
 * https://apilist.fun/category/big-data API List
 * https://rapidapi.com/collection/best-free-apis
-* 
+* https://any-api.com/ 
+* https://github.com/public-apis/public-apis
+* https://www.programmableweb.com/ 
