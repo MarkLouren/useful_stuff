@@ -122,5 +122,5 @@
 
 **API**
 * https://apilist.fun/category/big-data API List
-* 
+* https://rapidapi.com/collection/best-free-apis
 * 
