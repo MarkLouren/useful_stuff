@@ -132,4 +132,4 @@
 * https://www.animenewsnetwork.com/encyclopedia/api.php Anime API
 * https://developer.marvel.com/ Developer Marvel API
 * https://mixedanalytics.com/blog/list-actually-free-open-no-auth-needed-apis/
-
+* https://rickandmortyapi.com/ Rick and Morty Api
