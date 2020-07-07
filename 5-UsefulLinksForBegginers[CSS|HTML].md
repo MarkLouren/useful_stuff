@@ -119,6 +119,7 @@
 * https://ant.design/components/breadcrumb/ ANT Design
 * https://www.npmjs.com/package/rc-queue-anim  Aninate Components in queue
 * https://mobx.js.org/README.html state managemenent - alternative of Redux
+* https://github.com/FormidableLabs/radium - CSS set of tools to manage inline styles on React elements
 
 **Public API**
 * https://apilist.fun/category/big-data API List
