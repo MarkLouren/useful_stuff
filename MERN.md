@@ -70,5 +70,5 @@ module.exports=router
 ```
 app.use('/api/auth', require('./routes/auth.routes'))
 ```
-
+10. Создаем модель пользователя: directory: models
 
