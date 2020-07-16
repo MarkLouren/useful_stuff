@@ -57,4 +57,18 @@ start()
 app.listen(PORT, ()=>console.log(`App has been started on port ${PORT} `))
 
 ```
-check if everything is ok: npm start
+*check if everything is ok: npm start
+
+8) create a directory "routes" => file: auth.routes.js - initial config:
+
+```
+const {Router} =require('express')
+const router=Router()
+module.exports=router
+```
+9) add in app.js:
+```
+app.use('/api/auth', require('./routes/auth.routes'))
+```
+
+
