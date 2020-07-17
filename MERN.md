@@ -305,12 +305,83 @@ export default App;
 ```
 
 21) Пока работаем над страницами - компонтентами реакта:
-- AuthPage.js
+**AuthPage.js**
 ```
+import React, {useState} from 'react'
+import {useHttp} from "../hooks/http.hook"; //custom hook!
+
+export const AuthPage=()=>{
+    const {loading, request}=useHttp()
+
+    const [form, setForm]= useState({
+        email:'',
+        password:''
+    })
+    //обработка изменяющихся параметров в форме через Хук!
+    const changeHandler = event => {
+        setForm({...form, [event.target.name]:event.target.value})
+    }
+    //отправка запроса на Сервер через хук:
+ const registerHandler = async()=>{
+        try{
+            const data = await request('/api/auth/register', 'POST', {...form})
+            console.log('Data', data)
+
+        } catch(e){}
+ }
+
+
+    return(
+        <div className="row">
+            <div className="col s6 offset-s3">
+                <h1>Сократи Ссылку</h1>
+
+                <div className="card blue darken-1">
+                    <div className="card-content white-text">
+                        <span className="card-title">Авторизация</span>
+
+                        <div className="input-field">
+                            <input placeholder="Введите Емейл"
+                                   id="email"
+                                   type="text"
+                                   name="email"
+                                   className="validate"
+                                   onChange={changeHandler}/>
+                            <label htmlFor="email">Email</label>
+                        </div>
+
+                        <div className="input-field">
+                            <input placeholder="Введите пароль"
+                                   id="password"
+                                   type="text"
+                                   name="password"
+                                   className="validate"
+                                   onChange={changeHandler}/>
+                            <label htmlFor="password">Password</label>
+                        </div>
+
+                    </div>
+
+                    <div className="card-action">
+                        <button className="btn yellow darken-4"
+                                style={{marginRight: 10}}
+                                disabled={loading}
+                                onClick={()=>{}}
+                        >Войти</button>
+                        <button className="btn grey"
+                                onClick={registerHandler}
+                                disabled={loading}
+                        >Регистрация</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
 ```
 
 ***Внимание!***
-<strong>Первое</strong>
+<p><strong>Первое</strong></p>
 <p>В файле выше используется custom hook для отправки запросов на сервер.
 Делается в отдельном файле => new directory: <strong>hooks=> new file: http.hook.js </strong></p>
 
@@ -352,8 +423,11 @@ const [loading, setLoading]=useState(false) //проверка идет ли з�
 
 }
 ```
- <strong>Второе</strong>
-Мы используем Proxy для автоматического перевода урлов с порта 3000 на 5000, для этого:
+<p> <strong>Второе</strong></p>
+Мы используем Proxy для автоматического перевода урлов с порта 3000 на 5000, для этого в Front: package.json добавлям:
+```
+ "proxy": "http://localhost:5000",  -все запросы с фронта мы перенаправляем на сервер
+```
 
 
 Нам нужно понять авторизованный ли пользователь и в зависимости от его Авторизации -показывать те или иные сылки
