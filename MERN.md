@@ -1,3 +1,5 @@
+video: https://www.youtube.com/watch?v=ivDjWYcKDZI&list=WL&index=11&t=0s
+
 1) init a project:
 npm init ("main": "app.js",)
 
@@ -70,5 +72,25 @@ module.exports=router
 ```
 app.use('/api/auth', require('./routes/auth.routes'))
 ```
-10. Создаем модель пользователя: directory: models
+10) Создаем модель пользователя: directory: models=> file: Users.js-> in file:
+```
+const {Schema, model, Types} = require('mongoose')
+
+//fields for User:
+const schema = new Schema({
+email:{type:String, required:true, unique:true},
+password: {type:String, required:true},
+    links:[{type:Types.ObjectId, ref:'Link'}]  //ref -  к какой коллекции привязываемся?
+})
+module.exports=model('User', schema)
+```
+11) Подключаем bcrypt для шифрования паролей: https://www.npmjs.com/package/bcryptjs
+```
+npm i bcryptjs
+```
+
+12) Обновление файла auth.routes.js -> добавление логики регистрации:
+```
+
+```
 
