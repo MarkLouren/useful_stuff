@@ -10,6 +10,7 @@ video: https://www.youtube.com/watch?v=ivDjWYcKDZI&list=WL&index=11&t=0s
 </ul>
 
 ===================
+**Project Workflow**
 
 1) init a project:
 npm init ("main": "app.js",)
@@ -303,11 +304,56 @@ function App() {
 export default App;
 ```
 
-21) Пока работаем над страницами- компонтентами реакта:
+21) Пока работаем над страницами - компонтентами реакта:
 - AuthPage.js
 ```
 ```
 
+***Внимание!***
+<strong>Первое</strong>
+<p>В файле выше используется custom hook для отправки запросов на сервер.
+Делается в отдельном файле => new directory: <strong>hooks=> new file: http.hook.js </strong></p>
+
+```
+//используем нативный fetch - должен взаимодействовать с сервером
+import {useState, useCallback} from 'react'
+
+export const useHttp=()=>{
+const [loading, setLoading]=useState(false) //проверка идет ли загрузка на сервак или нет
+
+ const [error, setError] = useState(null)
+
+//useCallback используется чтобы Реакт не уходил в рекурсию.
+
+    const request = useCallback(async (url, method='GET', body=null, headers={})=>{
+ setLoading(true)
+        try {
+    const response= await fetch(url, {method, body, headers})
+    //получили ответ - обрабатываем его:
+     const data = await response.json()
+         // ок- это глобальный метод для response
+     if (!response.ok){
+         throw new Error(data.message ||'Что-то пошло не так') //message определен на бекенде
+     }
+            setLoading(false)
+     return data
+
+ } catch(e){
+            setLoading(false)
+            setError(e.message)
+            throw e
+
+ }
+    },[])
+    //чистит ошибки
+    const clearError =() => setError(null)
+
+    return {loading, request, error, clearError}
+
+}
+```
+ <strong>Второе</strong>
+Мы используем Proxy для автоматического перевода урлов с порта 3000 на 5000, для этого:
 
 
 Нам нужно понять авторизованный ли пользователь и в зависимости от его Авторизации -показывать те или иные сылки
