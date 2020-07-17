@@ -91,7 +91,7 @@ npm i express-validator
 npm i jsonwebtoken
 ```
 
-12) Обновление файла auth.routes.js -> добавление логики регистрации и валидации данных + добавление логики логинизации (валидация, jwt)
+12) Обновление файла auth.routes.js -> добавление логики регистрации и валидации данных + добавление логики логинизации (валидация, jwt) [JWT]
 ```
 const {Router} =require('express')
 const bcrypt = require('bcryptjs')
@@ -189,6 +189,7 @@ npx create-react-app client   - cоздаем реакт app в папке clien
 cd client - переходим  в client
 rm -rf node_modules/ - удаляем модули
 rm -rf .git - удаляем git
+npm i -  уставлливаем зависимости что есть в  package.json
 
 ```
 =>оставляем чистый react app 
@@ -204,4 +205,12 @@ function App() {
 }
 export default App;
 ```
-
+16) Back -настраиваем, чтобы сервер и фронт запускались одновременно. Для этого в package.json (Back) ( команда: <strong>npm run dev</strong>)
+```
+ "scripts": {
+    "start": "node app.js",
+    "server": "nodemon app.js",
+    "client": "npm run start --prefix client",
+    "dev": "concurrently  \"npm run server\" \"npm run client\" "
+  },
+``
