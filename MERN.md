@@ -274,6 +274,29 @@ export const useRoutes = (isAuthenticated)=>{
 }
 
 ```
+20) Добавляем роуты в FRONT: app.js <strong>[Пока авторизация false]</strong>
+```
+import React from 'react'
+import {BrowserRouter as Router} from 'react-router-dom'
+import 'materialize-css'
+import {useRoutes} from './routes'
+
+function App() {
+  const routes = useRoutes(false)
+  return (
+      <Router>
+  <div className="container">{routes}</div>
+      </Router>
+  );
+}
+export default App;
+```
+
+21) Пока работаем над страницами- компонтентами реакта:
+- AuthPage.js
+```
+```
 
 
-20) Нам нужно понять авторизованный ли пользователь и в зависимости от его Авторизации -показывать те или иные сылки:
+
+Нам нужно понять авторизованный ли пользователь и в зависимости от его Авторизации -показывать те или иные сылки
