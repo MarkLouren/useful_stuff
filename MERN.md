@@ -213,4 +213,67 @@ export default App;
     "client": "npm run start --prefix client",
     "dev": "concurrently  \"npm run server\" \"npm run client\" "
   },
-``
+```
+17) Front: начинаем работать над клиентом. Установим стили с библиотеки:
+```
+npm install materialize-css@next
+```
+Добавляем в проект => app.js:
+```
+import 'materialize-css'
+```
+index.css
+```
+@import "~materialize-css/dist/css/materialize.min.css";
+```
+18) Front: Cоздаем Компоненты Реакта: 
+в папке src => new folder: pages - add file AuthPage.js (blank template)- react APP components=>
+```
+import React from 'react'
+export const AuthPage=()=>{
+    return(
+        <div>
+            <h1>Auth Page</h1>
+        </div>
+    )
+}
+```
+Other new Files: LinksPage.js, CreatePage.js, DetailPage - с тем же  blank template
+
+19)  Front: Работа с Router:
+```
+npm i react-router-dom
+```
+cоздаем file: routes.js  <strong>[AUTH есть]</strong>
+```
+import React from 'react'
+import {Switch, Route, Redirect} from 'react-router-dom'
+import {LinksPage} from './pages/LinksPage'
+import {CreatePage} from "./pages/CreatePage";
+import {DetailPage} from "./pages/DetailPage";
+import {AuthPage} from "./pages/AuthPage";
+
+export const useRoutes = (isAuthenticated)=>{
+    if (isAuthenticated) {
+        return (
+            <Switch>
+                <Route path="/links" exact><LinksPage/></Route>
+                <Route path="/create" exact><CreatePage/></Route>
+                <Route path="/detail/:id"><DetailPage/></Route>
+                <Redirect to="/create"/>
+            </Switch>
+        )
+    }
+    return (
+        <Switch>
+            <Route path="/" exact><AuthPage/></Route>
+            <Redirect to="/" />
+        </Switch>
+    )
+
+}
+
+```
+
+
+20) Нам нужно понять авторизованный ли пользователь и в зависимости от его Авторизации -показывать те или иные сылки:
