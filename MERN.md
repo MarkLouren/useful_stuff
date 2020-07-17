@@ -1,5 +1,16 @@
 video: https://www.youtube.com/watch?v=ivDjWYcKDZI&list=WL&index=11&t=0s
 
+**AUTH**
+===================
+<ul>
+  <li>Back: App.js при регистрации юзера - генерим ему JWT token</li>
+   <li></li>
+   <li>Front: В routes.js создаем функцию и как аргумент передаем Auth true или False - В зависимости от этого показываем роуты</li>
+   <li></li>
+</ul>
+
+===================
+
 1) init a project:
 npm init ("main": "app.js",)
 
