@@ -5,10 +5,9 @@ video: https://www.youtube.com/watch?v=ivDjWYcKDZI&list=WL&index=11&t=0s
 <ul>
   <li>1. Back: App.js при логинизации юзера - генерим ему JWT token- и отправляем на front JWT токен и userId=>  res.json({token, userId:user.id})</li>
    <li>2. Front: AuthPage.js функция loginHandler - отправляет POST запрос с данными пользователя и получает ответ его userId(5f12bd1b4818b928d3583e62) и JWT Token</li> 
-  <li>3. Front: Создаем  сustom hook: auth.hook.js (p.22) - F:useAuth который сохраняет (login)/удаляет(logout) jwt token, userId В local state и Local Storage </li>
-  
-  <li>4. Используем этот Хук в Front App.js (p.23) Тянем с него данные (jwtToken, userId, login, logout) </li>
-  <li>5. Используем Context чтобы передавать эти данные всем компонентам в приложении (p.24) </li>
+  <li>3. Front: Создаем  сustom hook: auth.hook.js (p.22) - F:useAuth который сохраняет (login)/удаляет(logout) jwt token, userId В local state и Local Storage</li>
+  <li>4. Создаем AuthContext чтобы передавать данные c auth.hook.js всем компонентам в приложении (p.24) </li>
+    <li>5.Используем этот Хук в Front App.js (p.23) Тянем с него данные (jwtToken, userId, login, logout) и передаем данные с него в AuthContext.Provider(p.25) (обарчиваем приложение) После чего всего все данные с него доступны каждому компоненту в приложении </li>
    <li></li>
     <li></li>
    <li>Front: В routes.js создаем функцию и как аргумент передаем Auth true или False - В зависимости от этого показываем роуты</li>
@@ -406,7 +405,8 @@ export const AuthPage=()=>{
 }
 ```
 
-21) - 2***Внимание!*** 
+21) - 2 ***Внимание!*** 
+
 <p><strong>HTTP.HOOKS.JS</strong></p>
 <p>В файле выше используется custom hook для отправки запросов на сервер.
 Делается в отдельном файле => new directory: <strong>hooks=> new file: http.hook.js </strong></p>
@@ -465,7 +465,7 @@ const [loading, setLoading]=useState(false) //проверка идет ли з�
 ```
 // Чтобы считавало правильно request body
 app.use(express.json({extended:true}))  
-//теперь body будет как пусой обьект {object, object}
+//теперь body будет как пустой обьект {object, object}- фиксится в http.hooks нужно указать что это json object.
 
 ```
 21) - 5  <p><strong>MESSAGE.HOOK.JS</strong></p>
@@ -486,7 +486,7 @@ return useCallback( (text)=>{
 ```
 22) На Front (клиенте) Создаем Авторизацию по JWT токену. На данном этапе нам при логинизации с бека приходят userId и JWT. <strong>[AUTH]</strong>
 <p>При авторизации нам нужно сохранить токен в Local Storage</p>
-<p>Front: Создаем custom hook: <strong>hook->auth.hook.js</strong>Работает исключительо над авторизацией человека в систему</p>
+<p>Front: Создаем custom hook: <strong>hook->auth.hook.js</strong> Работает исключительо над авторизацией человека в систему</p>
 
 ```
 import {useState, useCallback, useEffect} from 'react'
@@ -501,7 +501,7 @@ export const useAuth =()=>{
     const login = useCallback((jwtToken, id)=>{
         setToken(jwtToken)
         setUserId(id)
-        localStorage.setItem(storageName, JSON.stringify({userId, token}))
+        localStorage.setItem(storageName, JSON.stringify({userId:id, token:jwtToken}))
     },[])
 
     const logout = useCallback(()=>{
@@ -529,10 +529,48 @@ export const useAuth =()=>{
 }
 ```
 
-23) Обновляем на FRONT APP.js - добавляем Auth hook <b>[AUTH]</b>:
-```
+23) Обновляем на FRONT APP.js - добавляем Auth hook <b>[AUTH]</b> и оборачиваем приложение в контекст AuthContext (p.24):
 
 ```
+import React from 'react'
+import {BrowserRouter as Router} from 'react-router-dom'
+import {useRoutes} from './routes'
+import {useAuth} from "./hooks/auth.hook";
+import 'materialize-css'
+import {AuthContext} from "./context/AuthContext";
+
+function App() {
+    const {token, login, logout, userId} = useAuth()
+    const isAuthenticated = !!token  //!! перевод в boolean true or false -  если токен есть то true
+  const routes = useRoutes(isAuthenticated)  //true or false для передачи соответствующих роутов
+  return (
+      <AuthContext.Provider value={{token, login, logout, userId, isAuthenticated}}>
+      <Router>
+  <div className="container">{routes}</div>
+      </Router>
+      </AuthContext.Provider>
+  );
+}
+export default App;
+
+```
+
 24) Мы хотим через контекст передавать все данные по token, userId всему нашему приложению. <b>[AUTH]</b>:
-Front=>src=>new folder:context=> Filer: AuthContext.js
+Front=>src=>new folder:context=> File: <b>AuthContext.js</b>
+
+```
+import {createContext} from 'react'
+
+function noop(){}
+
+export const AuthContext = createContext( {
+    token:null,
+    userId:null,
+    login:noop,
+    logout:noop,
+    isAuthenticated:false
+
+})
+
+```
 
