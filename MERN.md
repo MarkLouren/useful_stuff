@@ -10,8 +10,11 @@ video: https://www.youtube.com/watch?v=ivDjWYcKDZI&list=WL&index=11&t=0s
     <li> Front: 5.Используем auth.hook.js в Front App.js (p.23) Тянем с него данные (jwtToken, userId, login, logout) и передаем данные с него в AuthContext.Provider(p.25) (обарчиваем приложение) После чего всего все данные с него доступны каждому компоненту в приложении. И через Context можно запускать login/logout c auth.hook.js </li>
    <li>6.Front: В AuthPage мы тянем данные с AuthContext (const auth = useContext(AuthContext)) и в момент логинизации обновляем их p.26 => auth.login(data.token, data.userId). По факту мы сохраням данные в Local Storage и в localState Приложения. Одновременно флаг isAuthentificated меняется на true (так как есть токен) </li>
    <li>7. Front: В routes.js создаем функцию и как аргумент передаем isAuthentificated  true или False - В зависимости от этого перенаправляем пользователя на соответствующий роут (p.19)</li>
-   <li>8. Теперь по умолчанию при логинизацию редиректит на ту страницу, которая указана для зарегестрированных пользователей.</li>
-   <li>9. Аналогично в меню указываем  auth.logout() - для выхода с системы с редиректом на главную.</li>
+   <li>8. Front: Теперь по умолчанию при логинизацию редиректит на ту страницу, которая указана для зарегестрированных пользователей.</li>
+   <li>9. Front: Аналогично в меню указываем  auth.logout() - для выхода с системы с редиректом на главную.</li>
+    <li>10.Front:  При отправке запроса на сервер мы в header в поле authentification: добавляем наш токен</li>
+     <li>10. Back: На сервере создаем Middleware (auth.middleware.js) по обработке requests -он получает req. вытягивает от туда данные с authentification - cам токен. Декодирует токен и вытягивает userId: Создает новый метод в обьекте res и сохраняет в нем userId. После чего передает response -  дальше на обработку.</li>
+  <li>10. Back: при обработке роута -вставляем middleware -получаем userId и используем его для работы с базой (обновление/удаление)
 </ul>
 
 ===================
@@ -758,6 +761,91 @@ export default App;
 =========== AUTH Login/Logout DONE Back+Front======
 </br>
 
-28)
+  **Back - разрабатываем функционал приложения:**
+
+28) Back: in folder: models=>new file: <b>Link.js</b> -новая модель для DB по обработке и хранению ссылок:
+
+```
+const {Schema, model, Types} = require('mongoose')
+
+// fields for User:
+const schema = new Schema({
+   from:{type:String, required:true},
+    to: {type:String, required:true,unique:true},
+    code: {type:String, required:true, unique:true},
+    date: {type:Date, default:Date.now},
+    clicks: {type:Number, default: 0},
+    owner:{type:Types.ObjectId, ref:'User'}   //связка с моделью юзера
+})
+module.exports = model('Link', schema)
+
+```
+
+29) !!!! Back: In folder: router=> new file: <b>link.routers.js</b> - роуты будут отвечать за генерацию ссылок: Чтобы получить данные о том, какой пользователь отправляет запрос -можно использовать jwt token данные (Так как в нем зашифрован userId). Для этого в link.routers.js добавляем Middleware, который будет проверять а авторизован ли пользователь? валидный ли у него токен и если да, то получать из него необходимые данные (p.30) <b>[AUTH]</b>. 
+
+```
+
+```
+30 !!!!Back: Cоздаем middleWare для проверки авторизован ли пользователь, валидный ли у него токен и какой у него id. Создаем folder <b> middleware=>file auth.middleware.js </b> <b>[AUTH]</b>: 
+
+```
+const jwt =require('jsonwebtoken') //чтобы раскодировать токен с фронта
+const config=require('config')
+
+// next- pass req to other function
+
+module.exports = (req, res, next) => {
+
+// OPTIONS - REST API method -checks if server is available
+   
+   if (req.method === 'OPTIONS'){
+        return next()
+    }
+    try {
+        // в request в header смотрим поле authorization и данные в нем формата: "Bearer TOKEN"
+        // Парсим данные делаем split() чтобы вытянуть только TOKEN - первый элемент масива
+       
+       const token=req.headers.authorization.split(' ')[1]
+        
+        // если нет токена:
+        if (!token){
+            return res.status(401).json({message:'Нет Авторизации'})
+        }
+        
+        //если токен есть, то его нужно раскодировать - jwt.verify - раскодирует токен
+       
+       const decoded = jwt.verify(token, config.get('jwtSecret'))
+       
+       // ложим его в обьект request для передачи дальше по факту создаем новый метод и засовываем в него данные
+       
+       req.user=decoded
+      
+      //продолжаем выполнение запроса- отправляем его в роуты
+     
+     next()
+
+
+    } catch(e){
+        res.status(401).json({message:'Нет Авторизации-ошибка'})
+
+    }
+}
+
+```
+
+
+
+31) Back: Подключаем link.routers.js в App.js (back)- добавляем:
+
+```
+app.use('/api/link', require('./routes/link.routes')) 
+```
+
+
+
+
+
+
+
 
 
