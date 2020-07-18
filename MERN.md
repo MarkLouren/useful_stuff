@@ -3,8 +3,14 @@ video: https://www.youtube.com/watch?v=ivDjWYcKDZI&list=WL&index=11&t=0s
 **AUTH**
 ===================
 <ul>
-  <li>Back: App.js при регистрации юзера - генерим ему JWT token</li>
+  <li>1. Back: App.js при логинизации юзера - генерим ему JWT token- и отправляем на front JWT токен и userId=>  res.json({token, userId:user.id})</li>
+   <li>2. Front: AuthPage.js функция loginHandler - отправляет POST запрос с данными пользователя и получает ответ его userId(5f12bd1b4818b928d3583e62) и JWT Token</li> 
+  <li>3. Front: Создаем  сustom hook: auth.hook.js (p.22) - F:useAuth который сохраняет (login)/удаляет(logout) jwt token, userId В local state и Local Storage </li>
+  
+  <li>4. Используем этот Хук в Front App.js (p.23) Тянем с него данные (jwtToken, userId, login, logout) </li>
+  <li>5. Используем Context чтобы передавать эти данные всем компонентам в приложении (p.24) </li>
    <li></li>
+    <li></li>
    <li>Front: В routes.js создаем функцию и как аргумент передаем Auth true или False - В зависимости от этого показываем роуты</li>
    <li></li>
 </ul>
@@ -287,6 +293,7 @@ export const useRoutes = (isAuthenticated)=>{
 
 ```
 20) Добавляем роуты в FRONT: app.js <strong>[Пока авторизация false]</strong>
+<p>Нам нужно понять авторизованный ли пользователь и в зависимости от его Авторизации -показывать те или иные сылки</p>
 ```
 import React from 'react'
 import {BrowserRouter as Router} from 'react-router-dom'
@@ -307,16 +314,23 @@ export default App;
 21)-1 Пока работаем над страницами - компонтентами реакта:
 **AuthPage.js**
 ```
-import React, {useState} from 'react'
-import {useHttp} from "../hooks/http.hook"; //custom hook!
+import React, {useState, useEffect} from 'react'
+import {useHttp} from "../hooks/http.hook";
+import {useMessage} from "../hooks/message.hook"; //custom hook!
 
 export const AuthPage=()=>{
-    const {loading, request}=useHttp()
+    const message = useMessage()
+    const {loading, request, error, clearError}=useHttp()
 
     const [form, setForm]= useState({
         email:'',
         password:''
     })
+    //обработка ошибки с http запроса и вывод ее пользователю
+    useEffect(()=>{
+        message(error)  //message - обвертка с хука useMessage
+        clearError() //очистка errors obj
+    },[error, message, clearError])
     //обработка изменяющихся параметров в форме через Хук!
     const changeHandler = event => {
         setForm({...form, [event.target.name]:event.target.value})
@@ -325,10 +339,20 @@ export const AuthPage=()=>{
  const registerHandler = async()=>{
         try{
             const data = await request('/api/auth/register', 'POST', {...form})
-            console.log('Data', data)
+            //popup что пользователь создан
+            message(data.message)
 
         } catch(e){}
  }
+
+    const loginHandler = async()=>{
+        try{
+            const data = await request('/api/auth/login', 'POST', {...form})
+            //popup что пользователь создан
+            message(data.message)
+
+        } catch(e){}
+    }
 
 
     return(
@@ -366,7 +390,7 @@ export const AuthPage=()=>{
                         <button className="btn yellow darken-4"
                                 style={{marginRight: 10}}
                                 disabled={loading}
-                                onClick={()=>{}}
+                                onClick={loginHandler}
                         >Войти</button>
                         <button className="btn grey"
                                 onClick={registerHandler}
@@ -443,7 +467,7 @@ app.use(express.json({extended:true}))
 
 ```
 21)-5 <p><strong>Четвертое: MESSAGE.HOOK.JS</strong></p>
-Обработка ошибок, которые могут быть в запросах и показ их пользователю. В Auth Page это:  .Реализация нового custom hook <strong>hooks=>message.hook.js</strong>
+Обработка ошибок, которые могут быть в запросах и показ их пользователю. В Auth Page это:useMessage().Реализация нового custom hook <strong>hooks=>message.hook.js</strong>
 ```
 import {useCallback} from 'react'
 
@@ -457,7 +481,54 @@ return useCallback( (text)=>{
 },[])
 }
 
+```
+22) На Front (клиенте) Создаем Авторизацию по JWT токену. На данном этапе нам при логинизации с бека приходят userId и JWT. <strong>[AUTH]</strong>
+<p>При авторизации нам нужно сохранить токен в Local Storage</p>
+<p>Front: Создаем custom hook: <strong>hook->auth.hook.js</strong>Работает исключительо над авторизацией человека в систему</p>
+```
+import {useState, useCallback, useEffect} from 'react'
 
+const storageName='userData'
+
+export const useAuth =()=>{
+    const[token, setToken]=useState(null)// отвечает за токен
+    const[userId, setUserId]=useState(null) //отвечает за юзер id
+    const [ready, setReady] = useState(false)
+
+    const login = useCallback((jwtToken, id)=>{
+        setToken(jwtToken)
+        setUserId(id)
+        localStorage.setItem(storageName, JSON.stringify({userId, token}))
+    },[])
+
+    const logout = useCallback(()=>{
+        setToken(null)
+        setUserId(null)
+        localStorage.removeItem(storageName)
+
+    },[])
+
+    // Хотим чтобы когда приложение загружается компонент смотрел есть ли данные в localstorage. Если есть, то чтобы сам автоматически
+    //  записал в локальные состояния
+
+    useEffect( ()=>{
+        const data = JSON.parse(localStorage.getItem(storageName))
+
+        // если data есть и в ней есть токен, то
+        if (data && data.token){
+            //передаем в функцию и обновляем local state
+            login(data.token, data.userId)
+        }
+        setReady(true)
+    }, [login])
+
+    return {login, logout, token, userId, ready}
+}
+```
+23) Обновляем на FRONT APP.js - добавляем Auth hook <strong>[AUTH]</strong>:
 ```
 
-Нам нужно понять авторизованный ли пользователь и в зависимости от его Авторизации -показывать те или иные сылки
+```
+24) Мы хотим через контекст передавать все данные по token, userId всему нашему приложению.
+
+
