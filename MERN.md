@@ -529,6 +529,6 @@ export const useAuth =()=>{
 ```
 
 ```
-24) Мы хотим через контекст передавать все данные по token, userId всему нашему приложению.
-
+24) Мы хотим через контекст передавать все данные по token, userId всему нашему приложению. <strong style="color:red">[AUTH]</strong>:
+Front=>src=>new folder:context=> Filer: AuthContext.js
 
