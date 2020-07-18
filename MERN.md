@@ -11,6 +11,7 @@ video: https://www.youtube.com/watch?v=ivDjWYcKDZI&list=WL&index=11&t=0s
    <li>6.Front: В AuthPage мы тянем данные с AuthContext (const auth = useContext(AuthContext)) и в момент логинизации обновляем их p.26 => auth.login(data.token, data.userId). По факту мы сохраням данные в Local Storage и в localState Приложения. Одновременно флаг isAuthentificated меняется на true (так как есть токен) </li>
    <li>7. Front: В routes.js создаем функцию и как аргумент передаем isAuthentificated  true или False - В зависимости от этого перенаправляем пользователя на соответствующий роут (p.19)</li>
    <li>8. Теперь по умолчанию при логинизацию редиректит на ту страницу, которая указана для зарегестрированных пользователей.</li>
+   <li>9. Аналогично в меню указываем  auth.logout() - для выхода с системы с редиректом на главную.</li>
 </ul>
 
 ===================
@@ -327,15 +328,21 @@ export const AuthPage=()=>{
         password:''
     })
     //обработка ошибки с http запроса и вывод ее пользователю
+    
     useEffect(()=>{
         message(error)  //message - обвертка с хука useMessage
         clearError() //очистка errors obj
     },[error, message, clearError])
-    //обработка изменяющихся параметров в форме через Хук!
+ 
+   
+   //обработка изменяющихся параметров в форме через Хук!
+   
     const changeHandler = event => {
         setForm({...form, [event.target.name]:event.target.value})
     }
-    //отправка запроса на Сервер через хук:
+  
+  //отправка запроса на Сервер через хук:
+  
  const registerHandler = async()=>{
         try{
             const data = await request('/api/auth/register', 'POST', {...form})
@@ -345,7 +352,8 @@ export const AuthPage=()=>{
         } catch(e){}
  }
 
-    const loginHandler = async()=>{
+
+const loginHandler = async()=>{
         try{
             const data = await request('/api/auth/login', 'POST', {...form})
             //popup что пользователь создан
@@ -572,7 +580,7 @@ export const AuthContext = createContext( {
 })
 
 ```
-25) Front: Обновляем AuthPage компонент, добавляем useContext() => useContext(AuthContext) и срабатывание его в момент логинизации.
+25) Front: Обновляем <b>AuthPage</b> компонент, добавляем useContext() => useContext(AuthContext) и срабатывание его в момент логинизации.
 
 ```
 import React, {useState, useEffect, useContext} from 'react'
@@ -596,6 +604,12 @@ export const AuthPage=()=>{
         message(error)  //message - обвертка с хука useMessage
         clearError() //очистка errors obj
     },[error, message, clearError])
+    
+   // M global object from Material Design - сделать активными инпуты -чистка старого текста в полях ) 
+ useEffect(()=>{
+      window.M.updateTextFields()   
+    },[])
+   
    
    //обработка изменяющихся параметров в форме через Хук!
   
@@ -741,6 +755,9 @@ export default App;
 ```
 
 </br>
-============================================= AUTH Login/Logout DONE Back+Front==============================
+=========== AUTH Login/Logout DONE Back+Front======
+</br>
+
+28)
 
 
