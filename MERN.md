@@ -539,7 +539,7 @@ import 'materialize-css'
 import {AuthContext} from "./context/AuthContext";
 
 function App() {
-    const {token, login, logout, userId} = useAuth()
+    const {token, login, logout, userId} = useAuth() //!!! обновляется при каждом рендеринге прилжения
     const isAuthenticated = !!token  //!! перевод в boolean true or false -  если токен есть то true
   const routes = useRoutes(isAuthenticated)  //true or false для передачи соответствующих роутов
   return (
@@ -676,4 +676,71 @@ const registerHandler = async()=>{
 }
 
 ```
-26)
+
+26) Front Создаем компоненты для Application. в src=>new folder components=> new file: <b>Navbar.js</b> Тут же делаем кнопку с <b>Logout</b>
+
+```
+import React, {useContext} from 'react'
+import {NavLink, useHistory} from 'react-router-dom';
+import {AuthContext} from "../context/AuthContext";
+
+const Navbar = () => {
+    const history = useHistory()
+    const auth = useContext(AuthContext)
+
+    const logoutHandler = (event)=>{
+        event.preventDefault()
+        auth.logout()
+        history.push('/')  // делает редирект на главную после логаута
+    }
+    return (
+        <nav>
+            <div className="nav-wrapper blue darken-1" style={{padding: '0 2rem'}}>
+                <span className="brand-logo">Сокращение ссылок</span>
+                <ul id="nav-mobile" className="right hide-on-med-and-down">
+                    <li><NavLink to="/create">Создать</NavLink></li>
+                    <li><NavLink to="/links">Ссылки</NavLink></li>
+                    <li><a href="/" onClick={logoutHandler}>Выйти</a></li>
+                </ul>
+            </div>
+        </nav>
+    )
+}
+export default Navbar
+
+```
+27) Обновляем Front App.js  -  добавляем меню (NavBar):
+
+```
+import React from 'react'
+import {BrowserRouter as Router} from 'react-router-dom'
+import {useRoutes} from './routes'
+import {useAuth} from "./hooks/auth.hook";
+import 'materialize-css'
+import {AuthContext} from "./context/AuthContext";
+import Navbar from "./components/Navbar";
+
+function App() {
+    const {token, login, logout, userId} = useAuth() //обновляется при каждом рендеринге прилжения
+    const isAuthenticated = !!token  //!! перевод в boolean true or false -  если токен есть то true
+  const routes = useRoutes(isAuthenticated)  //true or false для передачи соответствующих роутов
+  return (
+      <AuthContext.Provider value={{token, login, logout, userId, isAuthenticated}}>
+      <Router>
+        
+        {/*если залогинен то дополнительно показываем NavBar*/}
+          {isAuthenticated&&<Navbar/>} 
+          
+  <div className="container">{routes}</div>
+      </Router>
+      </AuthContext.Provider>
+  );
+}
+export default App;
+
+```
+
+</br>
+============================================= AUTH Login/Logout DONE Back+Front==============================
+
+
