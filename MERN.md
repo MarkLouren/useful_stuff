@@ -294,6 +294,7 @@ export const useRoutes = (isAuthenticated)=>{
 ```
 20) Добавляем роуты в FRONT: app.js <strong>[Пока авторизация false]</strong>
 <p>Нам нужно понять авторизованный ли пользователь и в зависимости от его Авторизации -показывать те или иные сылки</p>
+
 ```
 import React from 'react'
 import {BrowserRouter as Router} from 'react-router-dom'
@@ -309,9 +310,10 @@ function App() {
   );
 }
 export default App;
+
 ```
 
-21)-1 Пока работаем над страницами - компонтентами реакта:
+21) - 1 Пока работаем над страницами - компонтентами реакта:
 **AuthPage.js**
 ```
 import React, {useState, useEffect} from 'react'
@@ -404,8 +406,8 @@ export const AuthPage=()=>{
 }
 ```
 
-21)-2***Внимание!***
-<p><strong>Первое: HTTP.HOOKS.JS</strong></p>
+21) - 2***Внимание!*** 
+<p><strong>HTTP.HOOKS.JS</strong></p>
 <p>В файле выше используется custom hook для отправки запросов на сервер.
 Делается в отдельном файле => new directory: <strong>hooks=> new file: http.hook.js </strong></p>
 
@@ -452,12 +454,12 @@ const [loading, setLoading]=useState(false) //проверка идет ли з�
 
 }
 ```
-21)- 3 <p> <strong>Второе: PROXY</strong></p>
+21) - 3 <p> <strong>PROXY</strong></p>
 Мы используем Proxy для автоматического перевода урлов с порта 3000 на 5000, для этого в Front: package.json добавлям:
 ```
  "proxy": "http://localhost:5000",  -все запросы с фронта мы перенаправляем на сервер
 ```
-21)- 4 <p> <strong>Третье: BODY MIDDLEWARE</strong></p>
+21) - 4 <p> <strong>BODY MIDDLEWARE</strong></p>
 
 По умолчаниюю Back Server: node воспрринимает body запросы как стримы с undefined и чтобы коректно считывало, нужно добавить middleware на Back в app.js:
 ```
@@ -466,7 +468,7 @@ app.use(express.json({extended:true}))
 //теперь body будет как пусой обьект {object, object}
 
 ```
-21)-5 <p><strong>Четвертое: MESSAGE.HOOK.JS</strong></p>
+21) - 5  <p><strong>MESSAGE.HOOK.JS</strong></p>
 Обработка ошибок, которые могут быть в запросах и показ их пользователю. В Auth Page это:useMessage().Реализация нового custom hook <strong>hooks=>message.hook.js</strong>
 ```
 import {useCallback} from 'react'
@@ -485,6 +487,7 @@ return useCallback( (text)=>{
 22) На Front (клиенте) Создаем Авторизацию по JWT токену. На данном этапе нам при логинизации с бека приходят userId и JWT. <strong>[AUTH]</strong>
 <p>При авторизации нам нужно сохранить токен в Local Storage</p>
 <p>Front: Создаем custom hook: <strong>hook->auth.hook.js</strong>Работает исключительо над авторизацией человека в систему</p>
+
 ```
 import {useState, useCallback, useEffect} from 'react'
 
@@ -525,6 +528,7 @@ export const useAuth =()=>{
     return {login, logout, token, userId, ready}
 }
 ```
+
 23) Обновляем на FRONT APP.js - добавляем Auth hook <b>[AUTH]</b>:
 ```
 
