@@ -525,10 +525,10 @@ export const useAuth =()=>{
     return {login, logout, token, userId, ready}
 }
 ```
-23) Обновляем на FRONT APP.js - добавляем Auth hook <strong>[AUTH]</strong>:
+23) Обновляем на FRONT APP.js - добавляем Auth hook <b>[AUTH]</b>:
 ```
 
 ```
-24) Мы хотим через контекст передавать все данные по token, userId всему нашему приложению. <strong style="color:red">[AUTH]</strong>:
+24) Мы хотим через контекст передавать все данные по token, userId всему нашему приложению. <b>[AUTH]</b>:
 Front=>src=>new folder:context=> Filer: AuthContext.js
 
