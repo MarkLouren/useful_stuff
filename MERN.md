@@ -6,12 +6,11 @@ video: https://www.youtube.com/watch?v=ivDjWYcKDZI&list=WL&index=11&t=0s
   <li>1. Back: App.js при логинизации юзера - генерим ему JWT token- и отправляем на front JWT токен и userId=>  res.json({token, userId:user.id})</li>
    <li>2. Front: AuthPage.js функция loginHandler - отправляет POST запрос с данными пользователя и получает ответ его userId(5f12bd1b4818b928d3583e62) и JWT Token</li> 
   <li>3. Front: Создаем  сustom hook: auth.hook.js (p.22) - F:useAuth который сохраняет (login)/удаляет(logout) jwt token, userId В local state и Local Storage</li>
-  <li>4. Создаем AuthContext чтобы передавать данные c auth.hook.js всем компонентам в приложении (p.24) </li>
-    <li>5.Используем этот Хук в Front App.js (p.23) Тянем с него данные (jwtToken, userId, login, logout) и передаем данные с него в AuthContext.Provider(p.25) (обарчиваем приложение) После чего всего все данные с него доступны каждому компоненту в приложении </li>
-   <li></li>
-    <li></li>
-   <li>Front: В routes.js создаем функцию и как аргумент передаем Auth true или False - В зависимости от этого показываем роуты</li>
-   <li></li>
+  <li>4.Front: Создаем AuthContext чтобы передавать данные c auth.hook.js всем компонентам в приложении (p.24) </li>
+    <li> Front: 5.Используем auth.hook.js в Front App.js (p.23) Тянем с него данные (jwtToken, userId, login, logout) и передаем данные с него в AuthContext.Provider(p.25) (обарчиваем приложение) После чего всего все данные с него доступны каждому компоненту в приложении. И через Context можно запускать login/logout c auth.hook.js </li>
+   <li>6.Front: В AuthPage мы тянем данные с AuthContext (const auth = useContext(AuthContext)) и в момент логинизации обновляем их p.26 => auth.login(data.token, data.userId). По факту мы сохраням данные в Local Storage и в localState Приложения. Одновременно флаг isAuthentificated меняется на true (так как есть токен) </li>
+   <li>7. Front: В routes.js создаем функцию и как аргумент передаем isAuthentificated  true или False - В зависимости от этого перенаправляем пользователя на соответствующий роут (p.19)</li>
+   <li>8. Теперь по умолчанию при логинизацию редиректит на ту страницу, которая указана для зарегестрированных пользователей.</li>
 </ul>
 
 ===================
@@ -573,4 +572,108 @@ export const AuthContext = createContext( {
 })
 
 ```
+25) Front: Обновляем AuthPage компонент, добавляем useContext() => useContext(AuthContext) и срабатывание его в момент логинизации.
 
+```
+import React, {useState, useEffect, useContext} from 'react'
+import {useHttp} from "../hooks/http.hook";
+import {useMessage} from "../hooks/message.hook"; //custom hook!
+import {AuthContext} from '../context/AuthContext'
+
+export const AuthPage=()=>{
+    const auth = useContext(AuthContext)
+    const message = useMessage()
+    const {loading, request, error, clearError}=useHttp()
+
+    const [form, setForm]= useState({
+        email:'',
+        password:''
+    })
+   
+   //обработка ошибки с http запроса и вывод ее пользователю
+   
+   useEffect(()=>{
+        message(error)  //message - обвертка с хука useMessage
+        clearError() //очистка errors obj
+    },[error, message, clearError])
+   
+   //обработка изменяющихся параметров в форме через Хук!
+  
+  const changeHandler = event => {
+        setForm({...form, [event.target.name]:event.target.value})
+    }
+  
+  //отправка запроса на Сервер через хук:
+
+const registerHandler = async()=>{
+        try{
+            const data = await request('/api/auth/register', 'POST', {...form})
+            //popup что пользователь создан
+            message(data.message)
+
+        } catch(e){}
+ }
+
+    const loginHandler = async()=>{
+        try{
+            const data = await request('/api/auth/login', 'POST', {...form})
+         
+         // Используем метод login с AuthContext -чтобы данные с запроса закинуть в контекст
+            // login в AuthContext мы получаем в App.js c auth.hook.js
+          
+          auth.login(data.token, data.userId)
+
+        } catch(e){}
+    }
+
+
+    return(
+        <div className="row">
+            <div className="col s6 offset-s3">
+                <h1>Сократи Ссылку</h1>
+
+                <div className="card blue darken-1">
+                    <div className="card-content white-text">
+                        <span className="card-title">Авторизация</span>
+
+                        <div className="input-field">
+                            <input placeholder="Введите Емейл"
+                                   id="email"
+                                   type="text"
+                                   name="email"
+                                   className="validate"
+                                   onChange={changeHandler}/>
+                            <label htmlFor="email">Email</label>
+                        </div>
+
+                        <div className="input-field">
+                            <input placeholder="Введите пароль"
+                                   id="password"
+                                   type="text"
+                                   name="password"
+                                   className="validate"
+                                   onChange={changeHandler}/>
+                            <label htmlFor="password">Password</label>
+                        </div>
+
+                    </div>
+
+                    <div className="card-action">
+                        <button className="btn yellow darken-4"
+                                style={{marginRight: 10}}
+                                disabled={loading}
+                                onClick={loginHandler}
+                        >Войти</button>
+                        <button className="btn grey"
+                                onClick={registerHandler}
+                                disabled={loading}
+                        >Регистрация</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    )
+}
+
+```
+26)
