@@ -381,7 +381,7 @@ export const AuthPage=()=>{
 ```
 
 21)-2***Внимание!***
-<p><strong>Первое</strong></p>
+<p><strong>Первое: HTTP.HOOKS.JS</strong></p>
 <p>В файле выше используется custom hook для отправки запросов на сервер.
 Делается в отдельном файле => new directory: <strong>hooks=> new file: http.hook.js </strong></p>
 
@@ -422,18 +422,18 @@ const [loading, setLoading]=useState(false) //проверка идет ли з�
  }
     },[])
     //чистит ошибки
-    const clearError =() => setError(null)
+    const clearError = useCallback(()=>{setError(null)},[])
 
     return {loading, request, error, clearError}
 
 }
 ```
-21)- 3 <p> <strong>Второе</strong></p>
+21)- 3 <p> <strong>Второе: PROXY</strong></p>
 Мы используем Proxy для автоматического перевода урлов с порта 3000 на 5000, для этого в Front: package.json добавлям:
 ```
  "proxy": "http://localhost:5000",  -все запросы с фронта мы перенаправляем на сервер
 ```
-21)- 4 <p> <strong>Третье</strong></p>
+21)- 4 <p> <strong>Третье: BODY MIDDLEWARE</strong></p>
 
 По умолчаниюю Back Server: node воспрринимает body запросы как стримы с undefined и чтобы коректно считывало, нужно добавить middleware на Back в app.js:
 ```
@@ -442,7 +442,22 @@ app.use(express.json({extended:true}))
 //теперь body будет как пусой обьект {object, object}
 
 ```
-и дорабатываем http.hook.js на  клиенте:
+21)-5 <p><strong>Четвертое: MESSAGE.HOOK.JS</strong></p>
+Обработка ошибок, которые могут быть в запросах и показ их пользователю. В Auth Page это:  .Реализация нового custom hook <strong>hooks=>message.hook.js</strong>
+```
+import {useCallback} from 'react'
 
+//useCallback - для того, чтобы реакт не входил в цикличный рендеринг
+
+export const useMessage = ()=>{
+return useCallback( (text)=>{
+    if (window.M&&text){
+        window.M.toast({html:text})     //M-global object from Materialize lib. toast -method (popup)
+    }
+},[])
+}
+
+
+```
 
 Нам нужно понять авторизованный ли пользователь и в зависимости от его Авторизации -показывать те или иные сылки
