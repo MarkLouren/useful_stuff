@@ -7,14 +7,16 @@ video: https://www.youtube.com/watch?v=ivDjWYcKDZI&list=WL&index=11&t=0s
    <li>2. Front: AuthPage.js функция loginHandler - отправляет POST запрос с данными пользователя и получает ответ его userId(5f12bd1b4818b928d3583e62) и JWT Token</li> 
   <li>3. Front: Создаем  сustom hook: auth.hook.js (p.22) - F:useAuth который сохраняет (login)/удаляет(logout) jwt token, userId В local state и Local Storage</li>
   <li>4.Front: Создаем AuthContext чтобы передавать данные c auth.hook.js всем компонентам в приложении (p.24) </li>
-    <li> Front: 5.Используем auth.hook.js в Front App.js (p.23) Тянем с него данные (jwtToken, userId, login, logout) и передаем данные с него в AuthContext.Provider(p.25) (обарчиваем приложение) После чего всего все данные с него доступны каждому компоненту в приложении. И через Context можно запускать login/logout c auth.hook.js </li>
+    <li> 5.Front: Используем auth.hook.js в Front App.js (p.23) Тянем с него данные (jwtToken, userId, login, logout) и передаем данные с него в AuthContext.Provider(p.25) (обарчиваем приложение) После чего всего все данные с него доступны каждому компоненту в приложении. И через Context можно запускать login/logout c auth.hook.js </li>
    <li>6.Front: В AuthPage мы тянем данные с AuthContext (const auth = useContext(AuthContext)) и в момент логинизации обновляем их p.26 => auth.login(data.token, data.userId). По факту мы сохраням данные в Local Storage и в localState Приложения. Одновременно флаг isAuthentificated меняется на true (так как есть токен) </li>
    <li>7. Front: В routes.js создаем функцию и как аргумент передаем isAuthentificated  true или False - В зависимости от этого перенаправляем пользователя на соответствующий роут (p.19)</li>
    <li>8. Front: Теперь по умолчанию при логинизацию редиректит на ту страницу, которая указана для зарегестрированных пользователей.</li>
    <li>9. Front: Аналогично в меню указываем  auth.logout() - для выхода с системы с редиректом на главную.</li>
     <li>10.Front:  При отправке запроса на сервер мы в header в поле authentification: добавляем наш токен</li>
-     <li>10. Back: На сервере создаем Middleware (auth.middleware.js) по обработке requests -он получает req. вытягивает от туда данные с authentification - cам токен. Декодирует токен и вытягивает userId: Создает новый метод в обьекте res и сохраняет в нем userId. После чего передает response -  дальше на обработку.</li>
-  <li>10. Back: при обработке роута -вставляем middleware -получаем userId и используем его для работы с базой (обновление/удаление)
+     <li>11. Back: На сервере создаем Middleware (auth.middleware.js) по обработке requests -он получает req. вытягивает от туда данные с authentification - cам токен. Декодирует токен и вытягивает userId: Создает новый метод в обьекте res и сохраняет в нем userId. После чего передает response -  дальше на обработку.</li>
+  <li>12. Back: при обработке роута -вставляем middleware -получаем userId и используем его для работы с базой (обновление/удаление) -пример link.routers.js (p.29)
+  </li>
+  <li></li>
 </ul>
 
 ===================
@@ -761,7 +763,7 @@ export default App;
 =========== AUTH Login/Logout DONE Back+Front======
 </br>
 
-  **Back - разрабатываем функционал приложения:**
+  **Back - разрабатываем функционал приложения -обработка API запросов:**
 
 28) Back: in folder: models=>new file: <b>Link.js</b> -новая модель для DB по обработке и хранению ссылок:
 
@@ -781,11 +783,105 @@ module.exports = model('Link', schema)
 
 ```
 
-29) !!!! Back: In folder: router=> new file: <b>link.routers.js</b> - роуты будут отвечать за генерацию ссылок: Чтобы получить данные о том, какой пользователь отправляет запрос -можно использовать jwt token данные (Так как в нем зашифрован userId). Для этого в link.routers.js добавляем Middleware, который будет проверять а авторизован ли пользователь? валидный ли у него токен и если да, то получать из него необходимые данные (p.30) <b>[AUTH]</b>. 
+29) -1 !!!! Back: In folder: router=> new file: <b>link.routers.js</b> - роуты будут отвечать за генерацию ссылок: Чтобы получить данные о том, какой пользователь отправляет запрос -можно использовать jwt token данные (Так как в нем зашифрован userId). Для этого в link.routers.js добавляем Middleware, который будет проверять а авторизован ли пользователь? валидный ли у него токен и если да, то получать из него необходимые данные (p.30) <b>[AUTH]</b>. 
 
 ```
+const {Router} = require('express')
+const config = require('config')
+const shortid =require('shortid')
+const Link = require('../models/Link')
+const auth=require('../middleware/auth.middleware')
+const router = Router()
+
+//генерация ссылки
+
+router.post('/generate', auth, async(req,res)=>{
+
+    try{
+        //для вставки в урл новой сокращенной ссылки:
+        
+        const baseUrl= config.get('baseUrl')
+       
+       // с client мы будем получать обьект  "from" -откуда делаем ссылку:
+       
+       const {from} = req.body
+       
+       // генерим короткую ссылку:
+       
+       const code = shortid.generate()
+     
+     // проверяем есть ли уже такая ссылка с from
+     
+     const existing = await Link.findOne({from})
+    
+    //если есть то просто ее отправляем
+    
+    if (existing) {
+            return res.json({link:existing})
+        }
+     
+     // формируем сокраещенную ссылку:
+     
+     const to = baseUrl+'/t/'+code
+     
+     // готовим новый обьект ссылки чтобы отправить в базу
+     
+     //  owner:req.user.userId - тянется с auth middleware -описание ниже
+     
+     const link = new Link({
+            code, to, from,  owner:req.user.userId
+        })
+     
+     //  cохраняем новую ссылку в базу:
+         await link.save()
+        await res.status(201).json({link})
+
+
+    } catch(e){
+        await res.status(500).json({message:'Что-то пошло не так, попробуйте снова [link-routes Error-1]'})
+    }
+
+})
+
+//получение всех ссылок
+// auth  - это middleware который обрабатывает jwt и передает данные по юзеру в req.user -для использования дальше
+router.get('/', auth, async(req,res)=>{
+    try{
+        //ищем все ссылки
+        
+      const links=await Link.find({owner:req.user.userId})
+      // user - был создан в middleware и добавлен к обьекту req как метод и туда закинут обьект {userId:user.id}
+       
+       await res.json(links) // отправляем данные на фронт
+
+    } catch(e){
+        await res.status(500).json({message:'Что-то пошло не так, попробуйте снова [link-routes Error-2]'})
+    }
+
+
+})
+//получение ссылки по id
+router.get('/:id', auth, async(req,res)=>{
+    try{
+        const link=await Link.findById(req.params.id)
+       
+        await res.json(link) // отправляем данные на фронт
+
+    } catch(e){
+        await res.status(500).json({message:'Что-то пошло не так, попробуйте снова [link-routes Error-3]'})
+    }
+
+
+})
+module.exports=router
 
 ```
+29) - 2 Back: устанавливаем библиотеку по сокращению ссылок (используется в link.routers.js)
+
+```
+npm short id 
+```
+
 30 !!!!Back: Cоздаем middleWare для проверки авторизован ли пользователь, валидный ли у него токен и какой у него id. Создаем folder <b> middleware=>file auth.middleware.js </b> <b>[AUTH]</b>: 
 
 ```
@@ -833,15 +929,13 @@ module.exports = (req, res, next) => {
 
 ```
 
-
-
 31) Back: Подключаем link.routers.js в App.js (back)- добавляем:
 
 ```
 app.use('/api/link', require('./routes/link.routes')) 
 ```
 
-
+  **FRONT - разрабатываем Компоненты и отправка Запросов на сервер :**
 
 
 
