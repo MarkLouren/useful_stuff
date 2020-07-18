@@ -12,11 +12,11 @@ video: https://www.youtube.com/watch?v=ivDjWYcKDZI&list=WL&index=11&t=0s
    <li>7. Front: В routes.js создаем функцию и как аргумент передаем isAuthentificated  true или False - В зависимости от этого перенаправляем пользователя на соответствующий роут (p.19)</li>
    <li>8. Front: Теперь по умолчанию при логинизацию редиректит на ту страницу, которая указана для зарегестрированных пользователей.</li>
    <li>9. Front: Аналогично в меню указываем  auth.logout() - для выхода с системы с редиректом на главную.</li>
-    <li>10.Front:  При отправке запроса на сервер мы в header в поле authentification: добавляем наш токен</li>
+    <li>10. Front:  При отправке запроса на сервер мы в header в поле authentification: добавляем наш токен</li>
      <li>11. Back: На сервере создаем Middleware (auth.middleware.js) по обработке requests -он получает req. вытягивает от туда данные с authentification - cам токен. Декодирует токен и вытягивает userId: Создает новый метод в обьекте res и сохраняет в нем userId. После чего передает response -  дальше на обработку.</li>
   <li>12. Back: при обработке роута -вставляем middleware -получаем userId и используем его для работы с базой (обновление/удаление) -пример link.routers.js (p.29)
   </li>
-  <li></li>
+  <li> 13. Front: при отправке запроса на сервер необходимо в заголовок header добавить поле  Authorization: `Bearer ${auth.token}` (p.32) -по которому будет происходить аутентификация пользователя на серваке </li>
 </ul>
 
 ===================
@@ -383,6 +383,7 @@ const loginHandler = async()=>{
                                    type="text"
                                    name="email"
                                    className="validate"
+                                   value={form.email}
                                    onChange={changeHandler}/>
                             <label htmlFor="email">Email</label>
                         </div>
@@ -393,6 +394,7 @@ const loginHandler = async()=>{
                                    type="text"
                                    name="password"
                                    className="validate"
+                                   value={form.password}
                                    onChange={changeHandler}/>
                             <label htmlFor="password">Password</label>
                         </div>
@@ -834,8 +836,10 @@ router.post('/generate', auth, async(req,res)=>{
      
      //  cохраняем новую ссылку в базу:
          await link.save()
-        await res.status(201).json({link})
+         
+     // отправляем весь обьект  link на фронт
 
+        await res.status(201).json({link}) 
 
     } catch(e){
         await res.status(500).json({message:'Что-то пошло не так, попробуйте снова [link-routes Error-1]'})
@@ -935,10 +939,68 @@ module.exports = (req, res, next) => {
 app.use('/api/link', require('./routes/link.routes')) 
 ```
 
-  **FRONT - разрабатываем Компоненты и отправка Запросов на сервер :**
+  **FRONT - разрабатываем Компоненты и отправка Запросов на сервер:**
 
 
+32) Верстка и разработа функционала для внутренних страниц компонентов. Начнем с pages=>CreatePage.js
 
+```
+import React, {useEffect, useState, useContext, } from 'react'
+
+import {useHttp} from "../hooks/http.hook";
+import AuthContext from '../context/AuthContext';
+import { useHistory } from 'react-router-dom';
+
+export const CreatePage =()=>{
+    const history=useHistory()
+
+    const auth=useContext(AuthContext) // вытягиваем данные по токену с контекста
+
+    const {request}=useHttp()
+    const  [link, setLink] =useState('');
+
+    useEffect( ()=>{window.M.updateTextFields()},[])
+
+    const pressHandler = async (event)=>{
+        // проверяем что нажали enter
+        if (event.key==='Enter'){
+            try {
+                // формируем link
+                const data = await request ('/api/link/generate', 'POST', {from:link}, {
+                    Authorization: `Bearer ${auth.token}` // передаем данные по токену в header
+                })  // параметры передачи описаны в хуке useHttp -так как request вытянут от туда
+                history.push(`/detail/${data.link._id}`) //redirect to the detail link page
+
+            } catch (e){
+
+            }
+
+        }
+    }
+
+
+    return (
+        <div className="row">
+            <div className="cpl s8 offset-s2"  style={{paddingTop: '2rem'}}>
+
+                <div className="input-field">
+                    <input placeholder="Вставьте ссылку"
+                           id="link"
+                           type="text"
+                           value={link}
+                           onChange={e=>{setLink(e.target.value)}}
+                           onKeyPress ={pressHandler} //если нажимем Enter то формируем ссылку
+                    />
+                    <label htmlFor="link">Введите Ссылку</label>
+                </div>
+
+            </div>
+
+        </div>
+    )
+}
+
+```
 
 
 
