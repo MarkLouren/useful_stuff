@@ -17,6 +17,7 @@ video: https://www.youtube.com/watch?v=ivDjWYcKDZI&list=WL&index=11&t=0s
   <li>12. Back: при обработке роута -вставляем middleware -получаем userId и используем его для работы с базой (обновление/удаление) -пример link.routers.js (p.29)
   </li>
   <li> 13. Front: при отправке запроса на сервер необходимо в заголовок header добавить поле  Authorization: `Bearer ${auth.token}` (p.32) -по которому будет происходить аутентификация пользователя на серваке </li>
+    <li> 14. Front: Обновить App.js -чтобы проверяло, загрузились ли Auth данные в прилжение. Если еще нет то показывать Loader а не компоненты (p.35). Иначе будут проблемы с роутами и отображением компонентов - будет показывать как для не авторизованного юзера</li>
 </ul>
 
 ===================
@@ -510,7 +511,7 @@ const storageName='userData'
 export const useAuth =()=>{
     const[token, setToken]=useState(null)// отвечает за токен
     const[userId, setUserId]=useState(null) //отвечает за юзер id
-    const [ready, setReady] = useState(false)
+    const [ready, setReady] = useState(false) // проверяет произошла ли полностью загрузка auth данных с сервака, так как у нас запрос асинхронный и может отработать раньше
 
     const login = useCallback((jwtToken, id)=>{
         setToken(jwtToken)
@@ -554,7 +555,7 @@ import 'materialize-css'
 import {AuthContext} from "./context/AuthContext";
 
 function App() {
-    const {token, login, logout, userId} = useAuth() //!!! обновляется при каждом рендеринге прилжения
+    const {token, login, logout, userId, ready} = useAuth() //!!! обновляется при каждом рендеринге прилжения
     const isAuthenticated = !!token  //!! перевод в boolean true or false -  если токен есть то true
   const routes = useRoutes(isAuthenticated)  //true or false для передачи соответствующих роутов
   return (
@@ -1001,7 +1002,150 @@ export const CreatePage =()=>{
 }
 
 ```
+33) Реализация страницы pages=>CreatePage.js 
+
+```
+
+import React, {useCallback, useContext, useEffect, useState} from 'react'
+import {useParams} from 'react-router-dom'
+import {useHttp} from '../hooks/http.hook'
+import {AuthContext} from '../context/AuthContext'
+import Loader from '../components/Loader'
+import LinkCard from '../components/LinkCard'
 
 
+export const DetailPage =()=>{
+    const {request, loading} = useHttp()
+    const {token}=useContext(AuthContext)
 
+    const[link, setLink]= useState(null) // ccылка которуб мы получим с бекенда по умолчанию нет
+
+    const linkId=useParams().id  // тянем с урла id
+
+    // отправляем запрос на бекенд с заданным id
+
+    const getLink = useCallback( async()=>{
+        try{
+            const fetched = await request(`/api/link/${linkId}`, 'GET', null , {
+                Authorization: `Bearer ${token}`
+            })
+            setLink(fetched)
+
+        }catch (e){
+
+        }
+
+    },[token, linkId, request])
+
+    // Делаем запрос (запуск функции с запросом) - при  начальной загрузке станицы
+    useEffect( ()=>{
+
+        getLink()
+
+    },[getLink])
+
+    //loading берем с хука - пока нет Auth данных в приложении- показываем только loader
+
+    if (loading){
+        return <Loader/>
+    }
+    // {!loading&&link&&<LinkCard link={link}/>}  - если не Loading и есть уже есть Link - то показываю компонент LinkCard
+    // В LinkCard как props передаем ответ с сервера (link object) где его и разворачиваем.
+
+    return (
+        <div>
+            {!loading&&link&&<LinkCard link={link}/>}
+        </div>
+    )
+}
+
+
+```
+
+34) В процессе реализации p.33 необходимо было создать два дополнительных компонента:
+
+34) - 1  components=> file: <b>Loader.js</b> (колесо загрузки):
+
+```
+import React from 'react'
+
+const Loader = ()=>{
+
+    return <React.Fragment>
+        <div style={{display:'flex',justifyContent: 'center', paddingTop:'2rem'}}>
+            <div className="preloader-wrapper active">
+                <div className="spinner-layer spinner-red-only">
+                    <div className="circle-clipper left">
+                        <div className="circle"/>
+                    </div>
+                    <div className="gap-patch">
+                        <div className="circle"/>
+                    </div>
+                    <div className="circle-clipper right">
+                        <div className="circle"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </React.Fragment>
+}
+export default Loader
+
+```
+34) - 2  components=> file: <b>LinkCard.js</b>
+
+```
+import React from 'react'
+const LinkCard =({link})=>{
+    return (<>
+            <h2>Cсылка: </h2>
+            <p>Ваша ссылка: <a href={link.to} target="_blank" rel="noopener noreferrer">{link.to}</a></p>
+            <p>Откуда: <a href={link.from} target="_blank" rel="noopener noreferrer">{link.from}</a></p>
+            <p>Количество кликов по ссылке: <strong>{link.clicks}</strong></p>
+            <p>Дата создания: <strong>{new Date(link.date).toLocaleDateString()}</strong></p>
+        </>
+
+    )
+
+}
+export default LinkCard
+
+```
+35) Обновить Front: <b>App.js </b>- добавить проверку на загрузку Auth Данных в приложении, если они еще не загрузились -то показывать Loader, если загрузились -то показывать вместо компонентов приложения
+
+```
+import React from 'react'
+import {BrowserRouter as Router} from 'react-router-dom'
+import {useRoutes} from './routes'
+import {useAuth} from "./hooks/auth.hook";
+import 'materialize-css'
+import {AuthContext} from "./context/AuthContext";
+import Navbar from "./components/Navbar";
+import Loader from "./components/Loader";   // !!! NEW
+
+function App() {
+    const {token, login, logout, userId, ready} = useAuth() //обновляется при каждом рендеринге прилжения
+    const isAuthenticated = !!token  //!! перевод в boolean true or false -  если токен есть то true
+  const routes = useRoutes(isAuthenticated)  //true or false для передачи соответствующих роутов
+
+    //  если auth данные еще не подгрузились с сервера, показываем loader для всего приложения !!!! NEW
+    if(!ready){
+        return <Loader/>
+    }
+
+  return (
+      <AuthContext.Provider value={{token, login, logout, userId, isAuthenticated}}>
+      <Router>
+          {/*если залогинен то дополнительно показываем NavBar*/}
+          {isAuthenticated&&<Navbar/>}
+  <div className="container">{routes}</div>
+      </Router>
+      </AuthContext.Provider>
+  );
+}
+export default App;
+
+```
+36)
 
