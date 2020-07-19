@@ -1,4 +1,6 @@
-video: https://www.youtube.com/watch?v=ivDjWYcKDZI&list=WL&index=11&t=0s
+**LESSON**
+1. Minin Video: https://www.youtube.com/watch?v=ivDjWYcKDZI&list=WL&index=11&t=0s
+2. Project Code: https://github.com/MarkLouren/mern-minin-course
 
 **AUTH**
 ===================
@@ -1245,4 +1247,115 @@ export default LinksList
   ```
   **================== ПРИЛОЖЕНИЕ ЗАКОНЧЕНО ================**
   
-  **ДЕПЛОЙ**
+  **ДЕПЛОЙ:**
+  
+  39) Back: Установить cross env variables: https://www.npmjs.com/package/cross-env
+  
+```
+  npm install --save-dev cross-env
+```
+  
+ 40)  Back: -  добавить в package.json:
+  ```
+  "scripts": {
+    "start": "cross-env NODE_ENV=production node app.js",
+    "server": "nodemon app.js",
+    "client": "npm run start --prefix client",
+    "client:install": "npm install --prefix client",
+    "client:build": "npm run build --prefix client",
+    "dev": "cross-env NODE_ENV=development concurrently  \"npm run server\" \"npm run client\" "
+  },
+  ``` 
+41) Back :  Собираем Front:
+
+```
+ npm run client:build
+
+```
+42) Front: Public->index.html испрвялем ссылки:
+все "%PUBLIC_URL%/manifest.json на "manifest.json" то есть везде удаляем %PUBLIC_URL%
+- Меняем Title, etc.
+
+43) как будем запускать на сервере? запускаем команду npm start который запустит только node app.js Поэотому нужно кроме API на сервере отдавать также frontend. Для этого в <b> Back=> app.js </b>:
+
+```
+const express = require('express')
+const config = require('config')
+const mongoose = require('mongoose')
+const path =require('path')
+const app = express()
+// Чтобы считавало правильно request body
+app.use(express.json({extended:true}))
+//Routes:
+app.use('/api/auth', require('./routes/auth.routes'))
+//link handler
+app.use('/api/link', require('./routes/link.routes'))
+// redirect Links
+app.use('/t',require('./routes/redirect.routes') )
+
+// launch frontend app via server: Чтобы фронт и бек работали одновременно
+// если env prod
+if (process.env.NODE_ENV === 'production'){
+    // добавляем новый middleware express статик- если идет запрос на / показываем содержимое static папки
+    app.use('/', express.static(path.join(__dirname, 'client', 'build')))
+    // любой get запрос перенаправялем на /
+    app.get('*', (req, res)=>{
+        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
+    })
+}
+
+const PORT = config.get('port') || 5000
+
+
+
+//database connection: mongoose returns a promise so use async
+async function start(){
+try {
+    await mongoose.connect(config.get('mongoUri'), {
+    useNewUrlParser:true,
+     useUnifiedTopology:true,
+     useCreateIndex:true
+    })
+
+} catch(e){
+    console.log('Server Error', e.message)
+    process.exit(1) //process is global object
+}
+}
+start()
+
+app.listen(PORT, ()=>console.log(`App has been started on port ${PORT} `))
+
+```
+
+45. Back: в папке config=>new file <b>production.json:</b> Дублируем с default.json
+
+```
+{
+  "port": 5000,
+  "mongoUri": "data_UrL",
+  "jwtSecret": "secret-jwt",
+  "baseUrl": "http://localhost:5000"
+}
+
+```
+
+
+46)  Cоздаем новый репозиторий в github: mern-minin-course ( По факту мы готовый проект будем добавлять в уже существующий репозиторий)
+47) в папке с проектом делаем инициализацию git:
+```
+git init
+git add .
+git commit -m "initial"
+git remote add origin https://github.com/MarkLouren/mern-minin-course.git
+git push -u origin master
+
+```
+48)  Результат: https://github.com/MarkLouren/mern-minin-course
+49) Покупаем домен (Видео-3:11)
+50) Хостинг https://vscale.io/en/
+51) На хостинге -создаем сервак берем за 400 руб, а то при сборке может отвалитиься что ниже
+52) Добавляем SSH  ключи к своему компу
+53) Соединяем комп  серваком (Видео -3:16)
+
+Дальше согласно видео Туториала.
