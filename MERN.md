@@ -1147,5 +1147,102 @@ function App() {
 export default App;
 
 ```
-36)
+36) Front:Добавление страницы pages=><b>LinksPage.js</b>
 
+```
+import React, {useCallback, useContext, useEffect, useState} from 'react'
+import {useHttp} from '../hooks/http.hook'
+import {AuthContext} from '../context/AuthContext'
+import Loader from '../components/Loader'
+import LinksList from '../components/LinksList'
+
+export const LinksPage = () => {
+    const [links, setLinks] = useState([])
+    const {loading, request} = useHttp()
+    const {token} = useContext(AuthContext)
+
+    const fetchLinks = useCallback(async () => {
+        try {
+            const fetched = await request('/api/link', 'GET', null, {
+                Authorization: `Bearer ${token}`
+            })
+            setLinks(fetched)
+        } catch (e) {}
+    }, [token, request])
+
+    useEffect(() => {
+        fetchLinks()
+    }, [fetchLinks])
+
+    if (loading) {
+        return <Loader/>
+    }
+
+    return (
+        <>
+            {!loading && <LinksList links={links} />}
+        </>
+    )
+}
+
+```
+36) - 1 К этой странице делаем дополнительный компонент <b> components=>LinksList.js </b>
+
+```
+import React from 'react';
+import {Link} from 'react-router-dom';
+
+const LinksList = ({links})=>{
+    if (!links.length){
+        return <p className="center">Ссылок пока нет</p>
+    }
+
+    return <React.Fragment>
+        <table>
+            <thead>
+            <tr >
+                <th>N</th>
+                <th>Оригинальная</th>
+                <th>Сокращенная</th>
+                <th>Открыть</th>
+            </tr>
+            </thead>
+
+            <tbody>
+
+            {links.map( (link, index)=>{
+                return (
+                    <tr key={link._id}>
+                        <td>{index+1}</td>
+                        <td>{link.from}</td>
+                        <td>{link.to}</td>
+                        <td><Link to={`/detail/${link._id}`}>Открыть</Link></td>
+                    </tr>
+
+                )
+            })}
+
+            </tbody>
+        </table>
+    </React.Fragment>
+}
+
+export default LinksList
+```
+По фронту приложение закончено.
+
+  **BACK - финализация проекта. Доработка логики редиректов и подсчета ссылок на сервере:**
+  
+  37) Back: Создаем <b>Folder: routes=>File: redirect.routes.js </b>
+  
+  ```
+  
+  ```
+  38) Добавляем redirect.routes.js - в app.js:
+  ```
+  app.use('/t',require('./routes/redirect.routes') )
+
+  ```
+  **================== ПРИЛОЖЕНИЕ ЗАКОНЧЕНО ================**
+  
+  **ДЕПЛОЙ**
