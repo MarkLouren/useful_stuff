@@ -117,6 +117,7 @@
 * https://www.learnstorybook.com/ for UX UI interfaces, graphics
 * https://react-slick.neostack.com/docs/get-started React Slick Slider
 * https://ant.design/components/breadcrumb/ ANT Design
+* https://react.semantic-ui.com/elements/list/ UI Semantic UI
 * https://www.npmjs.com/package/rc-queue-anim  Aninate Components in queue
 * https://mobx.js.org/README.html state managemenent - alternative of Redux
 * https://github.com/FormidableLabs/radium - CSS set of tools to manage inline styles on React elements
