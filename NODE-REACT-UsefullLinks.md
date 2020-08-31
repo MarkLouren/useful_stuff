@@ -2,6 +2,7 @@
 - https://www.codota.com/code/javascript/functions/axios/AxiosPromise/then - code examples
 - https://awesomeopensource.com/project/harryho/react-crm open sourcr projects
 - https://reacttraining.com/react-router/core/api/withRouter Good React Documentation
+- https://github.com/vladilenm/react-hooks-course/tree/master/src/examples  Минин - hook examples
 
 **ORM**
 - https://sequelize.org/  - Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.
