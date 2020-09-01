@@ -11,10 +11,18 @@
 **Rect**
 - https://ant.design/ -design system for React
 - https://mobile.ant.design/docs/react/introduce  mobile Ant-Design
-- Alternatives Redux: Flux,  Mobx, React Saga ( EcmaScript function generator), context
-SSR
-    next.js — https://github.com/zeit/next.js/
-    Gatsby — https://github.com/gatsbyjs/gatsby
+
+
+**Storage**
+- Redux 
+- Mobx - https://mobx.js.org/README.html
+- Redux Saga - https://redux-saga.js.org/ 
+- Flux
+
+**SSR**
+- next.js — https://github.com/zeit/next.js/
+- Gatsby — https://github.com/gatsbyjs/gatsby
+    
     
 **NODE**
 - http://www.passportjs.org/ - Simple, unobtrusive authentication for Node.js
