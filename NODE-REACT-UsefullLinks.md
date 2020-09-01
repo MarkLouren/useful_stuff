@@ -15,7 +15,8 @@
 
 **Storage**
 - Redux 
-- Mobx - https://mobx.js.org/README.html
+- Mobx - https://mobx.js.org/README.html ( npm install mobx mobx-react)
+
 - Redux Saga - https://redux-saga.js.org/ 
 - Flux
 
