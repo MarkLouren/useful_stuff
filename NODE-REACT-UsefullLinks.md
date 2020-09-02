@@ -5,7 +5,7 @@
 - https://github.com/vladilenm/react-hooks-course/tree/master/src/examples  Минин - hook examples
 - https://usehooks.com/ - react hooks examples
 -  https://github.com/gsoft-inc/craco -react config files => https://github.com/gsoft-inc/craco/tree/master/recipes
-- https://reactrouter.com/web/example/url-params - Routing Examples
+- https://reactrouter.com/web/example/url-params -React Routing Examples
 
 **ORM**
 - https://sequelize.org/  - Sequelize is a promise-based Node.js ORM for Postgres, MySQL, MariaDB, SQLite and Microsoft SQL Server.
