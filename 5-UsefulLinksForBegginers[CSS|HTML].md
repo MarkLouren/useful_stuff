@@ -92,6 +92,7 @@
 **LIABRARIES**
 * https://daneden.github.io/animate.css/ Animate CSS Liabrary [Animate elements on the page with CSS]
 
+
 **TUTORIALS**
 * https://bootstrapcreative.com/resources/bootstrap-4-css-classes-index/ Bootstrap Cheet Sheet
 
@@ -104,6 +105,9 @@
 * https://ru.bem.info/methodology/ BEM Yandex Recommendations
 * https://github.com/yoksel/common-words популярные названия для СSS
 
+**Vanilla JS**
+
+* https://lodash.com/ https://lodash.com/  - Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects, strings, etc 
 
 **Browsers Compatibility**
 *crossbrowsertesting.com 
