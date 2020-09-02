@@ -107,7 +107,7 @@
 
 **Vanilla JS**
 
-* https://lodash.com/ https://lodash.com/  - Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects, strings, etc 
+* https://lodash.com/ https://lodash.com/  - Lodash makes JavaScript easier by taking the hassle out of working with arrays, numbers, objects, strings, etc  EX: https://stackoverflow.com/questions/59350360/how-to-build-a-advanced-filter-component-in-react (Filters for React)
 
 **Browsers Compatibility**
 *crossbrowsertesting.com 
