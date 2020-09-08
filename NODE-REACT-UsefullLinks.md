@@ -15,6 +15,7 @@
 - https://mobile.ant.design/docs/react/introduce  mobile Ant-Design
 - https://github.com/nfl/react-helmet - Editing Meta tags for React Apps
 - https://github.com/react-ga/react-ga - Google Analytcis +React
+- https://github.com/bvaughn/react-error-boundary Error Boundary
 
 
 **Storage**
